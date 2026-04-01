@@ -1,41 +1,57 @@
 {
   "navigation": {
-    "main": [],
-    "footer": [],
+    "main": [
+      { "label": "BIZREAとは", "href": "/about" },
+      { "label": "導入メリット", "href": "/merit" },
+      { "label": "コンテンツ紹介", "href": "/content" },
+      { "label": "導入事例", "href": "/cases" },
+      { "label": "料金・プラン", "href": "/pricing" },
+      { "label": "制作の流れ", "href": "/flow" }
+    ],
+    "footer": [
+      { "label": "BIZREAとは", "href": "/about" },
+      { "label": "導入メリット", "href": "/merit" },
+      { "label": "コンテンツ紹介", "href": "/content" },
+      { "label": "導入事例", "href": "/cases" },
+      { "label": "料金・プラン", "href": "/pricing" },
+      { "label": "制作の流れ", "href": "/flow" },
+      { "label": "よくある質問", "href": "/faq" },
+      { "label": "お問い合わせ", "href": "/contact" }
+    ],
     "cta": {
-      "label": "お問い合わせ",
+      "label": "まずは話を聞いてみる",
       "href": "/contact"
     }
   },
   "company": {
-    "name": "",
-    "nameShort": "",
-    "nameEn": "",
+    "name": "BIZREA",
+    "nameShort": "BIZREA",
+    "nameEn": "BIZREA",
     "id": "",
     "ceo": "",
     "established": "",
     "capital": "",
     "revenue": "",
     "employees": "",
-    "business": "",
+    "business": "社長インタビューを軸に、動画・雑誌・WEBを活用した企業ブランディングコンテンツサービス「BIZREA」の企画・制作・運用",
     "license": "",
-    "catchphrase": "",
-    "mission": ""
+    "catchphrase": "社長の想いを、企業の力に変える。",
+    "mission": "社長インタビューを軸にした動画・雑誌・WEBで、企業の\"本質\"を\"伝わる形\"にする。"
   },
   "contact": {
-    "phone": "",
-    "phoneFormatted": "",
-    "phoneTel": "",
+    "phone": "000-000-0000",
+    "phoneFormatted": "000-000-0000",
+    "phoneTel": "0000000000",
     "fax": "",
-    "email": "",
-    "hours": "",
+    "email": "info@bizrea.jp",
+    "hours": "平日 9:00〜18:00",
     "recruitContact": ""
   },
   "locations": {
     "headquarters": {
       "name": "本社",
       "zipCode": "",
-      "address": "",
+      "address": "愛知県",
       "access": "",
       "mapUrl": ""
     },
@@ -51,9 +67,9 @@
   },
   "seo": {
     "siteUrl": "",
-    "titleSuffix": "",
-    "defaultTitle": "",
-    "defaultDescription": ""
+    "titleSuffix": " | BIZREA - 社長インタビューで企業ブランディング",
+    "defaultTitle": "BIZREA - 社長インタビューを軸にした企業ブランディングコンテンツサービス",
+    "defaultDescription": "BIZREAは社長インタビューを軸に、動画・雑誌・WEBを活用した企業ブランディングコンテンツサービスです。企業の\"本質\"を\"伝わる形\"にし、営業力・採用力・組織力を強化します。"
   },
   "stats": {
     "yearsInBusiness": "",

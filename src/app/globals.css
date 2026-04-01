@@ -3,22 +3,22 @@
 
 @theme {
   /* Brand Colors */
-  --color-navy: #1a3a5c;
-  --color-navy-dark: #152e4a;
-  --color-accent: #e67635;
-  --color-accent-dark: #d56025;
+  --color-navy: #1B2D4F;
+  --color-navy-dark: #0F1D33;
+  --color-accent: #C45A3C;
+  --color-accent-dark: #A34830;
 
   /* Text Colors */
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
+  --color-text-primary: #222222;
+  --color-text-secondary: #5A5A5A;
   --color-text-muted: #999999;
 
   /* Background Colors */
-  --color-bg-light: #e0e0e0;
+  --color-bg-light: #F6F4F1;
   --color-bg-white: #ffffff;
 
   /* Border Colors */
-  --color-border: #e0e0e0;
+  --color-border: #E0DDD8;
 
   /* Font Family */
   --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;

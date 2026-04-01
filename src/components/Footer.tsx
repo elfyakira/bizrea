@@ -1,156 +1,209 @@
 import Image from "next/image";
 import Link from "next/link";
-import { company, contact, locations, images, site, navigation } from "@/lib/site";
+import { company, contact, images, navigation } from "@/lib/site";
 
-// ナビゲーションはsite.jsonから読み込み（構成案に基づいてClaude Codeが設定）
-const navLinks = navigation.footer;
+const footerNavLeft = [
+  { label: "BIZREAとは", href: "/about" },
+  { label: "導入メリット", href: "/merit" },
+  { label: "コンテンツ紹介", href: "/content" },
+  { label: "導入事例", href: "/cases" },
+];
+
+const footerNavRight = [
+  { label: "料金・プラン", href: "/pricing" },
+  { label: "制作の流れ", href: "/flow" },
+  { label: "よくある質問", href: "/faq" },
+  { label: "お問い合わせ", href: "/contact" },
+];
 
 export default function Footer() {
-  const hq = locations.headquarters;
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy text-white">
-      <div className="max-w-container mx-auto px-6 lg:px-12 pt-12 lg:pt-20 pb-6 lg:pb-10">
-        {/* PC: 4 columns */}
-        <div className="hidden lg:flex lg:justify-between lg:items-start mb-16">
-          {/* 1. Logo */}
+    <footer className="bg-[#1B2D4F] text-white">
+      <div className="max-w-[1120px] mx-auto px-6 lg:px-10 pt-12 lg:pt-16 pb-6 lg:pb-8">
+        {/* PC: 3 columns */}
+        <div className="hidden lg:grid lg:grid-cols-[40%_30%_30%] lg:gap-8 mb-10">
+          {/* Left: Logo + Description */}
           <div>
             <Link href="/">
               <Image
-                src={images.logoSquare || "/images/logo-square.png"}
-                alt={company.name || "会社ロゴ"}
-                width={100}
-                height={100}
-                className="brightness-0 invert"
+                src={images.logo || "/images/logo.png"}
+                alt={company.name || "BIZREA"}
+                width={160}
+                height={32}
+                className="h-[32px] w-auto brightness-0 invert"
+                style={{ height: 32, width: "auto" }}
               />
             </Link>
+            <p className="mt-5 text-[13px] leading-[1.7] text-white/60 max-w-[280px]">
+              社長インタビューを軸にした動画・雑誌・WEBで、
+              <br />
+              企業の&ldquo;本質&rdquo;を&ldquo;伝わる形&rdquo;にする。
+            </p>
           </div>
 
-          {/* 2. Company Info */}
-          <div className="text-sm text-white/80 leading-relaxed pt-4">
-            {hq.zipCode && hq.address && (
-              <p>〒{hq.zipCode} {hq.address}</p>
-            )}
-            {contact.phone && <p>TEL: {contact.phoneFormatted || contact.phone}</p>}
-            {contact.hours && <p>営業時間: {contact.hours}</p>}
-          </div>
-
-{/* 3. Navigation */}
-          {navLinks.length > 0 && (
-            <ul className="space-y-2">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/80 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          {/* 4. SNS */}
-          {site.social.instagram && (
-            <div>
-              <a
-                href={site.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/80 hover:text-white transition-colors"
-                aria-label="Instagram"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-              </a>
+          {/* Center: Site Map */}
+          <div>
+            <p className="text-[13px] font-bold text-white/40 tracking-[0.1em] mb-4">
+              サイトマップ
+            </p>
+            <div className="flex gap-8">
+              <ul className="space-y-2.5">
+                {footerNavLeft.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <ul className="space-y-2.5">
+                {footerNavRight.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          )}
+          </div>
+
+          {/* Right: Contact */}
+          <div>
+            <p className="text-[13px] font-bold text-white/40 tracking-[0.1em] mb-4">
+              お問い合わせ
+            </p>
+            {contact.phone && (
+              <>
+                <a
+                  href={`tel:${contact.phoneTel || contact.phone.replace(/-/g, "")}`}
+                  className="text-[16px] font-medium text-white"
+                >
+                  TEL: {contact.phoneFormatted || contact.phone}
+                </a>
+                {contact.hours && (
+                  <p className="text-[12px] text-white/50 mt-1">
+                    {contact.hours}
+                  </p>
+                )}
+              </>
+            )}
+            {contact.email && (
+              <a
+                href={`mailto:${contact.email}`}
+                className="block mt-3 text-[13px] text-white/70 hover:text-white transition-colors duration-200"
+              >
+                {contact.email}
+              </a>
+            )}
+            <Link
+              href="/contact"
+              className="inline-block mt-5 px-6 py-2.5 text-[13px] font-medium text-white/80 border border-white/30 rounded-[4px] hover:bg-white/10 hover:text-white transition-all duration-200"
+            >
+              まずは話を聞いてみる
+            </Link>
+          </div>
         </div>
 
         {/* SP: Stacked layout */}
         <div className="lg:hidden text-center mb-8">
-          <Link href="/" className="inline-block mb-6">
+          <Link href="/" className="inline-block">
             <Image
-              src={images.logoSquare || "/images/logo-square.png"}
-              alt={company.name || "会社ロゴ"}
+              src={images.logo || "/images/logo.png"}
+              alt={company.name || "BIZREA"}
               width={120}
-              height={120}
-              className="brightness-0 invert"
+              height={28}
+              className="h-[28px] w-auto brightness-0 invert mx-auto"
+              style={{ height: 28, width: "auto" }}
             />
           </Link>
-          <div className="text-sm text-white/80 leading-relaxed mb-6">
-            {hq.zipCode && hq.address && (
-              <p>〒{hq.zipCode} {hq.address}</p>
-            )}
-            {contact.phone && <p>TEL: {contact.phoneFormatted || contact.phone}</p>}
-            {contact.hours && <p>営業時間: {contact.hours}</p>}
-          </div>
-{navLinks.length > 0 && (
-            <ul className="space-y-2 mb-6">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+          <p className="mt-4 text-[13px] leading-[1.7] text-white/60">
+            社長インタビューを軸にした動画・雑誌・WEBで、
+            <br />
+            企業の&ldquo;本質&rdquo;を&ldquo;伝わる形&rdquo;にする。
+          </p>
+
+          {/* Nav 2 columns */}
+          <div className="flex justify-center gap-8 mt-8">
+            <ul className="space-y-2.5 text-left">
+              {footerNavLeft.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href={link.href}
-                    className="text-sm text-white/80 hover:text-white transition-colors"
+                    href={item.href}
+                    className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
                   >
-                    {link.label}
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          )}
-          {site.social.instagram && (
-            <a
-              href={site.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-white/80 hover:text-white transition-colors"
-              aria-label="Instagram"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <ul className="space-y-2.5 text-left">
+              {footerNavRight.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="mt-8">
+            {contact.phone && (
+              <a
+                href={`tel:${contact.phoneTel || contact.phone.replace(/-/g, "")}`}
+                className="text-[16px] font-medium text-white"
               >
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-              </svg>
-            </a>
-          )}
+                TEL: {contact.phoneFormatted || contact.phone}
+              </a>
+            )}
+            {contact.hours && (
+              <p className="text-[12px] text-white/50 mt-1">{contact.hours}</p>
+            )}
+            {contact.email && (
+              <a
+                href={`mailto:${contact.email}`}
+                className="block mt-3 text-[13px] text-white/70 hover:text-white transition-colors duration-200"
+              >
+                {contact.email}
+              </a>
+            )}
+          </div>
+
+          {/* CTA */}
+          <Link
+            href="/contact"
+            className="block mx-6 mt-6 py-3 text-[13px] font-medium text-white/80 border border-white/30 rounded-[4px] hover:bg-white/10 hover:text-white transition-all duration-200"
+          >
+            まずは話を聞いてみる
+          </Link>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 pt-6 text-center">
-          <p className="text-xs text-white/50">
-            © {currentYear} {company.nameEn || company.name || "Company Name"}. All Rights Reserved.
-          </p>
-          {company.license && (
-            <p className="text-[11px] text-white/40 mt-2">
-              {company.license}
+        <div className="border-t border-white/[0.08] pt-6 lg:pt-6 mt-10 lg:mt-10">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className="text-[12px] text-white/30">
+              &copy; {currentYear} Bizrea. All rights reserved.
             </p>
-          )}
+            <Link
+              href="/privacy"
+              className="text-[12px] text-white/30 hover:text-white/70 transition-colors duration-200"
+            >
+              プライバシーポリシー
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
