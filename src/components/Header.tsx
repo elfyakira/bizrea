@@ -1,27 +1,16 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { company, contact, images, navigation } from "@/lib/site";
+import { company, contact, navigation } from "@/lib/site";
 
 const navItems = navigation.main;
 const ctaButton = navigation.cta;
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -34,102 +23,98 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
-  // メニュー開閉時にページ遷移でメニューを閉じる
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
 
   return (
     <>
-      {/* PC Header */}
-      <header
-        className={`hidden lg:block fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-          isScrolled
-            ? "h-16 bg-white shadow-[0_1px_0_rgba(0,0,0,0.06)]"
-            : "h-20 bg-transparent"
-        }`}
-      >
-        <div className="flex items-center justify-between h-full px-10">
-          {/* Logo */}
+      {/* PC Header - フローティンググラスモーフィズム */}
+      <header className="hidden lg:block fixed top-4 left-6 right-6 z-[100]">
+        <div
+          className="flex items-center justify-between h-16 px-10 rounded-lg"
+          style={{
+            border: "1px solid rgba(255,255,255,0.25)",
+            backgroundColor: "rgba(255,255,255,0.08)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+          }}
+        >
           <Link href="/" className="flex items-center">
-            <Image
-              src={images.logo || "/images/logo.png"}
-              alt={company.name || "BIZREA"}
-              width={160}
-              height={36}
-              className={`transition-all duration-300 ${
-                isScrolled ? "h-[30px] w-auto" : "h-[36px] w-auto brightness-0 invert"
-              }`}
-              style={{ height: isScrolled ? 30 : 36, width: "auto" }}
-            />
+            <span
+              className="text-[28px] font-extrabold text-accent tracking-[-0.02em]"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Bizrea
+            </span>
           </Link>
 
-          {/* Navigation + CTA */}
-          <div className="flex items-center">
-            <nav className="flex items-center gap-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-[14px] font-medium transition-colors duration-200 hover:text-accent ${
-                    pathname === item.href
-                      ? "text-accent"
-                      : isScrolled
-                      ? "text-[#222222]"
-                      : "text-white/90"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+          <nav className="flex items-center">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-[14px] tracking-[0.04em] transition-colors duration-200 ml-9 ${
+                  pathname === item.href
+                    ? "text-accent"
+                    : "text-[#1B2D4F] hover:text-accent"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
             {ctaButton.label && (
               <Link
                 href={ctaButton.href}
-                className="ml-6 bg-accent text-white px-6 py-2.5 rounded-[4px] text-[13px] font-bold transition-colors duration-200 hover:bg-accent-dark"
+                className="bg-accent text-white px-6 py-2.5 rounded-[4px] text-[13px] font-bold transition-colors duration-200 hover:bg-accent-dark ml-9"
               >
                 {ctaButton.label}
               </Link>
             )}
-          </div>
+          </nav>
         </div>
       </header>
 
-      {/* SP Header */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-[100] h-[60px] bg-white shadow-[0_1px_0_rgba(0,0,0,0.06)]">
-        <div className="flex items-center justify-between h-full px-5">
+      {/* SP Header - フローティンググラスモーフィズム */}
+      <header className="lg:hidden fixed top-3 left-4 right-4 z-[100]">
+        <div
+          className="flex items-center justify-between h-14 px-5 rounded-lg"
+          style={{
+            border: "1px solid rgba(255,255,255,0.25)",
+            backgroundColor: "rgba(255,255,255,0.08)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+          }}
+        >
           <Link href="/" className="flex items-center">
-            <Image
-              src={images.logo || "/images/logo.png"}
-              alt={company.name || "BIZREA"}
-              width={120}
-              height={28}
-              className="h-[28px] w-auto"
-              style={{ height: 28, width: "auto" }}
-            />
+            <span
+              className="text-[22px] font-extrabold text-accent tracking-[-0.02em]"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Bizrea
+            </span>
           </Link>
 
-          {/* Hamburger Button */}
           <button
             className="w-11 h-11 flex items-center justify-center"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
           >
-            <div className="relative w-[18px] h-[14px]">
+            <div className="relative w-6 h-6">
               <span
-                className={`absolute left-0 w-[18px] h-[2px] bg-[#222222] transition-all duration-300 ${
-                  isMenuOpen ? "top-[6px] rotate-45" : "top-0"
+                className={`absolute left-[2px] w-5 h-[1.5px] bg-white transition-all duration-300 ${
+                  isMenuOpen ? "top-[11px] rotate-45" : "top-[5px]"
                 }`}
               />
               <span
-                className={`absolute left-0 top-[6px] w-[18px] h-[2px] bg-[#222222] transition-all duration-300 ${
+                className={`absolute left-[2px] top-[11px] w-5 h-[1.5px] bg-white transition-all duration-300 ${
                   isMenuOpen ? "opacity-0" : "opacity-100"
                 }`}
               />
               <span
-                className={`absolute left-0 w-[18px] h-[2px] bg-[#222222] transition-all duration-300 ${
-                  isMenuOpen ? "top-[6px] -rotate-45" : "top-[12px]"
+                className={`absolute left-[2px] w-5 h-[1.5px] bg-white transition-all duration-300 ${
+                  isMenuOpen ? "top-[11px] -rotate-45" : "top-[17px]"
                 }`}
               />
             </div>
@@ -137,64 +122,36 @@ export default function Header() {
         </div>
       </header>
 
-      {/* SP Mobile Menu - Full Screen Slide */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 z-[99] bg-white transition-transform duration-350 ease-out ${
+        className={`lg:hidden fixed inset-0 z-[99] bg-black/30 transition-opacity duration-300 ${
+          isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsMenuOpen(false)}
+      />
+
+      {/* Mobile Drawer Menu */}
+      <nav
+        className={`lg:hidden fixed top-0 right-0 z-[99] w-[80vw] max-w-[300px] h-full bg-white transition-transform duration-300 ease-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         aria-label="モバイルナビゲーション"
       >
-        {/* Top bar with logo and close */}
-        <div className="flex items-center justify-between h-[60px] px-5">
-          <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
-            <Image
-              src={images.logo || "/images/logo.png"}
-              alt={company.name || "BIZREA"}
-              width={120}
-              height={28}
-              className="h-[28px] w-auto"
-              style={{ height: 28, width: "auto" }}
-            />
-          </Link>
-          <button
-            className="w-11 h-11 flex items-center justify-center"
-            onClick={() => setIsMenuOpen(false)}
-            aria-label="メニューを閉じる"
-          >
-            <div className="relative w-[18px] h-[14px]">
-              <span className="absolute left-0 top-[6px] w-[18px] h-[2px] bg-[#222222] rotate-45" />
-              <span className="absolute left-0 top-[6px] w-[18px] h-[2px] bg-[#222222] -rotate-45" />
-            </div>
-          </button>
-        </div>
-
-        {/* Nav items */}
-        <nav className="mt-4">
+        <div className="flex flex-col items-center justify-center h-full">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="block px-6 py-5 text-[18px] font-medium text-[#222222] border-b border-[#E0DDD8] transition-colors active:bg-[#F6F4F1]"
+              className="block text-[20px] font-medium text-[#222222] tracking-[0.04em] mb-7 transition-colors hover:text-accent"
               onClick={() => setIsMenuOpen(false)}
             >
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/faq"
-            className="block px-6 py-5 text-[18px] font-medium text-[#222222] border-b border-[#E0DDD8] transition-colors active:bg-[#F6F4F1]"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            よくある質問
-          </Link>
-        </nav>
-
-        {/* CTA Button */}
-        <div className="px-6 mt-6">
           {ctaButton.label && (
             <Link
               href={ctaButton.href}
-              className="block w-full py-[18px] text-center bg-accent text-white text-[16px] font-bold rounded-[4px] transition-colors hover:bg-accent-dark"
+              className="block text-[20px] font-medium text-accent tracking-[0.04em] transition-colors hover:text-accent-dark"
               onClick={() => setIsMenuOpen(false)}
             >
               {ctaButton.label}
@@ -203,13 +160,13 @@ export default function Header() {
           {contact.phone && (
             <a
               href={`tel:${contact.phoneTel || contact.phone.replace(/-/g, "")}`}
-              className="block text-center mt-4 text-[16px] font-medium text-[#5A5A5A]"
+              className="text-sm text-[#5A5A5A] mt-10"
             >
               TEL: {contact.phoneFormatted || contact.phone}
             </a>
           )}
         </div>
-      </div>
+      </nav>
     </>
   );
 }

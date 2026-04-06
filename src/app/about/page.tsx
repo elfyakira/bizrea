@@ -46,7 +46,7 @@ export default function AboutPage() {
       <section className="bg-[#F6F4F1] py-[100px] max-lg:py-14">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="lg:flex lg:items-center lg:gap-16">
-            <div className="lg:w-1/2 mb-8 lg:mb-0">
+            <div className="lg:w-1/2 order-2 lg:order-1 mb-8 lg:mb-0">
               <h2 className="text-[26px] max-lg:text-[22px] font-bold text-[#222222]">
                 社長の言葉を起点に、<br />企業の&ldquo;本質&rdquo;を届ける。
               </h2>
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="lg:w-[45%] aspect-[4/5] max-lg:aspect-[3/2] bg-[#E0DDD8]">
+            <div className="lg:w-[45%] order-1 lg:order-2 aspect-[4/5] max-lg:aspect-[3/2] bg-[#E0DDD8] max-lg:mb-8">
               <div className="w-full h-full bg-[url('/images/about-interview.jpg')] bg-cover bg-center" />
             </div>
           </div>
@@ -116,9 +116,19 @@ export default function AboutPage() {
 
           {/* 図解 */}
           <div className="max-w-[560px] mx-auto relative">
+            {/* 接続線（SVG） */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 560 380" preserveAspectRatio="xMidYMid meet">
+              {/* 中央(280,100)から左上(100,300) */}
+              <line x1="280" y1="140" x2="100" y2="260" stroke="#E0DDD8" strokeWidth="1" />
+              {/* 中央(280,100)から右上(460,300) */}
+              <line x1="280" y1="140" x2="460" y2="260" stroke="#E0DDD8" strokeWidth="1" />
+              {/* 中央(280,100)から下(280,300) */}
+              <line x1="280" y1="140" x2="280" y2="260" stroke="#E0DDD8" strokeWidth="1" />
+            </svg>
+
             {/* 中央 */}
-            <div className="flex justify-center mb-12">
-              <div className="w-40 h-40 max-lg:w-28 max-lg:h-28 rounded-full bg-[#1B2D4F] flex items-center justify-center">
+            <div className="flex justify-center mb-16 max-lg:mb-12">
+              <div className="w-40 h-40 max-lg:w-28 max-lg:h-28 rounded-full bg-[#1B2D4F] flex items-center justify-center relative z-10">
                 <span className="text-white text-[14px] max-lg:text-[12px] font-medium text-center leading-tight px-4">
                   社長<br />インタビュー
                 </span>
@@ -126,23 +136,23 @@ export default function AboutPage() {
             </div>
 
             {/* 3つの要素 */}
-            <div className="grid grid-cols-3 gap-6 max-lg:gap-4 text-center">
+            <div className="grid grid-cols-3 gap-6 max-lg:gap-4 text-center relative z-10">
               <div>
-                <div className="w-16 h-16 max-lg:w-12 max-lg:h-12 mx-auto mb-3 rounded-full border border-[#E0DDD8] flex items-center justify-center">
+                <div className="w-16 h-16 max-lg:w-12 max-lg:h-12 mx-auto mb-3 rounded-full border border-[#E0DDD8] bg-[#F6F4F1] flex items-center justify-center">
                   <svg className="w-6 h-6 text-[#5A5A5A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
                 </div>
                 <p className="text-[15px] max-lg:text-[13px] font-bold text-[#222222]">雑誌</p>
                 <p className="text-[13px] max-lg:text-[11px] text-[#5A5A5A] mt-1">信頼獲得</p>
               </div>
               <div>
-                <div className="w-16 h-16 max-lg:w-12 max-lg:h-12 mx-auto mb-3 rounded-full border border-[#E0DDD8] flex items-center justify-center">
+                <div className="w-16 h-16 max-lg:w-12 max-lg:h-12 mx-auto mb-3 rounded-full border border-[#E0DDD8] bg-[#F6F4F1] flex items-center justify-center">
                   <svg className="w-6 h-6 text-[#5A5A5A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" /></svg>
                 </div>
                 <p className="text-[15px] max-lg:text-[13px] font-bold text-[#222222]">動画</p>
                 <p className="text-[13px] max-lg:text-[11px] text-[#5A5A5A] mt-1">共感・理解</p>
               </div>
               <div>
-                <div className="w-16 h-16 max-lg:w-12 max-lg:h-12 mx-auto mb-3 rounded-full border border-[#E0DDD8] flex items-center justify-center">
+                <div className="w-16 h-16 max-lg:w-12 max-lg:h-12 mx-auto mb-3 rounded-full border border-[#E0DDD8] bg-[#F6F4F1] flex items-center justify-center">
                   <svg className="w-6 h-6 text-[#5A5A5A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9.015 9.015 0 003 12c0-1.605.42-3.113 1.157-4.418" /></svg>
                 </div>
                 <p className="text-[15px] max-lg:text-[13px] font-bold text-[#222222]">WEB</p>

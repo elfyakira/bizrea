@@ -46,6 +46,19 @@ function ContactPageInner() {
     return e;
   };
 
+  const validateField = (field: string) => {
+    const allErrors = validate();
+    setErrors((prev) => {
+      const next = { ...prev };
+      if (allErrors[field]) {
+        next[field] = allErrors[field];
+      } else {
+        delete next[field];
+      }
+      return next;
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -146,6 +159,7 @@ function ContactPageInner() {
                   <select
                     value={form.inquiry}
                     onChange={(e) => setForm({ ...form, inquiry: e.target.value })}
+                    onBlur={() => validateField("inquiry")}
                     className={`w-full border-0 border-b ${errors.inquiry ? "border-b-accent" : "border-b-[#E0DDD8]"} focus:border-b-[#1B2D4F] bg-transparent py-3 text-[16px] text-[#222222] outline-none transition-colors duration-250`}
                   >
                     <option value="">選択してください</option>
@@ -168,6 +182,7 @@ function ContactPageInner() {
                     placeholder="例: 株式会社○○"
                     value={form.company}
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
+                    onBlur={() => validateField("company")}
                     className={`w-full border-0 border-b ${errors.company ? "border-b-accent" : "border-b-[#E0DDD8]"} focus:border-b-[#1B2D4F] bg-transparent py-3 text-[16px] text-[#222222] placeholder-[#AAAAAA] outline-none transition-colors duration-250`}
                   />
                   {errors.company && <p className="mt-1 text-[13px] text-accent">{errors.company}</p>}
@@ -183,6 +198,7 @@ function ContactPageInner() {
                     placeholder="例: 山田 太郎"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onBlur={() => validateField("name")}
                     className={`w-full border-0 border-b ${errors.name ? "border-b-accent" : "border-b-[#E0DDD8]"} focus:border-b-[#1B2D4F] bg-transparent py-3 text-[16px] text-[#222222] placeholder-[#AAAAAA] outline-none transition-colors duration-250`}
                   />
                   {errors.name && <p className="mt-1 text-[13px] text-accent">{errors.name}</p>}
@@ -211,6 +227,7 @@ function ContactPageInner() {
                     placeholder="例: info@example.co.jp"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onBlur={() => validateField("email")}
                     className={`w-full border-0 border-b ${errors.email ? "border-b-accent" : "border-b-[#E0DDD8]"} focus:border-b-[#1B2D4F] bg-transparent py-3 text-[16px] text-[#222222] placeholder-[#AAAAAA] outline-none transition-colors duration-250`}
                   />
                   {errors.email && <p className="mt-1 text-[13px] text-accent">{errors.email}</p>}

@@ -132,7 +132,7 @@ export default function ContentPage() {
       <section className="bg-white py-[100px] max-lg:py-14">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="lg:flex lg:items-center lg:gap-16">
-            <div className="lg:w-1/2 mb-8 lg:mb-0">
+            <div className="lg:w-1/2 order-2 lg:order-1 mb-8 lg:mb-0">
               <p className="text-[13px] font-medium text-accent tracking-[0.1em]" style={{ fontFamily: "Inter, sans-serif" }}>Content 03</p>
               <h2 className="mt-3 text-[26px] max-lg:text-[22px] font-bold text-[#222222]">
                 検索で届き、蓄積で強くなる企業ページ
@@ -166,7 +166,7 @@ export default function ContentPage() {
                 ]} />
               </div>
             </div>
-            <div className="lg:w-[45%] aspect-[4/3] bg-[#E0DDD8] rounded-sm overflow-hidden">
+            <div className="lg:w-[45%] order-1 lg:order-2 aspect-[4/3] bg-[#E0DDD8] rounded-sm overflow-hidden max-lg:mb-8">
               <div className="w-full h-full bg-[url('/images/content-web.jpg')] bg-cover bg-center" />
             </div>
           </div>

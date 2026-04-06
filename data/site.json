@@ -1,21 +1,14 @@
 {
   "navigation": {
     "main": [
-      { "label": "BIZREAとは", "href": "/about" },
-      { "label": "導入メリット", "href": "/merit" },
-      { "label": "コンテンツ紹介", "href": "/content" },
-      { "label": "導入事例", "href": "/cases" },
-      { "label": "料金・プラン", "href": "/pricing" },
-      { "label": "制作の流れ", "href": "/flow" }
+      { "label": "ホーム", "href": "/" },
+      { "label": "雑誌", "href": "/magazine" },
+      { "label": "動画", "href": "/video" }
     ],
     "footer": [
-      { "label": "BIZREAとは", "href": "/about" },
-      { "label": "導入メリット", "href": "/merit" },
-      { "label": "コンテンツ紹介", "href": "/content" },
-      { "label": "導入事例", "href": "/cases" },
-      { "label": "料金・プラン", "href": "/pricing" },
-      { "label": "制作の流れ", "href": "/flow" },
-      { "label": "よくある質問", "href": "/faq" },
+      { "label": "ホーム", "href": "/" },
+      { "label": "雑誌", "href": "/magazine" },
+      { "label": "動画", "href": "/video" },
       { "label": "お問い合わせ", "href": "/contact" }
     ],
     "cta": {

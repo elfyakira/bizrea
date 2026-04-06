@@ -4,22 +4,17 @@ import { useState } from "react";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
+import { companies } from "@data/companies";
 
-const companies = [
-  { id: "company-a", name: "株式会社○○製作所", industry: "製造業", region: "愛知県", desc: "精密部品メーカー。社長インタビューを通じて、ものづくりへのこだわりを言語化。営業ツールとして活用中。" },
-  { id: "company-b", name: "○○建設株式会社", industry: "建設業", region: "岐阜県", desc: "地域密着の総合建設会社。BIZREAの記事を商談前に送付し、成約率が大幅に向上。" },
-  { id: "company-c", name: "株式会社○○物流", industry: "物流業", region: "三重県", desc: "東海エリアを中心とした物流企業。採用サイトにBIZREA動画を導入し、応募者の質が変化。" },
-  { id: "company-d", name: "○○食品株式会社", industry: "食品製造業", region: "愛知県", desc: "老舗食品メーカー。社長の想いを雑誌化し、取引先への信頼構築ツールとして活用。" },
-  { id: "company-e", name: "株式会社○○テック", industry: "IT・通信業", region: "愛知県", desc: "成長中のIT企業。BIZREAを活用した採用ブランディングで、エンジニア採用に成功。" },
-  { id: "company-f", name: "○○工業株式会社", industry: "製造業", region: "岐阜県", desc: "自動車部品メーカー。社員教育ツールとしてBIZREA雑誌を活用し、定着率が向上。" },
-];
+const industries = ["すべて", "製造業", "建設業", "物流業", "食品製造業", "IT・通信業", "サービス業", "その他"];
+const regions = ["すべて", "愛知県", "岐阜県", "三重県", "その他"];
 
-const industries = ["すべて", "製造業", "建設業", "物流業", "食品製造業", "IT・通信業"];
-const regions = ["すべて", "愛知県", "岐阜県", "三重県"];
+const ITEMS_PER_PAGE = 12;
 
 export default function CasesPage() {
   const [industry, setIndustry] = useState("すべて");
   const [region, setRegion] = useState("すべて");
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
   const filtered = companies.filter((c) => {
     if (industry !== "すべて" && c.industry !== industry) return false;
@@ -27,42 +22,61 @@ export default function CasesPage() {
     return true;
   });
 
+  const visible = filtered.slice(0, visibleCount);
+  const hasMore = visibleCount < filtered.length;
+
   return (
     <main>
-      <PageHero
-        title="導入事例"
-        subtitle="BIZREAを導入した企業の声と、その成果をご紹介します。"
-      />
+      {/* ページヒーロー */}
+      <section className="w-full bg-[#1B2D4F] flex flex-col items-center justify-center h-[400px] max-lg:h-[280px]">
+        <div className="text-center px-6">
+          <h1
+            className="text-[40px] max-lg:text-[26px] font-medium text-white"
+            style={{ fontFamily: "'Noto Serif JP', serif" }}
+          >
+            導入事例
+          </h1>
+          <p className="mt-4 max-lg:mt-3 text-[17px] max-lg:text-[14px] text-white/70">
+            BIZREAを導入した企業のリアルな声と成果。
+          </p>
+          <p
+            className="mt-6 max-lg:mt-4 text-[20px] max-lg:text-[16px] font-bold text-white"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            掲載企業 50社以上
+          </p>
+        </div>
+      </section>
 
       {/* フィルター */}
-      <section className="bg-white py-10 max-lg:py-6">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
-          <div className="flex flex-wrap gap-3 items-center">
-            <span className="text-[14px] font-medium text-[#5A5A5A] mr-2">業種:</span>
+      <section className="bg-white py-14 max-lg:py-9">
+        <div className="max-w-[1120px] mx-auto px-6 lg:px-10">
+          <div className="flex gap-2 items-center max-lg:overflow-x-auto max-lg:flex-nowrap max-lg:pb-2 flex-wrap">
+            <span className="text-[14px] font-medium text-[#5A5A5A] mr-2 flex-shrink-0">業種:</span>
             {industries.map((ind) => (
               <button
                 key={ind}
-                onClick={() => setIndustry(ind)}
-                className={`text-[13px] px-4 py-2 rounded-[4px] transition-colors ${
+                onClick={() => { setIndustry(ind); setVisibleCount(ITEMS_PER_PAGE); }}
+                className={`text-[14px] font-medium px-5 py-2 rounded-full transition-colors flex-shrink-0 ${
                   industry === ind
                     ? "bg-[#1B2D4F] text-white"
-                    : "bg-[#F6F4F1] text-[#5A5A5A] hover:bg-[#E0DDD8]"
+                    : "bg-[#F6F4F1] text-[#222222] hover:bg-[#E0DDD8]"
                 }`}
               >
                 {ind}
               </button>
             ))}
           </div>
-          <div className="flex flex-wrap gap-3 items-center mt-4">
-            <span className="text-[14px] font-medium text-[#5A5A5A] mr-2">地域:</span>
+          <div className="flex gap-2 items-center mt-3 max-lg:overflow-x-auto max-lg:flex-nowrap max-lg:pb-2 flex-wrap">
+            <span className="text-[14px] font-medium text-[#5A5A5A] mr-2 flex-shrink-0">地域:</span>
             {regions.map((reg) => (
               <button
                 key={reg}
-                onClick={() => setRegion(reg)}
-                className={`text-[13px] px-4 py-2 rounded-[4px] transition-colors ${
+                onClick={() => { setRegion(reg); setVisibleCount(ITEMS_PER_PAGE); }}
+                className={`text-[14px] font-medium px-5 py-2 rounded-full transition-colors flex-shrink-0 ${
                   region === reg
                     ? "bg-[#1B2D4F] text-white"
-                    : "bg-[#F6F4F1] text-[#5A5A5A] hover:bg-[#E0DDD8]"
+                    : "bg-[#F6F4F1] text-[#222222] hover:bg-[#E0DDD8]"
                 }`}
               >
                 {reg}
@@ -73,44 +87,79 @@ export default function CasesPage() {
       </section>
 
       {/* 企業一覧 */}
-      <section className="bg-[#F6F4F1] py-16 max-lg:py-10">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+      <section className="bg-[#F6F4F1] pb-20 max-lg:pb-12">
+        <div className="max-w-[1120px] mx-auto px-6 lg:px-10">
           {filtered.length === 0 ? (
             <p className="text-center text-[16px] text-[#5A5A5A] py-20">
               該当する企業が見つかりませんでした。
             </p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((company) => (
-                <Link
-                  key={company.id}
-                  href={`/cases/${company.id}`}
-                  className="block bg-white rounded-[4px] overflow-hidden hover:shadow-lg transition-shadow duration-300"
-                >
-                  <div className="aspect-[16/10] bg-[#E0DDD8]">
-                    <div className="w-full h-full bg-[url('/images/case-placeholder.jpg')] bg-cover bg-center" />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex gap-2 mb-3">
-                      <span className="text-[12px] px-2 py-1 bg-[#F6F4F1] text-[#5A5A5A] rounded-sm">
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 max-lg:gap-5">
+                {visible.map((company) => (
+                  <Link
+                    key={company.id}
+                    href={`/cases/${company.id}`}
+                    className="group block bg-white rounded-[4px] overflow-hidden hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-shadow duration-300"
+                  >
+                    <div className="aspect-[3/2] bg-[#E0DDD8] overflow-hidden">
+                      <div
+                        className="w-full h-full bg-cover bg-center group-hover:scale-[1.02] transition-transform duration-400 ease-out"
+                        style={{ backgroundImage: `url('${company.image}')` }}
+                      />
+                    </div>
+                    <div className="px-5 py-6">
+                      <span className="text-[12px] font-medium text-accent">
                         {company.industry}
                       </span>
-                      <span className="text-[12px] px-2 py-1 bg-[#F6F4F1] text-[#5A5A5A] rounded-sm">
-                        {company.region}
-                      </span>
+                      <h3 className="text-[18px] font-bold text-[#222222] mt-2">{company.name}</h3>
+                      <p className="text-[13px] text-[#5A5A5A] mt-1">{company.president}</p>
+                      <p className="text-[14px] text-[#222222] leading-[1.6] mt-3 line-clamp-2">
+                        {company.catchphrase}
+                      </p>
+                      <p className="text-[12px] text-[#5A5A5A] mt-3">{company.region}</p>
                     </div>
-                    <h3 className="text-[18px] font-bold text-[#222222] mb-2">{company.name}</h3>
-                    <p className="text-[14px] text-[#5A5A5A] leading-[1.7]">{company.desc}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  </Link>
+                ))}
+              </div>
+              {hasMore && (
+                <div className="text-center mt-12 max-lg:mt-8">
+                  <button
+                    onClick={() => setVisibleCount((v) => v + ITEMS_PER_PAGE)}
+                    className="text-[15px] font-medium text-[#1B2D4F] border border-[#1B2D4F] bg-transparent px-10 py-[14px] rounded-[4px] hover:bg-[#1B2D4F] hover:text-white transition-colors duration-200"
+                  >
+                    さらに表示する
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
 
+      {/* 掲載検討企業向けCTA */}
+      <section className="bg-white py-20 max-lg:py-12">
+        <div className="max-w-[680px] mx-auto px-6 text-center">
+          <h2 className="text-[22px] max-lg:text-[18px] font-bold text-[#222222]">
+            BIZREAへの掲載に興味がある企業様へ
+          </h2>
+          <p className="mt-4 text-[15px] text-[#5A5A5A] leading-[1.8]">
+            御社の魅力を&ldquo;伝わる形&rdquo;にする方法を、無料でご提案します。<br />
+            まずはお気軽にご相談ください。
+          </p>
+          <div className="mt-6">
+            <Link
+              href="/contact"
+              className="inline-block bg-accent text-white text-[16px] font-bold px-11 py-[18px] max-lg:py-4 max-lg:w-full max-lg:max-w-[360px] rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+            >
+              掲載について相談する
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <CtaSection
-        heading="御社でも、同じ成果を実現しませんか？"
+        heading="御社も、BIZREAに掲載しませんか？"
         subtext="無料相談で、御社に合った活用プランをご提案します。"
       />
     </main>
