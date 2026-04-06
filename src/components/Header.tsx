@@ -29,20 +29,12 @@ export default function Header() {
 
   return (
     <>
-      {/* PC Header - フローティンググラスモーフィズム */}
-      <header className="hidden lg:block fixed top-4 left-6 right-6 z-[100]">
-        <div
-          className="flex items-center justify-between h-16 px-10 rounded-lg"
-          style={{
-            border: "1px solid rgba(255,255,255,0.25)",
-            backgroundColor: "rgba(255,255,255,0.08)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-          }}
-        >
+      {/* PC Header */}
+      <header className="hidden lg:block fixed top-0 left-0 right-0 z-[100] bg-[#1B2D4F]">
+        <div className="flex items-center justify-between h-20 px-10">
           <Link href="/" className="flex items-center">
             <span
-              className="text-[28px] font-extrabold text-accent tracking-[-0.02em]"
+              className="text-[28px] font-extrabold text-white tracking-[-0.02em]"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               Bizrea
@@ -57,7 +49,7 @@ export default function Header() {
                 className={`text-[14px] tracking-[0.04em] transition-colors duration-200 ml-9 ${
                   pathname === item.href
                     ? "text-accent"
-                    : "text-[#1B2D4F] hover:text-accent"
+                    : "text-white hover:text-accent"
                 }`}
               >
                 {item.label}
@@ -75,20 +67,12 @@ export default function Header() {
         </div>
       </header>
 
-      {/* SP Header - フローティンググラスモーフィズム */}
-      <header className="lg:hidden fixed top-3 left-4 right-4 z-[100]">
-        <div
-          className="flex items-center justify-between h-14 px-5 rounded-lg"
-          style={{
-            border: "1px solid rgba(255,255,255,0.25)",
-            backgroundColor: "rgba(255,255,255,0.08)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-          }}
-        >
+      {/* SP Header */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-[100] bg-[#1B2D4F]">
+        <div className="flex items-center justify-between h-16 px-5">
           <Link href="/" className="flex items-center">
             <span
-              className="text-[22px] font-extrabold text-accent tracking-[-0.02em]"
+              className="text-[22px] font-extrabold text-white tracking-[-0.02em]"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               Bizrea

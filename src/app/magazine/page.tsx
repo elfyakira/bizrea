@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "雑誌 | BIZREA",
+  title: "雑誌 | Bizrea",
   description:
     "社長インタビューを軸にした企業雑誌。営業・採用・社内教育に活用できる、読んで終わりではない企業ツールです。",
 };
@@ -69,26 +69,43 @@ export default function MagazinePage() {
   return (
     <main>
       {/* ===== ヒーロー ===== */}
-      <section className="pt-32 pb-20 max-lg:pt-24 max-lg:pb-14 bg-white">
-        <div className="max-w-[1000px] mx-auto px-6">
+      <section className="relative pt-32 pb-20 max-lg:pt-24 max-lg:pb-14 overflow-hidden">
+        <div className="absolute inset-0 bg-[#1B2D4F]">
+          <div className="absolute inset-0 bg-[url('/images/hero-magazine.jpg')] bg-cover bg-center opacity-25" />
+        </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10">
           <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em]">
             MAGAZINE
           </p>
           <h1
-            className="mt-4 text-[36px] max-lg:text-[24px] font-medium text-[#222222] leading-[1.6]"
+            className="mt-4 text-[36px] max-lg:text-[24px] font-medium text-white leading-[1.6]"
             style={{ fontFamily: "'Noto Serif JP', serif" }}
           >
             雑誌
           </h1>
-          <p className="mt-8 text-[17px] max-lg:text-[15px] leading-[2.2] text-[#5A5A5A]">
-            社長インタビューを6ページの特集記事に。プロのライターとデザイナーが、社長の言葉を&ldquo;読みたくなる記事&rdquo;に仕上げます。商談先に渡せば御社の想いが伝わり、求職者に渡せば会社の空気感が伝わり、社員に渡せば会社の原点に立ち返れる。紙だから手元に残る。何度でも読み返せる。
+          <p className="mt-8 text-[17px] max-lg:text-[15px] leading-[2.2] text-white/80">
+            Bizreaは、社長の想いを引き出し、Web・雑誌・SNSを通じて届けています。<br />
+            なかでも雑誌は、社長の言葉をじっくり読める唯一のメディアです。画面を閉じても手元に残り、商談先でも、面接の場でも、何度でも読み返すことができる。<br />
+            経営者一人ひとりの信念と物語を、ぜひご覧ください。
           </p>
         </div>
       </section>
 
       {/* ===== Magazine Archive ===== */}
-      <section className="bg-[#F6F4F1] py-[120px] max-lg:py-[72px]">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+      <section
+        className="relative py-[120px] max-lg:py-[72px] bg-white overflow-hidden"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(27,45,79,0.06) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(27,45,79,0.06) 1px, transparent 1px)
+            `,
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10">
           <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em] text-center">
             MAGAZINE ARCHIVE
           </p>

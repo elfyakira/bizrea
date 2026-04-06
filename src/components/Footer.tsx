@@ -1,18 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
-import { company, contact, images, navigation } from "@/lib/site";
+import { company, contact } from "@/lib/site";
 
-const footerNavLeft = [
-  { label: "BIZREAとは", href: "/about" },
-  { label: "導入メリット", href: "/merit" },
-  { label: "コンテンツ紹介", href: "/content" },
-  { label: "導入事例", href: "/cases" },
-];
-
-const footerNavRight = [
-  { label: "料金・プラン", href: "/pricing" },
-  { label: "制作の流れ", href: "/flow" },
-  { label: "よくある質問", href: "/faq" },
+const footerNav = [
+  { label: "ホーム", href: "/" },
+  { label: "雑誌", href: "/magazine" },
+  { label: "動画", href: "/video" },
   { label: "お問い合わせ", href: "/contact" },
 ];
 
@@ -27,19 +19,17 @@ export default function Footer() {
           {/* Left: Logo + Description */}
           <div>
             <Link href="/">
-              <Image
-                src={images.logo || "/images/logo.png"}
-                alt={company.name || "BIZREA"}
-                width={160}
-                height={32}
-                className="h-[32px] w-auto brightness-0 invert"
-                style={{ height: 32, width: "auto" }}
-              />
+              <span
+                className="text-[28px] font-extrabold text-white tracking-[-0.02em]"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                Bizrea
+              </span>
             </Link>
             <p className="mt-5 text-[13px] leading-[1.7] text-white/60 max-w-[280px]">
-              社長インタビューを軸にした動画・雑誌・WEBで、
+              社長の想いを引き出し、
               <br />
-              企業の&ldquo;本質&rdquo;を&ldquo;伝わる形&rdquo;にする。
+              &ldquo;伝わる言葉&rdquo;に整え、届ける。
             </p>
           </div>
 
@@ -48,32 +38,18 @@ export default function Footer() {
             <p className="text-[13px] font-bold text-white/40 tracking-[0.1em] mb-4">
               サイトマップ
             </p>
-            <div className="flex gap-8">
-              <ul className="space-y-2.5">
-                {footerNavLeft.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-2.5">
-                {footerNavRight.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="space-y-2.5">
+              {footerNav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Right: Contact */}
@@ -116,48 +92,32 @@ export default function Footer() {
         {/* SP: Stacked layout */}
         <div className="lg:hidden text-center mb-8">
           <Link href="/" className="inline-block">
-            <Image
-              src={images.logo || "/images/logo.png"}
-              alt={company.name || "BIZREA"}
-              width={120}
-              height={28}
-              className="h-[28px] w-auto brightness-0 invert mx-auto"
-              style={{ height: 28, width: "auto" }}
-            />
+            <span
+              className="text-[24px] font-extrabold text-white tracking-[-0.02em]"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Bizrea
+            </span>
           </Link>
           <p className="mt-4 text-[13px] leading-[1.7] text-white/60">
-            社長インタビューを軸にした動画・雑誌・WEBで、
+            社長の想いを引き出し、
             <br />
-            企業の&ldquo;本質&rdquo;を&ldquo;伝わる形&rdquo;にする。
+            &ldquo;伝わる言葉&rdquo;に整え、届ける。
           </p>
 
-          {/* Nav 2 columns */}
-          <div className="flex justify-center gap-8 mt-8">
-            <ul className="space-y-2.5 text-left">
-              {footerNavLeft.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ul className="space-y-2.5 text-left">
-              {footerNavRight.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Nav */}
+          <ul className="flex justify-center gap-6 mt-8">
+            {footerNav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-[13px] text-white/70 hover:text-white transition-colors duration-200"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           {/* Contact */}
           <div className="mt-8">
@@ -192,10 +152,10 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/[0.08] pt-6 lg:pt-6 mt-10 lg:mt-10">
+        <div className="border-t border-white/[0.08] pt-6 mt-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
             <p className="text-[12px] text-white/30">
-              &copy; {currentYear} Bizrea. All rights reserved.
+              &copy; {currentYear} {company.name || "Bizrea"}. All rights reserved.
             </p>
             <Link
               href="/privacy"

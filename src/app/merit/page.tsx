@@ -3,7 +3,7 @@ import CtaSection from "@/components/CtaSection";
 
 export const metadata = {
   title: "導入メリット",
-  description: "BIZREAは営業力・採用力・組織定着の3つの成果を、ひとつのサービスで実現します。社長インタビューを軸にしたコンテンツの活用メリットをご紹介。",
+  description: "Bizreaは営業力・採用力・組織定着の3つの成果を、ひとつのサービスで実現します。社長インタビューを軸にしたコンテンツの活用メリットをご紹介。",
 };
 
 function Quote({ text, author }: { text: string; author: string }) {
@@ -30,7 +30,7 @@ export default function MeritPage() {
             なぜ&ldquo;ひとつのインタビュー&rdquo;で<br className="max-lg:hidden" />3つの課題が解決するのか
           </h2>
           <p className="mt-6 max-lg:mt-[18px] text-[16px] max-lg:text-[15px] leading-[1.9] text-[#5A5A5A]">
-            BIZREAのコンテンツは、用途を限定しません。<br />
+            Bizreaのコンテンツは、用途を限定しません。<br />
             社長インタビューを軸に制作した雑誌・動画・WEBは、<br className="max-lg:hidden" />
             &ldquo;使う場面&rdquo;を変えるだけで、営業ツールにも採用ツールにも社内教育ツールにもなる。<br />
             だから、ひとつの投資で3つの成果が得られます。
@@ -49,7 +49,7 @@ export default function MeritPage() {
               </h3>
               <div className="mt-5 text-[16px] max-lg:text-[15px] leading-[1.9] text-[#222222]">
                 <p>
-                  商談の前に、BIZREAの記事や動画を相手に送る。<br />
+                  商談の前に、Bizreaの記事や動画を相手に送る。<br />
                   それだけで、営業の質が変わります。
                 </p>
                 <p className="mt-4">
@@ -62,11 +62,11 @@ export default function MeritPage() {
                   結果が変わるのは当然です。
                 </p>
                 <p className="mt-4">
-                  BIZREAのコンテンツは&ldquo;営業が話す前に、会社を語ってくれる&rdquo;存在になります。
+                  Bizreaのコンテンツは&ldquo;営業が話す前に、会社を語ってくれる&rdquo;存在になります。
                 </p>
               </div>
               <Quote
-                text={'商談の成約率が体感で1.5倍になりました。BIZREAの記事を事前に送るようにしてから、\u201C説明する時間\u201Dが減って\u201C相談される時間\u201Dが増えた。'}
+                text={'商談の成約率が体感で1.5倍になりました。Bizreaの記事を事前に送るようにしてから、\u201C説明する時間\u201Dが減って\u201C相談される時間\u201Dが増えた。'}
                 author="株式会社○○（製造業・愛知県）代表取締役"
               />
             </div>
@@ -95,7 +95,7 @@ export default function MeritPage() {
                   だから&ldquo;条件だけ&rdquo;で応募する人が集まり、ミスマッチが起きる。
                 </p>
                 <p className="mt-4">
-                  BIZREAの企業ページには、社長の想い、社員のリアル、会社の空気感がある。<br />
+                  Bizreaの企業ページには、社長の想い、社員のリアル、会社の空気感がある。<br />
                   これを面接前に見てもらうだけで、応募者の&ldquo;質&rdquo;が変わります。
                 </p>
                 <p className="mt-4">
@@ -131,7 +131,7 @@ export default function MeritPage() {
                   これが、早期離職の見えにくい原因です。
                 </p>
                 <p className="mt-4">
-                  BIZREAのコンテンツは、入社後の&ldquo;教科書&rdquo;にもなります。
+                  Bizreaのコンテンツは、入社後の&ldquo;教科書&rdquo;にもなります。
                 </p>
                 <p className="mt-4">
                   社長がどんな想いで会社を経営しているか。<br />
@@ -143,7 +143,7 @@ export default function MeritPage() {
                 </p>
                 <p className="mt-4">
                   採用して終わりではなく、定着まで機能する。<br />
-                  それが、BIZREAのコンテンツが&ldquo;ツール&rdquo;である理由です。
+                  それが、Bizreaのコンテンツが&ldquo;ツール&rdquo;である理由です。
                 </p>
               </div>
               <Quote
@@ -188,7 +188,7 @@ export default function MeritPage() {
                   </tr>
                 ))}
                 <tr className="bg-[#F6F4F1]">
-                  <td className="px-4 py-3.5 text-[14px] font-bold text-[#222222]">BIZREA</td>
+                  <td className="px-4 py-3.5 text-[14px] font-bold text-[#222222]">Bizrea</td>
                   <td className="px-4 py-3.5 text-[14px] font-bold text-[#222222]">◎</td>
                   <td className="px-4 py-3.5 text-[14px] font-bold text-[#222222]">◎</td>
                   <td className="px-4 py-3.5 text-[14px] font-bold text-[#222222]">◎</td>

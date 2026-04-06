@@ -37,7 +37,7 @@ export default function CasesPage() {
             導入事例
           </h1>
           <p className="mt-4 max-lg:mt-3 text-[17px] max-lg:text-[14px] text-white/70">
-            BIZREAを導入した企業のリアルな声と成果。
+            Bizreaを導入した企業のリアルな声と成果。
           </p>
           <p
             className="mt-6 max-lg:mt-4 text-[20px] max-lg:text-[16px] font-bold text-white"
@@ -141,7 +141,7 @@ export default function CasesPage() {
       <section className="bg-white py-20 max-lg:py-12">
         <div className="max-w-[680px] mx-auto px-6 text-center">
           <h2 className="text-[22px] max-lg:text-[18px] font-bold text-[#222222]">
-            BIZREAへの掲載に興味がある企業様へ
+            Bizreaへの掲載に興味がある企業様へ
           </h2>
           <p className="mt-4 text-[15px] text-[#5A5A5A] leading-[1.8]">
             御社の魅力を&ldquo;伝わる形&rdquo;にする方法を、無料でご提案します。<br />
@@ -159,7 +159,7 @@ export default function CasesPage() {
       </section>
 
       <CtaSection
-        heading="御社も、BIZREAに掲載しませんか？"
+        heading="御社も、Bizreaに掲載しませんか？"
         subtext="無料相談で、御社に合った活用プランをご提案します。"
       />
     </main>

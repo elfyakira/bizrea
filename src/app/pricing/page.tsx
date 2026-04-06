@@ -4,13 +4,13 @@ import CtaSection from "@/components/CtaSection";
 
 export const metadata = {
   title: "料金・プラン",
-  description: "BIZREAの料金プランをご紹介。ライト・スタンダード・プレミアムの3プランから、御社に最適なプランをご提案します。",
+  description: "Bizreaの料金プランをご紹介。ライト・スタンダード・プレミアムの3プランから、御社に最適なプランをご提案します。",
 };
 
 const plans = [
   {
     name: "ライト",
-    desc: "まずはBIZREAを試してみたい企業向け",
+    desc: "まずはBizreaを試してみたい企業向け",
     recommended: false,
     includes: [
       "社長インタビュー取材（半日）",
@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: "スタンダード",
-    desc: "BIZREAの効果を最大限に引き出す、一番人気のプラン",
+    desc: "Bizreaの効果を最大限に引き出す、一番人気のプラン",
     recommended: true,
     includes: [
       "社長インタビュー取材（1日）",
@@ -69,7 +69,7 @@ export default function PricingPage() {
             &ldquo;制作費用&rdquo;ではなく、&ldquo;成果ツールへの投資&rdquo;
           </h2>
           <div className="mt-6 text-[16px] max-lg:text-[15px] leading-[1.9] text-[#222222]">
-            <p>BIZREAの費用は&ldquo;動画を1本つくる&rdquo;コストではありません。</p>
+            <p>Bizreaの費用は&ldquo;動画を1本つくる&rdquo;コストではありません。</p>
             <p className="mt-4">
               社長インタビューを軸に、雑誌・動画・WEBの3つが連動するコンテンツを制作。<br />
               営業・採用・定着のすべてに使える&ldquo;企業ツール&rdquo;としてお届けします。
@@ -77,7 +77,7 @@ export default function PricingPage() {
             <p className="mt-4">
               一般的な制作会社に動画・パンフレット・WEBページをバラバラに発注すると、<br className="max-lg:hidden" />
               合計で数百万円以上になることも。<br />
-              BIZREAなら、ひとつのインタビューから一気通貫で制作するため、<br className="max-lg:hidden" />
+              Bizreaなら、ひとつのインタビューから一気通貫で制作するため、<br className="max-lg:hidden" />
               トータルコストを抑えながら、メッセージの一貫性も確保できます。
             </p>
           </div>
@@ -130,7 +130,7 @@ export default function PricingPage() {
             </table>
           </div>
           <p className="mt-6 text-[15px] text-[#5A5A5A] leading-[1.8]">
-            BIZREAでは、ひとつのインタビューから一括制作するため、<br className="max-lg:hidden" />
+            Bizreaでは、ひとつのインタビューから一括制作するため、<br className="max-lg:hidden" />
             バラバラ発注と比較して大幅にコストを抑えられます。<br />
             さらに、メッセージの統一感も確保。詳しくは無料相談でお見積もりいたします。
           </p>

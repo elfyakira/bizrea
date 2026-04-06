@@ -16,38 +16,88 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const company = getCompanyById(slug);
   if (!company) return {};
   return {
-    title: `${company.name} | BIZREA`,
+    title: `${company.name} | Bizrea`,
     description: `${company.name}の社長インタビュー。${company.catchphrase} ${company.desc}`,
   };
 }
+
+const regionColors: Record<string, string> = {
+  "愛知県": "bg-[#3B82A0] text-white",
+  "岐阜県": "bg-[#6B8E5B] text-white",
+  "三重県": "bg-[#A07B3B] text-white",
+};
+const industryColors: Record<string, string> = {
+  "製造業": "bg-[#E67635] text-white",
+  "建設業": "bg-[#4A7B8C] text-white",
+  "物流業": "bg-[#7B6B8E] text-white",
+  "食品製造業": "bg-[#C4784A] text-white",
+  "IT・通信業": "bg-[#5B7ABF] text-white",
+};
 
 export default async function CaseDetailPage({ params }: Props) {
   const { slug } = await params;
   const company = getCompanyById(slug);
   if (!company) notFound();
 
+  const regionClass = regionColors[company.region] || "bg-[#888888] text-white";
+  const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
+
   return (
     <main>
-      {/* ===== ヘッダー情報 ===== */}
-      <section className="bg-white pt-32 pb-6 max-lg:pt-24 max-lg:pb-4">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
-          <h1 className="text-[28px] max-lg:text-[22px] font-bold text-[#222222]">
+      {/* ===== ヒーロー ===== */}
+      <section className="relative pt-32 pb-16 max-lg:pt-24 max-lg:pb-10 overflow-hidden">
+        <div className="absolute inset-0 bg-[#1B2D4F]">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-25"
+            style={{ backgroundImage: `url('${company.heroImage}')` }}
+          />
+        </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10">
+          <div className="flex gap-2 mb-4">
+            <span className={`text-[11px] font-medium rounded-sm px-2.5 py-1 ${regionClass}`}>
+              {company.region}
+            </span>
+            <span className={`text-[11px] font-medium rounded-sm px-2.5 py-1 ${industryClass}`}>
+              {company.industry}
+            </span>
+          </div>
+          <h1
+            className="text-[36px] max-lg:text-[24px] font-medium text-white leading-[1.4]"
+            style={{ fontFamily: "'Noto Serif JP', serif" }}
+          >
             {company.name}
           </h1>
-          <p className="mt-2 text-[16px] max-lg:text-[14px] text-[#5A5A5A]">
+          <p className="mt-3 text-[18px] max-lg:text-[15px] text-white/80">
             {company.president}
           </p>
+          {company.catchphrase && (
+            <p className="mt-5 text-[20px] max-lg:text-[16px] text-white/90 leading-[1.6]"
+              style={{ fontFamily: "'Noto Serif JP', serif" }}
+            >
+              {company.catchphrase}
+            </p>
+          )}
         </div>
       </section>
 
-      {/* ===== メインコンテンツ: 2カラム ===== */}
-      <section className="bg-white pb-20 max-lg:pb-12">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 lg:flex lg:gap-10">
+      {/* ===== メインコンテンツ: 2カラム（格子背景） ===== */}
+      <section className="relative py-16 max-lg:py-10 bg-white overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(27,45,79,0.06) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(27,45,79,0.06) 1px, transparent 1px)
+            `,
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10 lg:flex lg:gap-10">
 
-          {/* ===== 左カラム: 動画 + インタビュー記事 ===== */}
+          {/* ===== 左カラム ===== */}
           <div className="lg:flex-1 min-w-0">
             {/* 動画 / ヒーロー画像 */}
-            <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#E0DDD8]">
+            <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#E0DDD8] shadow-sm">
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url('${company.heroImage}')` }}
@@ -64,10 +114,10 @@ export default async function CaseDetailPage({ params }: Props) {
             </div>
 
             {/* インタビュー記事 */}
-            <div className="mt-12 max-lg:mt-8">
+            <div className="mt-12 max-lg:mt-8 bg-white rounded-[4px] p-8 max-lg:p-5 shadow-sm">
               {/* チャプター目次 */}
               {company.chapters.length > 1 && (
-                <nav className="mb-10 max-lg:mb-8 border border-[#E0DDD8] rounded-[4px] p-5 max-lg:p-4">
+                <nav className="mb-10 max-lg:mb-8 border border-[#E0DDD8] rounded-[4px] p-5 max-lg:p-4 bg-[#F6F4F1]">
                   <p className="text-[13px] font-bold text-[#5A5A5A] mb-3">チャプターを選んで見る</p>
                   <ol className="space-y-2">
                     {company.chapters.map((chapter, ci) => (
@@ -171,17 +221,37 @@ export default async function CaseDetailPage({ params }: Props) {
           <aside className="lg:w-[340px] flex-shrink-0 max-lg:mt-10">
             <div className="lg:sticky lg:top-28 space-y-6">
               {/* リード文 */}
-              <div className="bg-[#F6F4F1] rounded-[4px] p-6">
+              <div className="bg-white rounded-[4px] p-6 shadow-sm">
                 <p className="text-[14px] leading-[1.9] text-[#222222]">
                   {company.leadText}
                 </p>
                 <p className="mt-4 text-[12px] text-[#5A5A5A]">
-                  番組公開日: {company.interviewDate}
+                  公開日: {company.interviewDate}
                 </p>
               </div>
 
+              {/* 問い合わせ・応募ボタン */}
+              <div className="flex flex-col gap-3">
+                <a
+                  href={company.url || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
+                >
+                  この企業に問い合わせする
+                </a>
+                <a
+                  href={company.recruitmentUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center bg-accent text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+                >
+                  この企業に応募する
+                </a>
+              </div>
+
               {/* リンク集 */}
-              <div className="bg-[#F6F4F1] rounded-[4px] p-6 space-y-3">
+              <div className="bg-white rounded-[4px] p-6 shadow-sm space-y-3">
                 {company.url && (
                   <a
                     href={company.url}
@@ -211,7 +281,7 @@ export default async function CaseDetailPage({ params }: Props) {
               </div>
 
               {/* 企業情報 */}
-              <div className="bg-[#F6F4F1] rounded-[4px] p-6">
+              <div className="bg-white rounded-[4px] p-6 shadow-sm">
                 <h3 className="text-[14px] font-bold text-[#222222] mb-4">企業情報</h3>
                 <table className="w-full">
                   <tbody>
@@ -239,32 +309,40 @@ export default async function CaseDetailPage({ params }: Props) {
                   </tbody>
                 </table>
               </div>
-
             </div>
           </aside>
         </div>
       </section>
 
-      {/* ===== BIZREA掲載CTA ===== */}
+      {/* ===== Bizrea掲載CTA ===== */}
       <section className="bg-[#1B2D4F] py-16 max-lg:py-12">
-        <div className="max-w-[680px] mx-auto px-6 text-center">
-          <h3 className="text-[18px] font-bold text-white">
-            BIZREAへの掲載を検討中の方へ
-          </h3>
-          <p className="mt-2 text-[14px] text-white/70 leading-[1.7]">
-            御社の魅力を&ldquo;伝わる形&rdquo;にする方法を、無料でご提案します。
-          </p>
-          <div className="mt-5">
-            <Link
-              href="/contact"
-              className="inline-block bg-accent text-white text-[15px] font-bold px-8 py-[14px] rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
-            >
-              無料で相談してみる
-            </Link>
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 lg:flex lg:items-center lg:gap-16">
+          <div className="lg:flex-1">
+            <h3 className="text-[20px] max-lg:text-[18px] font-bold text-white">
+              Bizreaへの掲載を検討中の方へ
+            </h3>
+            <p className="mt-2 text-[14px] text-white/70 leading-[1.7]">
+              御社の魅力を&ldquo;伝わる形&rdquo;にする方法を、無料でご提案します。
+            </p>
+            <div className="mt-5">
+              <Link
+                href="/contact"
+                className="inline-block bg-accent text-white text-[15px] font-bold px-8 py-[14px] rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+              >
+                無料で相談してみる
+              </Link>
+            </div>
+          </div>
+          <div className="hidden lg:block lg:w-[360px] flex-shrink-0">
+            <div className="aspect-[4/3] rounded-[4px] overflow-hidden">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{ backgroundImage: "url('/images/cta-image.jpg')" }}
+              />
+            </div>
           </div>
         </div>
       </section>
-
     </main>
   );
 }

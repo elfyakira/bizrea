@@ -117,7 +117,7 @@ export default function Home() {
       <section className="bg-[#1B2D4F] py-[120px] max-lg:py-[72px]">
         <div className="max-w-[1000px] mx-auto px-6 max-lg:px-6">
           <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em]">
-            ABOUT BIZREA
+            ABOUT Bizrea
           </p>
           <h2
             className="mt-5 text-[36px] max-lg:text-[24px] font-medium text-white leading-[1.6]"
@@ -128,20 +128,30 @@ export default function Home() {
           <p className="mt-10 max-lg:mt-7 text-[17px] max-lg:text-[15px] leading-[2.2] text-white/85">
             社長の頭の中には、創業の原体験、事業にかける信念、社員への想いがある。けれどそれは多くの場合、社長の中にとどまったまま、誰にも届いていません。
             <br /><br />
-            BIZREAは、社長への取材を通じてその想いを引き出し、&ldquo;伝わる言葉&rdquo;に整え、雑誌・動画・SNS・WEBで届けます。
+            Bizreaは、社長への取材を通じてその想いを引き出し、&ldquo;伝わる言葉&rdquo;に整え、雑誌・動画・SNS・WEBで届けます。
             <br /><br />
             わたしたちが届けたいのは、きれいに整えられた企業紹介ではありません。社長が何を考え、なぜこの事業をやっているのか。その熱をそのまま届けること。だからこそ一社一社、必ず社長本人に向き合い、丁寧に取材を重ねます。
             <br /><br />
             こうして生まれたコンテンツは、商談で信頼を勝ち取る武器になり、求職者の心を動かす採用ツールになり、社員が自社を誇れる理由になる。読まれて終わりではなく、経営を前に進める力になります。
             <br /><br />
-            社長の言葉を可視化し、企業と人との出会いを変えていく。それがBIZREAの仕事です。
+            社長の言葉を可視化し、企業と人との出会いを変えていく。それがBizreaの仕事です。
           </p>
         </div>
       </section>
 
       {/* ===== 掲載企業 ===== */}
-      <section className="bg-[#F6F4F1] py-[120px] max-lg:py-[72px]">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+      <section className="relative py-[120px] max-lg:py-[72px] bg-white overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(27,45,79,0.06) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(27,45,79,0.06) 1px, transparent 1px)
+            `,
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10">
           <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em] text-center">
             FEATURED
           </p>
@@ -151,72 +161,105 @@ export default function Home() {
           >
             掲載企業
           </h2>
-          <div className="mt-14 max-lg:mt-10 grid grid-cols-4 max-lg:grid-cols-2 gap-3 max-lg:gap-2">
-            {companies.map((c) => (
-              <Link key={c.id} href={`/cases/${c.id}`} className="bg-white rounded-[3px] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
-                <div className="aspect-square bg-[#E0DDD8] overflow-hidden">
-                  <div
-                    className="w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url('${c.image}')` }}
-                  />
-                </div>
-                <div className="px-3 py-2.5 max-lg:px-2 max-lg:py-2">
-                  <p className="text-[11px] max-lg:text-[10px] text-[#5A5A5A] leading-[1.4] truncate">
-                    {c.name}
-                  </p>
-                  <p className="mt-1 text-[13px] max-lg:text-[11px] font-medium text-[#222222] truncate">
-                    {c.president}
-                  </p>
-                  <div className="mt-1.5 flex gap-1.5">
-                    <span className="text-[10px] max-lg:text-[9px] text-[#5A5A5A] border border-[#E0DDD8] rounded-sm px-1.5 py-px">
-                      {c.region}
-                    </span>
-                    <span className="text-[10px] max-lg:text-[9px] text-[#5A5A5A] border border-[#E0DDD8] rounded-sm px-1.5 py-px">
-                      {c.industry}
-                    </span>
+          <div className="mt-14 max-lg:mt-10 grid grid-cols-4 max-lg:grid-cols-2 gap-5 max-lg:gap-3">
+            {companies.map((c) => {
+              const regionColors: Record<string, string> = {
+                "愛知県": "bg-[#3B82A0] text-white",
+                "岐阜県": "bg-[#6B8E5B] text-white",
+                "三重県": "bg-[#A07B3B] text-white",
+              };
+              const industryColors: Record<string, string> = {
+                "製造業": "bg-[#E67635] text-white",
+                "建設業": "bg-[#4A7B8C] text-white",
+                "物流業": "bg-[#7B6B8E] text-white",
+                "食品製造業": "bg-[#C4784A] text-white",
+                "IT・通信業": "bg-[#5B7ABF] text-white",
+              };
+              const regionClass = regionColors[c.region] || "bg-[#888888] text-white";
+              const industryClass = industryColors[c.industry] || "bg-[#888888] text-white";
+
+              return (
+                <Link key={c.id} href={`/cases/${c.id}`} className="bg-white rounded-[4px] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+                  <div className="aspect-square bg-[#E0DDD8] overflow-hidden">
+                    <video
+                      className="w-full h-full object-cover"
+                      src={`/videos/presidents/${c.id}.mp4`}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
                   </div>
-                </div>
-              </Link>
-            ))}
+                  <div className="px-4 py-4 max-lg:px-3 max-lg:py-3">
+                    <p className="text-[12px] max-lg:text-[11px] text-[#5A5A5A] truncate">
+                      {c.name}
+                    </p>
+                    <p className="mt-1.5 text-[17px] max-lg:text-[14px] font-bold text-[#222222] leading-[1.4]">
+                      {c.president}
+                    </p>
+                    <div className="mt-3 flex gap-1.5 flex-wrap">
+                      <span className={`text-[10px] max-lg:text-[9px] font-medium rounded-sm px-2 py-0.5 ${regionClass}`}>
+                        {c.region}
+                      </span>
+                      <span className={`text-[10px] max-lg:text-[9px] font-medium rounded-sm px-2 py-0.5 ${industryClass}`}>
+                        {c.industry}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ===== 最終CTA ===== */}
       <section className="bg-[#1B2D4F] py-20 max-lg:py-14">
-        <div className="max-w-[680px] mx-auto px-6 text-center">
-          <h2
-            className="text-[28px] max-lg:text-[22px] font-medium text-white"
-            style={{ fontFamily: "'Noto Serif JP', serif" }}
-          >
-            まずは、気軽にお話ししませんか？
-          </h2>
-          <p className="mt-4 max-lg:mt-3 text-[15px] max-lg:text-[14px] text-white/70 leading-[1.7]">
-            相談だけでもOK。無理な営業は一切しません。<br />
-            御社の課題に合わせて、最適な活用方法をご提案します。
-          </p>
-          <div className="mt-8 max-lg:mt-6">
-            <Link
-              href="/contact"
-              className="inline-block bg-accent text-white text-[17px] max-lg:text-[16px] font-bold px-12 py-5 max-lg:py-[18px] max-lg:w-full max-lg:max-w-[400px] rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 lg:flex lg:items-center lg:gap-16">
+          {/* 左: テキスト */}
+          <div className="lg:flex-1">
+            <h2
+              className="text-[28px] max-lg:text-[22px] font-medium text-white"
+              style={{ fontFamily: "'Noto Serif JP', serif" }}
             >
-              無料で相談してみる
-            </Link>
-          </div>
-          {contact.phone && (
-            <div className="mt-6 max-lg:mt-5">
-              <a
-                href={`tel:${contact.phoneTel || contact.phone.replace(/-/g, "")}`}
-                className="text-[20px] max-lg:text-[18px] font-medium text-white"
-                style={{ fontFamily: "Inter, sans-serif" }}
+              まずは、気軽にお話ししませんか？
+            </h2>
+            <p className="mt-4 max-lg:mt-3 text-[15px] max-lg:text-[14px] text-white/70 leading-[1.7]">
+              相談だけでもOK。無理な営業は一切しません。<br />
+              御社の課題に合わせて、最適な活用方法をご提案します。
+            </p>
+            <div className="mt-8 max-lg:mt-6">
+              <Link
+                href="/contact"
+                className="inline-block bg-accent text-white text-[17px] max-lg:text-[16px] font-bold px-12 py-5 max-lg:py-[18px] max-lg:w-full max-lg:max-w-[400px] rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
               >
-                TEL: {contact.phoneFormatted || contact.phone}
-              </a>
-              <p className="text-[13px] text-white/50 mt-1">
-                受付時間: {contact.hours || "平日 9:00〜18:00"}
-              </p>
+                無料で相談してみる
+              </Link>
             </div>
-          )}
+            {contact.phone && (
+              <div className="mt-6 max-lg:mt-5">
+                <a
+                  href={`tel:${contact.phoneTel || contact.phone.replace(/-/g, "")}`}
+                  className="text-[20px] max-lg:text-[18px] font-medium text-white"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  TEL: {contact.phoneFormatted || contact.phone}
+                </a>
+                <p className="text-[13px] text-white/50 mt-1">
+                  受付時間: {contact.hours || "平日 9:00〜18:00"}
+                </p>
+              </div>
+            )}
+          </div>
+          {/* 右: 画像 */}
+          <div className="hidden lg:block lg:w-[420px] flex-shrink-0">
+            <div className="aspect-[4/3] rounded-[4px] overflow-hidden">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{ backgroundImage: "url('/images/cta-image.jpg')" }}
+              />
+            </div>
+          </div>
         </div>
       </section>
 

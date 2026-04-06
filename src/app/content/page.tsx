@@ -3,7 +3,7 @@ import CtaSection from "@/components/CtaSection";
 
 export const metadata = {
   title: "コンテンツ紹介",
-  description: "BIZREAで制作する雑誌・動画・WEBコンテンツの詳細をご紹介。ひとつのインタビューから3つの武器を制作します。",
+  description: "Bizreaで制作する雑誌・動画・WEBコンテンツの詳細をご紹介。ひとつのインタビューから3つの武器を制作します。",
 };
 
 function SpecTable({ rows }: { rows: [string, string][] }) {
@@ -81,7 +81,7 @@ export default function ContentPage() {
               動画だから伝えられるものがあります。
             </p>
             <p className="mt-4">
-              BIZREAでは2種類の動画を制作。<br />
+              Bizreaでは2種類の動画を制作。<br />
               社長の人柄を伝える実写インタビュー動画と、<br />
               事業内容をわかりやすく伝えるアニメーション動画。
             </p>
@@ -140,7 +140,7 @@ export default function ContentPage() {
               <div className="mt-5 text-[16px] max-lg:text-[15px] leading-[1.9] text-[#222222]">
                 <p>
                   雑誌の記事をWEB化し、動画を埋め込んだ企業ページを制作。<br />
-                  BIZREAのサイト上に掲載されます。
+                  Bizreaのサイト上に掲載されます。
                 </p>
                 <p className="mt-4">
                   &ldquo;企業名 + 社長&rdquo;で検索した求職者が、<br />

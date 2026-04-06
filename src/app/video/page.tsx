@@ -73,26 +73,43 @@ export default function VideoPage() {
   return (
     <main>
       {/* ===== ヒーロー ===== */}
-      <section className="pt-32 pb-20 max-lg:pt-24 max-lg:pb-14 bg-white">
-        <div className="max-w-[1000px] mx-auto px-6">
+      <section className="relative pt-32 pb-20 max-lg:pt-24 max-lg:pb-14 overflow-hidden">
+        <div className="absolute inset-0 bg-[#1B2D4F]">
+          <div className="absolute inset-0 bg-[url('/images/hero-video.jpg')] bg-cover bg-center opacity-25" />
+        </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10">
           <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em]">
             VIDEO
           </p>
           <h1
-            className="mt-4 text-[36px] max-lg:text-[24px] font-medium text-[#222222] leading-[1.6]"
+            className="mt-4 text-[36px] max-lg:text-[24px] font-medium text-white leading-[1.6]"
             style={{ fontFamily: "'Noto Serif JP', serif" }}
           >
             動画
           </h1>
-          <p className="mt-8 text-[17px] max-lg:text-[15px] leading-[2.2] text-[#5A5A5A]">
-            文字では伝わらない社長の人柄。声のトーン、表情の変化、言葉を選ぶ間。動画だからこそ届けられるものがあります。実写インタビュー動画に加え、事業内容をわかりやすく伝えるアニメーション動画も制作。商談前のメール、採用ページ、SNS——あらゆる場面で&ldquo;会う前に信頼をつくる&rdquo;ツールになります。
+          <p className="mt-8 text-[17px] max-lg:text-[15px] leading-[2.2] text-white/80">
+            Bizreaは、社長の想いを引き出し、Web・雑誌・SNSを通じて届けています。<br />
+            なかでも動画は、文字だけでは伝わらない社長の人柄——声のトーン、表情、言葉を選ぶ間——をそのまま届けることができるメディアです。<br />
+            経営者一人ひとりの生き様を、ぜひご覧ください。
           </p>
         </div>
       </section>
 
       {/* ===== Video Archive ===== */}
-      <section className="bg-[#F6F4F1] py-[120px] max-lg:py-[72px]">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+      <section
+        className="relative py-[120px] max-lg:py-[72px] bg-white overflow-hidden"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(27,45,79,0.06) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(27,45,79,0.06) 1px, transparent 1px)
+            `,
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10">
           <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em] text-center">
             VIDEO ARCHIVE
           </p>

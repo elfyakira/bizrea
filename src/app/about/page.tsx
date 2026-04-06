@@ -2,15 +2,15 @@ import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
 
 export const metadata = {
-  title: "BIZREAとは",
-  description: "BIZREAは社長インタビューを軸にした企業ブランディングコンテンツサービスです。雑誌・動画・WEBの三位一体で、企業の本質を伝わる形にします。",
+  title: "Bizreaとは",
+  description: "Bizreaは社長インタビューを軸にした企業ブランディングコンテンツサービスです。雑誌・動画・WEBの三位一体で、企業の本質を伝わる形にします。",
 };
 
 export default function AboutPage() {
   return (
     <main>
       <PageHero
-        title="BIZREAとは"
+        title="Bizreaとは"
         subtitle="&ldquo;いい会社&rdquo;が、正しく伝わる社会をつくる。"
       />
 
@@ -42,7 +42,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* BIZREAの答え */}
+      {/* Bizreaの答え */}
       <section className="bg-[#F6F4F1] py-[100px] max-lg:py-14">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="lg:flex lg:items-center lg:gap-16">
@@ -51,7 +51,7 @@ export default function AboutPage() {
                 社長の言葉を起点に、<br />企業の&ldquo;本質&rdquo;を届ける。
               </h2>
               <div className="mt-6 max-lg:mt-[18px] text-[16px] max-lg:text-[15px] leading-[1.9] text-[#222222]">
-                <p>BIZREAは、社長インタビューを軸にしたコンテンツサービスです。</p>
+                <p>Bizreaは、社長インタビューを軸にしたコンテンツサービスです。</p>
                 <p className="mt-4">
                   プロのインタビュアーが社長の想い・ビジョン・こだわりを引き出し、<br className="max-lg:hidden" />
                   その言葉を&ldquo;伝わる形&rdquo;に変換する。
@@ -92,7 +92,7 @@ export default function AboutPage() {
               30秒のCMでは、社長の想いは届きません。
             </p>
             <p className="mt-4">
-              BIZREAが目指しているのは、<br />
+              Bizreaが目指しているのは、<br />
               企業の&ldquo;一次情報&rdquo;がちゃんと届く世界。
             </p>
             <p className="mt-4">
@@ -101,7 +101,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-4">
               &ldquo;いい会社&rdquo;が正しく評価され、正しく選ばれる。<br />
-              そんな社会の実現が、BIZREAの存在意義です。
+              そんな社会の実現が、Bizreaの存在意義です。
             </p>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function AboutPage() {
       <section className="bg-white py-[100px] max-lg:py-14">
         <div className="max-w-[960px] mx-auto px-6">
           <h2 className="text-[28px] max-lg:text-[22px] font-bold text-[#222222] text-center mb-12 max-lg:mb-8">
-            一般的な制作会社とBIZREAの違い
+            一般的な制作会社とBizreaの違い
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[600px]">
@@ -182,7 +182,7 @@ export default function AboutPage() {
                 <tr className="bg-[#F6F4F1]">
                   <th className="text-left px-5 py-4 text-[14px] font-medium text-[#5A5A5A]">項目</th>
                   <th className="text-left px-5 py-4 text-[14px] font-medium text-[#5A5A5A]">一般的な制作会社</th>
-                  <th className="text-left px-5 py-4 text-[14px] font-medium text-[#5A5A5A]">BIZREA</th>
+                  <th className="text-left px-5 py-4 text-[14px] font-medium text-[#5A5A5A]">Bizrea</th>
                 </tr>
               </thead>
               <tbody>

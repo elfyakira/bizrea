@@ -31,7 +31,7 @@ function ContactPageInner() {
   useEffect(() => {
     const plan = searchParams.get("plan");
     if (plan) {
-      setForm((prev) => ({ ...prev, inquiry: "BIZREAへの掲載について相談したい" }));
+      setForm((prev) => ({ ...prev, inquiry: "Bizreaへの掲載について相談したい" }));
     }
   }, [searchParams]);
 
@@ -163,7 +163,7 @@ function ContactPageInner() {
                     className={`w-full border-0 border-b ${errors.inquiry ? "border-b-accent" : "border-b-[#E0DDD8]"} focus:border-b-[#1B2D4F] bg-transparent py-3 text-[16px] text-[#222222] outline-none transition-colors duration-250`}
                   >
                     <option value="">選択してください</option>
-                    <option>BIZREAへの掲載について相談したい</option>
+                    <option>Bizreaへの掲載について相談したい</option>
                     <option>掲載企業との取引・採用について</option>
                     <option>料金・プランについて聞きたい</option>
                     <option>まずは話を聞いてみたい</option>
