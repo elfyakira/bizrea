@@ -32,6 +32,7 @@ const industryColors: Record<string, string> = {
   "物流業": "bg-[#7B6B8E] text-white",
   "食品製造業": "bg-[#C4784A] text-white",
   "IT・通信業": "bg-[#5B7ABF] text-white",
+  "採用支援": "bg-[#3B8C6E] text-white",
 };
 
 export default async function CaseDetailPage({ params }: Props) {
@@ -47,10 +48,12 @@ export default async function CaseDetailPage({ params }: Props) {
       {/* ===== ヒーロー ===== */}
       <section className="relative pt-32 pb-16 max-lg:pt-24 max-lg:pb-10 overflow-hidden">
         <div className="absolute inset-0 bg-[#1B2D4F]">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-25"
-            style={{ backgroundImage: `url('${company.heroImage}')` }}
-          />
+          {company.heroImage && (
+            <div
+              className="absolute inset-0 bg-cover opacity-25"
+              style={{ backgroundImage: `url('${company.heroImage}')`, backgroundPosition: "center 35%" }}
+            />
+          )}
         </div>
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="flex gap-2 mb-4">
@@ -97,18 +100,27 @@ export default async function CaseDetailPage({ params }: Props) {
           {/* ===== 左カラム ===== */}
           <div className="lg:flex-1 min-w-0">
             {/* 動画 / ヒーロー画像 */}
-            <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#E0DDD8] shadow-sm">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url('${company.heroImage}')` }}
-              />
-              {company.videoId && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 max-lg:w-14 max-lg:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-white hover:scale-110 transition-all duration-200">
-                    <svg className="w-8 h-8 max-lg:w-6 max-lg:h-6 text-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+            <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#1B2D4F] shadow-sm">
+              {company.videoId ? (
+                <>
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url('${company.image}')` }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 max-lg:w-14 max-lg:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-white hover:scale-110 transition-all duration-200">
+                      <svg className="w-8 h-8 max-lg:w-6 max-lg:h-6 text-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
                   </div>
+                </>
+              ) : (
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white/80">
+                  <svg className="w-12 h-12 max-lg:w-10 max-lg:h-10 mb-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  <p className="text-[15px] max-lg:text-[13px] font-medium tracking-wider">動画準備中</p>
                 </div>
               )}
             </div>
@@ -225,9 +237,11 @@ export default async function CaseDetailPage({ params }: Props) {
                 <p className="text-[14px] leading-[1.9] text-[#222222]">
                   {company.leadText}
                 </p>
-                <p className="mt-4 text-[12px] text-[#5A5A5A]">
-                  公開日: {company.interviewDate}
-                </p>
+                {company.interviewDate && (
+                  <p className="mt-4 text-[12px] text-[#5A5A5A]">
+                    公開日: {company.interviewDate}
+                  </p>
+                )}
               </div>
 
               {/* 問い合わせ・応募ボタン */}

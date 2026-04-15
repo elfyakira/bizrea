@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
 import { companies } from "@data/companies";
 
-const industries = ["すべて", "製造業", "建設業", "物流業", "食品製造業", "IT・通信業", "サービス業", "その他"];
+const industries = ["すべて", "製造業", "建設業", "物流業", "食品製造業", "IT・通信業", "採用支援", "サービス業", "その他"];
 const regions = ["すべて", "愛知県", "岐阜県", "三重県", "その他"];
 
 const ITEMS_PER_PAGE = 12;
