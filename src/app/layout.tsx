@@ -1,8 +1,15 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import { Suspense } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollTracker from "@/components/ScrollTracker";
+import PageViewTracker from "@/components/PageViewTracker";
+import ClickTracker from "@/components/ClickTracker";
 import { seo, company, contact, locations, images } from "@/lib/site";
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 // JSON-LD構造化データ
 const jsonLd = {
@@ -95,9 +102,30 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
+        <Suspense fallback={null}>
+          <PageViewTracker />
+        </Suspense>
+        <ClickTracker />
         <Header />
         {children}
         <Footer />
+        <ScrollTracker />
       </body>
     </html>
   );

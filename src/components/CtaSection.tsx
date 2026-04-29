@@ -34,6 +34,8 @@ export default function CtaSection({
           <Link
             href="/contact"
             className="inline-block bg-accent text-white text-[17px] max-lg:text-[16px] font-bold px-12 py-5 max-lg:py-[18px] max-lg:w-full max-lg:max-w-[400px] rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+            data-cta={buttonText}
+            data-cta-location="cta_section"
           >
             {buttonText}
           </Link>

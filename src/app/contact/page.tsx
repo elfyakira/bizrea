@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { contact } from "@/lib/site";
+import { events } from "@/lib/analytics";
 
 export default function ContactPage() {
   return (
@@ -18,6 +19,14 @@ function ContactPageInner() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [hasStarted, setHasStarted] = useState(false);
+
+  const handleFirstInput = () => {
+    if (!hasStarted) {
+      events.formStart("bizrea_hp_contact");
+      setHasStarted(true);
+    }
+  };
   const [form, setForm] = useState({
     inquiry: "",
     company: "",
@@ -71,14 +80,17 @@ function ContactPageInner() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
+          inquiry: form.inquiry,
           company: form.company,
-          message: `【ご相談内容】${form.inquiry}\n\n${form.message}`,
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          message: form.message,
+          privacy: form.privacy,
         }),
       });
       if (res.ok) {
+        events.formSubmit("bizrea_hp_contact");
         setSubmitted(true);
       } else {
         setErrors({ general: "送信中にエラーが発生しました。お手数ですが、もう一度お試しください。" });
@@ -150,7 +162,7 @@ function ContactPageInner() {
                 <p className="mb-6 text-[14px] text-accent">{errors.general}</p>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-7 max-lg:space-y-6">
+              <form onSubmit={handleSubmit} onFocusCapture={handleFirstInput} className="space-y-7 max-lg:space-y-6">
                 {/* 相談内容 */}
                 <div>
                   <label className="flex items-center gap-2 text-[14px] font-medium text-[#222222] mb-2">

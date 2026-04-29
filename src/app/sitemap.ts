@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { companies } from "@data/companies";
 
-const BASE_URL = "https://bizrea.vercel.app";
+const BASE_URL = "https://bizrea.singgroup.biz";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

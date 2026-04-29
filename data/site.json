@@ -95,5 +95,18 @@
     "title": "",
     "image": "",
     "message": []
+  },
+  "googleForm": {
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScKxtdKWZgDdVuARuu_0ueFyKmCVoPEbOAhNsrpWSVcsUw1fw/formResponse",
+    "entries": {
+      "inquiry": "entry.1966867597",
+      "company": "entry.774221957",
+      "name": "entry.362103852",
+      "phone": "entry.797534332",
+      "privacy": "entry.34344357",
+      "email": "entry.1079116682",
+      "message": "entry.392537719"
+    },
+    "privacyValue": "同意"
   }
 }
