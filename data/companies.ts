@@ -17,6 +17,7 @@ export interface Company {
   leadText: string;
   interviewDate: string;
   videoId: string;
+  videoUrl?: string;
   chapters: {
     title: string;
     content: string;
@@ -49,6 +50,7 @@ export const companies: Company[] = [
     leadText: "中学生の頃から抱いてきた\"教育を変えたい\"という夢を、株式会社ゆめスタの代表・飯田思遠氏は、法人という形で社会に届けようとしている。高校生向けキャリア情報誌「ゆめマガ」を発刊し、地域の企業と若い世代をつなぐ彼の原点と、経営の\"北極星\"に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_iida.mp4",
     chapters: [
       {
         title: "Singとの出会い——個人から組織へ、覚悟の転換点",

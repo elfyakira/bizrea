@@ -101,7 +101,16 @@ export default async function CaseDetailPage({ params }: Props) {
           <div className="lg:flex-1 min-w-0">
             {/* 動画 / ヒーロー画像 */}
             <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#1B2D4F] shadow-sm">
-              {company.videoId ? (
+              {company.videoUrl ? (
+                <video
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src={company.videoUrl}
+                  poster={company.image || undefined}
+                  controls
+                  playsInline
+                  preload="metadata"
+                />
+              ) : company.videoId ? (
                 <>
                   <div
                     className="absolute inset-0 bg-cover bg-center"
