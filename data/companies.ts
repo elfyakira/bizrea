@@ -18,6 +18,7 @@ export interface Company {
   interviewDate: string;
   videoId: string;
   videoUrl?: string;
+  presidentImage?: string;
   chapters: {
     title: string;
     content: string;
@@ -82,6 +83,65 @@ export const companies: Company[] = [
       { label: "所在地", value: "愛知県春日井市" },
       { label: "事業内容", value: "高校生向けキャリア情報誌「ゆめマガ」の発刊、採用HP制作、会社PR動画制作" },
       { label: "URL", value: "https://yumesuta.com/" },
+    ],
+  },
+  {
+    id: "flytop",
+    name: "株式会社フライトップ",
+    industry: "人材派遣業",
+    region: "愛知県",
+    president: "代表取締役 屋冝 勝正",
+    catchphrase: "",
+    desc: "愛知県岩倉市を拠点とする人材派遣会社。",
+    image: "/images/companies/flytop-president.jpg",
+    heroImage: "",
+    founded: "",
+    address: "愛知県岩倉市",
+    business: "派遣事業",
+    employees: "",
+    url: "",
+    recruitmentUrl: "",
+    leadText: "",
+    interviewDate: "",
+    videoId: "",
+    presidentImage: "/images/companies/flytop-president.jpg",
+    chapters: [],
+    quotes: [],
+    photos: [],
+    companyInfo: [
+      { label: "企業名", value: "株式会社フライトップ" },
+      { label: "代表者", value: "屋冝 勝正" },
+      { label: "所在地", value: "愛知県岩倉市" },
+      { label: "事業内容", value: "派遣事業" },
+    ],
+  },
+  {
+    id: "obihoku",
+    name: "株式会社尾北",
+    industry: "製造業",
+    region: "愛知県",
+    president: "代表取締役社長 河村 和幸",
+    catchphrase: "",
+    desc: "リセス六角ボルト、トリム六角ボルト、六角フランジボルト、溶接ボルトなど、各種ボルト・ナットを製造するメーカー。",
+    image: "/images/companies/obihoku-president.jpg",
+    heroImage: "",
+    founded: "",
+    address: "",
+    business: "リセス六角ボルト、トリム六角ボルト、六角フランジボルト、溶接ボルト、セレーションボルト、穴付ピン、六角フランジナット、溶接ナット、袋ナット等の製造",
+    employees: "",
+    url: "",
+    recruitmentUrl: "",
+    leadText: "",
+    interviewDate: "",
+    videoId: "",
+    presidentImage: "/images/companies/obihoku-president.jpg",
+    chapters: [],
+    quotes: [],
+    photos: [],
+    companyInfo: [
+      { label: "企業名", value: "株式会社尾北" },
+      { label: "代表者", value: "河村 和幸" },
+      { label: "事業内容", value: "リセス六角ボルト、トリム六角ボルト、六角フランジボルト、溶接ボルト、セレーションボルト、穴付ピン、六角フランジナット、溶接ナット、袋ナット等の製造" },
     ],
   },
   {

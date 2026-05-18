@@ -182,14 +182,22 @@ export default function Home() {
               return (
                 <Link key={c.id} href={`/cases/${c.id}`} className="bg-white rounded-[4px] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
                   <div className="aspect-square bg-[#E0DDD8] overflow-hidden">
-                    <video
-                      className="w-full h-full object-cover"
-                      src={`/videos/presidents/${c.id}.mp4`}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
+                    {c.presidentImage ? (
+                      <img
+                        className="w-full h-full object-cover"
+                        src={c.presidentImage}
+                        alt={`${c.name} ${c.president}`}
+                      />
+                    ) : (
+                      <video
+                        className="w-full h-full object-cover"
+                        src={`/videos/presidents/${c.id}.mp4`}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
+                    )}
                   </div>
                   <div className="px-4 py-4 max-lg:px-3 max-lg:py-3">
                     <p className="text-[12px] max-lg:text-[11px] text-[#5A5A5A] truncate">
