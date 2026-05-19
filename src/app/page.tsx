@@ -103,9 +103,19 @@ export default function Home() {
     <main>
       {/* ===== セクション①: ファーストビュー ===== */}
       <section className="relative w-full h-screen overflow-hidden">
+        {/* PC・タブレット用 */}
         <video
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover max-lg:hidden"
           src="/videos/hero-top.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        {/* スマホ用 */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover lg:hidden"
+          src="/videos/hero-top-sp.mp4"
           autoPlay
           loop
           muted
