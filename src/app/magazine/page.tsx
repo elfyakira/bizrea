@@ -7,63 +7,26 @@ export const metadata: Metadata = {
     "社長インタビューを軸にした企業雑誌。営業・採用・社内教育に活用できる、読んで終わりではない企業ツールです。",
 };
 
-const magazines = [
-  {
-    vol: 12,
-    description: "株式会社サンプルテクノロジー 代表取締役 田中太郎氏。IT業界の常識を覆す、地方発のDX戦略とは。",
-    cover: "/images/magazine/vol12.jpg",
-    pdf: "/pdf/bizrea-vol12.pdf",
-    isLatest: true,
-  },
-  {
-    vol: 11,
-    description: "株式会社ハマダ商事 代表取締役社長 佐藤祐一氏。三代目が語る、老舗商社の生存戦略。",
-    cover: "/images/magazine/vol11.jpg",
-    pdf: "/pdf/bizrea-vol11.pdf",
-  },
-  {
-    vol: 10,
-    description: "株式会社国際エキスプレス 代表取締役 芳賀遥氏。物流の現場から見える、日本経済のリアル。",
-    cover: "/images/magazine/vol10.jpg",
-    pdf: "/pdf/bizrea-vol10.pdf",
-  },
-  {
-    vol: 9,
-    description: "有限会社ライトスタッフデザイン 代表取締役 鶴岡元久氏。デザインの力で中小企業を変える。",
-    cover: "/images/magazine/vol09.jpg",
-    pdf: "/pdf/bizrea-vol09.pdf",
-  },
-  {
-    vol: 8,
-    description: "西川ゴム工業株式会社 代表取締役社長 小川秀樹氏。製造業の未来を支える、職人魂と経営哲学。",
-    cover: "/images/magazine/vol08.jpg",
-    pdf: "/pdf/bizrea-vol08.pdf",
-  },
-  {
-    vol: 7,
-    description: "株式会社開発堂 常務取締役 山本英樹氏。地域に根ざした小売の在り方を問い直す。",
-    cover: "/images/magazine/vol07.jpg",
-    pdf: "/pdf/bizrea-vol07.pdf",
-  },
-  {
-    vol: 6,
-    description: "アサヒ産業株式会社 代表取締役社長 中谷安伸氏。ものづくりの現場から、次世代への橋渡し。",
-    cover: "/images/magazine/vol06.jpg",
-    pdf: "/pdf/bizrea-vol06.pdf",
-  },
-  {
-    vol: 5,
-    description: "株式会社たしく福祉ビレッジ 代表取締役社長 山田明弘氏。福祉の常識を変える、経営者の挑戦。",
-    cover: "/images/magazine/vol05.jpg",
-    pdf: "/pdf/bizrea-vol05.pdf",
-  },
-  {
-    vol: 4,
-    description: "株式会社山本工業 代表取締役 山本健一氏。技術継承と人材育成、その両立の秘訣。",
-    cover: "/images/magazine/vol04.jpg",
-    pdf: "/pdf/bizrea-vol04.pdf",
-  },
-];
+type Magazine = {
+  vol: number;
+  description: string;
+  cover: string;
+  pdf: string;
+  isLatest?: boolean;
+};
+
+// 雑誌を掲載するときは、下記フォーマットに沿って magazines 配列にオブジェクトを追加してください。
+// vol が大きい号（最新号）から順に並べ、最新号には isLatest: true を付けます。
+//
+// 【記入例】
+// {
+//   vol: 12,                                       // 号数（数値）
+//   description: "株式会社○○ 代表取締役 ○○氏。記事の紹介文。",  // カードに表示する説明文
+//   cover: "/images/magazine/vol12.jpg",            // 表紙画像のパス（public 配下）
+//   pdf: "/pdf/bizrea-vol12.pdf",                   // PDFファイルのパス（public 配下）
+//   isLatest: true,                                // 最新号のみ true（任意）。それ以外の号では省略
+// },
+const magazines: Magazine[] = [];
 
 export default function MagazinePage() {
   return (
