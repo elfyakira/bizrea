@@ -1,4 +1,4 @@
-const BASE_URL = "https://bizrea.singgroup.biz";
+const BASE_URL = "https://www.bizrea.net";
 
 export function GET(): Response {
   const robotsTxt = `# Robots.txt for Bizrea
