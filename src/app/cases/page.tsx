@@ -105,7 +105,7 @@ export default function CasesPage() {
                     <div className="aspect-[3/2] bg-[#E0DDD8] overflow-hidden">
                       <div
                         className="w-full h-full bg-cover bg-center group-hover:scale-[1.02] transition-transform duration-400 ease-out"
-                        style={{ backgroundImage: `url('${company.image}')` }}
+                        style={{ backgroundImage: `url('${company.listImage ?? company.image}')` }}
                       />
                     </div>
                     <div className="px-5 py-6">

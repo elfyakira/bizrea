@@ -124,6 +124,13 @@ export default async function CaseDetailPage({ params }: Props) {
                     </div>
                   </div>
                 </>
+              ) : company.image ? (
+                <img
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ objectPosition: company.imagePosition ?? "center 35%" }}
+                  src={company.image}
+                  alt={`${company.name} ${company.president}`}
+                />
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white/80">
                   <svg className="w-12 h-12 max-lg:w-10 max-lg:h-10 mb-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">

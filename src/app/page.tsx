@@ -195,6 +195,7 @@ export default function Home() {
                     {c.presidentImage ? (
                       <img
                         className="w-full h-full object-cover"
+                        style={c.id === "paluu" ? { transform: "scale(1.15)" } : undefined}
                         src={c.presidentImage}
                         alt={`${c.name} ${c.president}`}
                       />
