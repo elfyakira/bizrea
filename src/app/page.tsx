@@ -172,7 +172,7 @@ export default function Home() {
             掲載企業
           </h2>
           <div className="mt-14 max-lg:mt-10 grid grid-cols-4 max-lg:grid-cols-2 gap-5 max-lg:gap-3">
-            {companies.map((c) => {
+            {companies.filter((c) => !c.hidden).map((c) => {
               const regionColors: Record<string, string> = {
                 "愛知県": "bg-[#3B82A0] text-white",
                 "岐阜県": "bg-[#6B8E5B] text-white",

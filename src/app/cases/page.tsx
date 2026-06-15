@@ -17,6 +17,7 @@ export default function CasesPage() {
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
   const filtered = companies.filter((c) => {
+    if (c.hidden) return false;
     if (industry !== "すべて" && c.industry !== industry) return false;
     if (region !== "すべて" && c.region !== region) return false;
     return true;

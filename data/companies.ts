@@ -21,6 +21,7 @@ export interface Company {
   presidentImage?: string;
   imagePosition?: string;
   listImage?: string;
+  hidden?: boolean; // true の場合、一覧カードに表示しない（データは保持）
   chapters: {
     title: string;
     content: string;
@@ -419,6 +420,7 @@ export const companies: Company[] = [
   },
   {
     id: "paluu",
+    hidden: true, // 一覧カード非表示（再掲載時は false に戻すか削除）
     name: "paluu",
     industry: "ウェルネス",
     region: "愛知県",

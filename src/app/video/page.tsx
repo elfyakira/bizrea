@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { companies } from "@data/companies";
 
-const videosCompanies = companies.filter((c) => c.videoId);
+const videosCompanies = companies.filter((c) => c.videoId && !c.hidden);
 
 function VideoCard({ company }: { company: typeof companies[number] }) {
   const [playing, setPlaying] = useState(false);
