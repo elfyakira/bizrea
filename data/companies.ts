@@ -157,7 +157,7 @@ export const companies: Company[] = [
     image: "/images/companies/obihoku-president.jpg",
     heroImage: "",
     founded: "",
-    address: "",
+    address: "愛知県江南市安良町地蔵136番地",
     business: "リセス六角ボルト、トリム六角ボルト、六角フランジボルト、溶接ボルト、セレーションボルト、穴付ピン、六角フランジナット、溶接ナット、袋ナット等の製造",
     employees: "",
     url: "https://www.k-bihoku.co.jp/",
@@ -203,7 +203,7 @@ export const companies: Company[] = [
     companyInfo: [
       { label: "企業名", value: "株式会社尾北" },
       { label: "代表者", value: "河村 和幸" },
-      { label: "所在地", value: "愛知県" },
+      { label: "所在地", value: "愛知県江南市安良町地蔵136番地" },
       { label: "事業内容", value: "リセス六角ボルト、トリム六角ボルト、六角フランジボルト、溶接ボルト、セレーションボルト、穴付ピン、六角フランジナット、溶接ナット、袋ナット等の製造" },
     ],
   },
