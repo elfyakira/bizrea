@@ -218,7 +218,7 @@ export const companies: Company[] = [
     image: "/images/companies/aisei-president.jpg",
     heroImage: "",
     founded: "",
-    address: "愛知県岡崎市",
+    address: "愛知県名古屋市名東区新宿一丁目311－1 カルティア名東新宿504",
     business: "食肉卸事業（和牛の一頭買い・国内外流通）、精肉店・焼肉店の運営、EC・サブスク販売",
     employees: "",
     url: "",
@@ -269,7 +269,7 @@ export const companies: Company[] = [
     companyInfo: [
       { label: "企業名", value: "株式会社FORRISE" },
       { label: "代表者", value: "柳 賢一" },
-      { label: "所在地", value: "愛知県岡崎市" },
+      { label: "所在地", value: "愛知県名古屋市名東区新宿一丁目311－1 カルティア名東新宿504" },
       { label: "事業内容", value: "食肉卸事業（和牛の一頭買い・国内外流通）、精肉店・焼肉店の運営、EC・サブスク販売" },
     ],
   },
