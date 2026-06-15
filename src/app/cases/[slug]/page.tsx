@@ -8,7 +8,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return companies.map((c) => ({ slug: c.id }));
+  return companies.filter((c) => !c.hidden).map((c) => ({ slug: c.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -38,7 +38,7 @@ const industryColors: Record<string, string> = {
 export default async function CaseDetailPage({ params }: Props) {
   const { slug } = await params;
   const company = getCompanyById(slug);
-  if (!company) notFound();
+  if (!company || company.hidden) notFound();
 
   const regionClass = regionColors[company.region] || "bg-[#888888] text-white";
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";

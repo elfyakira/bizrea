@@ -33,12 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const companyPages: MetadataRoute.Sitemap = companies.map((c) => ({
-    url: `${BASE_URL}/cases/${c.id}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const companyPages: MetadataRoute.Sitemap = companies
+    .filter((c) => !c.hidden)
+    .map((c) => ({
+      url: `${BASE_URL}/cases/${c.id}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }));
 
   return [...staticPages, ...companyPages];
 }
