@@ -44,7 +44,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["sorairo", "prelune", "paluu"].includes(company.id);
+  const hideApplyButton = ["sorairo", "prelune", "paluu", "kiso"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
