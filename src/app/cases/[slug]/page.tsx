@@ -46,6 +46,11 @@ export default async function CaseDetailPage({ params }: Props) {
   // 応募ボタンを非表示にする企業
   const hideApplyButton = ["sorairo", "prelune", "paluu"].includes(company.id);
 
+  // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
+  const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
+  const contactHref = contactToForm ? "/contact" : company.url || "#";
+  const contactTarget = contactToForm ? undefined : "_blank";
+
   return (
     <main>
       {/* ===== ヒーロー ===== */}
@@ -229,8 +234,8 @@ export default async function CaseDetailPage({ params }: Props) {
               {/* 企業への問い合わせ・応募ボタン */}
               <div className="mt-14 max-lg:mt-10 flex max-lg:flex-col gap-4">
                 <a
-                  href={company.url || "#"}
-                  target="_blank"
+                  href={contactHref}
+                  target={contactTarget}
                   rel="noopener noreferrer"
                   className="flex-1 text-center bg-[#1B2D4F] text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
                 >
@@ -268,8 +273,8 @@ export default async function CaseDetailPage({ params }: Props) {
               {/* 問い合わせ・応募ボタン */}
               <div className="flex flex-col gap-3">
                 <a
-                  href={company.url || "#"}
-                  target="_blank"
+                  href={contactHref}
+                  target={contactTarget}
                   rel="noopener noreferrer"
                   className="text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
                 >
