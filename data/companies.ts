@@ -160,7 +160,7 @@ export const companies: Company[] = [
     business: "リセス六角ボルト、トリム六角ボルト、六角フランジボルト、溶接ボルト、セレーションボルト、穴付ピン、六角フランジナット、溶接ナット、袋ナット等の製造",
     employees: "",
     url: "https://www.k-bihoku.co.jp/",
-    recruitmentUrl: "",
+    recruitmentUrl: "https://en-gage.net/traliebe0111_saiyo/",
     leadText: "年間約7億本——株式会社尾北が世に送り出すボルトの数だ。自動車をはじめ、その一本一本が誰かの暮らしや安全を支えている。システムエンジニア、ネットワークエンジニアという全く異なる世界から、結婚を機にものづくりの道へ飛び込んだ河村和幸氏。「思いを込めたその一本が、みんなの喜びと幸せを作り出す」という使命を掲げ、創業75年の技術を守りながら未来へつなぐ、その原点に迫る。",
     interviewDate: "",
     videoId: "",
