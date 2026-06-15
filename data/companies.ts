@@ -49,7 +49,7 @@ export const companies: Company[] = [
     business: "高校生向けキャリア情報誌「ゆめマガ」の発刊、採用HP制作、会社PR動画制作",
     employees: "",
     url: "https://yumesuta.com/",
-    recruitmentUrl: "",
+    recruitmentUrl: "https://en-gage.net/jp-sing_saiyo1/",
     leadText: "中学生の頃から抱いてきた\"教育を変えたい\"という夢を、株式会社ゆめスタの代表・飯田思遠氏は、法人という形で社会に届けようとしている。高校生向けキャリア情報誌「ゆめマガ」を発刊し、地域の企業と若い世代をつなぐ彼の原点と、経営の\"北極星\"に迫る。",
     interviewDate: "",
     videoId: "",
