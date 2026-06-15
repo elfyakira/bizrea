@@ -43,6 +43,9 @@ export default async function CaseDetailPage({ params }: Props) {
   const regionClass = regionColors[company.region] || "bg-[#888888] text-white";
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
+  // 応募ボタンを非表示にする企業
+  const hideApplyButton = ["sorairo", "prelune", "paluu"].includes(company.id);
+
   return (
     <main>
       {/* ===== ヒーロー ===== */}
@@ -233,14 +236,16 @@ export default async function CaseDetailPage({ params }: Props) {
                 >
                   この企業に問い合わせする
                 </a>
-                <a
-                  href={company.recruitmentUrl || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center bg-accent text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
-                >
-                  この企業に応募する
-                </a>
+                {!hideApplyButton && (
+                  <a
+                    href={company.recruitmentUrl || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 text-center bg-accent text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+                  >
+                    この企業に応募する
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -270,14 +275,16 @@ export default async function CaseDetailPage({ params }: Props) {
                 >
                   この企業に問い合わせする
                 </a>
-                <a
-                  href={company.recruitmentUrl || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-center bg-accent text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
-                >
-                  この企業に応募する
-                </a>
+                {!hideApplyButton && (
+                  <a
+                    href={company.recruitmentUrl || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-center bg-accent text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+                  >
+                    この企業に応募する
+                  </a>
+                )}
               </div>
 
               {/* リンク集 */}
