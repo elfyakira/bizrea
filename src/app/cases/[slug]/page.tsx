@@ -48,7 +48,7 @@ export default async function CaseDetailPage({ params }: Props) {
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
-  const contactHref = contactToForm ? "/contact" : company.url || "#";
+  const contactHref = contactToForm ? "/contact" : company.contactUrl || company.url || "#";
   const contactTarget = contactToForm ? undefined : "_blank";
 
   return (
