@@ -185,6 +185,7 @@ export default function Home() {
                 "食品製造業": "bg-[#C4784A] text-white",
                 "IT・通信業": "bg-[#5B7ABF] text-white",
                 "採用支援": "bg-[#3B8C6E] text-white",
+                "農業": "bg-[#5C8A3A] text-white",
               };
               const regionClass = regionColors[c.region] || "bg-[#888888] text-white";
               const industryClass = industryColors[c.industry] || "bg-[#888888] text-white";
