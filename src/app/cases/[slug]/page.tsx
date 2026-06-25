@@ -34,6 +34,7 @@ const industryColors: Record<string, string> = {
   "IT・通信業": "bg-[#5B7ABF] text-white",
   "採用支援": "bg-[#3B8C6E] text-white",
   "農業": "bg-[#5C8A3A] text-white",
+  "飲食業": "bg-[#C0453B] text-white",
 };
 
 export default async function CaseDetailPage({ params }: Props) {
@@ -45,10 +46,10 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["sorairo", "prelune", "paluu", "kiso", "norida-garden"].includes(company.id);
+  const hideApplyButton = ["sorairo", "prelune", "paluu", "kiso", "norida-garden", "unagi"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
-  const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
+  const contactToForm = ["paluu", "sorairo", "aisei", "unagi"].includes(company.id);
   const contactHref = contactToForm ? "/contact" : company.contactUrl || company.url || "#";
   const contactTarget = contactToForm ? undefined : "_blank";
 
