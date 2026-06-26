@@ -210,9 +210,8 @@ export const companies: Company[] = [
   },
   {
     id: "aisei",
-    hidden: true, // 確認中のため本番非公開（OK後に false／削除）
     name: "株式会社FORRISE",
-    industry: "食品製造業",
+    industry: "農地活用コンサルタント",
     region: "愛知県",
     president: "代表取締役 柳 賢一",
     catchphrase: "感謝の心でお預かりした命を、余すことなく届ける",
