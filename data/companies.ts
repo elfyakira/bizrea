@@ -720,7 +720,6 @@ export const companies: Company[] = [
   },
   {
     id: "takeyo",
-    hidden: true, // 確認中のため本番非公開（OK後に false／削除）
     name: "株式会社竹代　小牧工場",
     industry: "製造業",
     region: "愛知県",
