@@ -798,7 +798,6 @@ export const companies: Company[] = [
   },
   {
     id: "unagi",
-    hidden: true, // 確認中のため本番非公開（OK後に false／削除）
     name: "鰻処まえの",
     industry: "飲食業",
     region: "愛知県",
