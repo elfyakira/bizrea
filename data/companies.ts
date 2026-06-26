@@ -211,7 +211,7 @@ export const companies: Company[] = [
   {
     id: "aisei",
     name: "株式会社FORRISE",
-    industry: "食品製造業",
+    industry: "農地活用コンサルタント",
     region: "愛知県",
     president: "代表取締役 柳 賢一",
     catchphrase: "感謝の心でお預かりした命を、余すことなく届ける",
@@ -508,6 +508,7 @@ export const companies: Company[] = [
     photos: [],
     companyInfo: [
       { label: "教室名", value: "フォレスト個別指導塾 豊田校" },
+      { label: "企業名", value: "株式会社かふう" },
       { label: "代表者", value: "幸地 賢枝（教室長）" },
       { label: "所在地", value: "愛知県豊田市西町3丁目26桜井ビル2F" },
       { label: "事業内容", value: "学習塾の運営、子育て支援（生徒指導・保護者面談・進路相談）、発達特性・不登校の子どもの受け入れ" },
