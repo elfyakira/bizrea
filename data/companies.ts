@@ -210,6 +210,7 @@ export const companies: Company[] = [
   },
   {
     id: "aisei",
+    hidden: true, // 確認中のため本番非公開（OK後に false／削除）
     name: "株式会社FORRISE",
     industry: "食品製造業",
     region: "愛知県",
@@ -719,6 +720,7 @@ export const companies: Company[] = [
   },
   {
     id: "takeyo",
+    hidden: true, // 確認中のため本番非公開（OK後に false／削除）
     name: "株式会社竹代　小牧工場",
     industry: "製造業",
     region: "愛知県",
@@ -796,6 +798,7 @@ export const companies: Company[] = [
   },
   {
     id: "unagi",
+    hidden: true, // 確認中のため本番非公開（OK後に false／削除）
     name: "鰻処まえの",
     industry: "飲食業",
     region: "愛知県",
