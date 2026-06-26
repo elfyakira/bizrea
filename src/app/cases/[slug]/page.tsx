@@ -46,10 +46,10 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["sorairo", "prelune", "paluu", "kiso", "norida-garden", "unagi"].includes(company.id);
+  const hideApplyButton = ["sorairo", "prelune", "paluu", "kiso", "norida-garden"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
-  const contactToForm = ["paluu", "sorairo", "aisei", "unagi"].includes(company.id);
+  const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
   const contactHref = contactToForm ? "/contact" : company.contactUrl || company.url || "#";
   const contactTarget = contactToForm ? undefined : "_blank";
 
@@ -334,7 +334,7 @@ export default async function CaseDetailPage({ params }: Props) {
                         <td className="py-2.5 text-[12px] text-[#5A5A5A] w-[30%] align-top">
                           {info.label}
                         </td>
-                        <td className="py-2.5 text-[12px] text-[#222222]">
+                        <td className="py-2.5 text-[12px] text-[#222222] whitespace-pre-line">
                           {info.label === "URL" ? (
                             <a
                               href={info.value}
