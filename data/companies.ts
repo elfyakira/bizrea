@@ -651,7 +651,7 @@ export const companies: Company[] = [
   },
   {
     id: "norida-garden",
-    name: "noridaGARDEN&co",
+    name: "noridaGARDEN&co.",
     industry: "農業",
     region: "愛知県",
     president: "ノリ・ダ・ファンキーシビレサス",
@@ -712,7 +712,7 @@ export const companies: Company[] = [
     ],
     photos: [],
     companyInfo: [
-      { label: "企業名", value: "noridaGARDEN&co" },
+      { label: "企業名", value: "noridaGARDEN&co." },
       { label: "代表者", value: "ノリ・ダ・ファンキーシビレサス" },
       { label: "所在地", value: "愛知県春日井市桃山町" },
       { label: "事業内容", value: "さつまいもの栽培・加工品（干し芋等）製造、企業向け貸し農園" },
