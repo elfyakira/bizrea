@@ -324,8 +324,11 @@ export const companies: Company[] = [
   },
   {
     id: "prelune",
-    // 本番のみ非公開。確認プレビュー（VERCEL_ENV=preview）では閲覧可能。再公開時はこの行を削除。
-    hidden: process.env.VERCEL_ENV === "production",
+    // 本番のみ非公開。確認プレビュー（VERCEL_ENV=preview）でのみ閲覧可能。再公開時はこの行を削除。
+    // 一覧ページは 'use client' なので data/companies.ts はクライアントにもバンドルされる。
+    // 無印 VERCEL_ENV はクライアントで undefined になるため NEXT_PUBLIC_ 付きを使う必要がある。
+    // フェイルセーフ: preview 以外（本番・値未取得）は非公開側へ倒す。
+    hidden: process.env.NEXT_PUBLIC_VERCEL_ENV !== "preview",
     name: "プレリュンヌ",
     industry: "美容業",
     region: "愛知県",
