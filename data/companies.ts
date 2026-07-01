@@ -324,6 +324,8 @@ export const companies: Company[] = [
   },
   {
     id: "prelune",
+    // 本番のみ非公開。確認プレビュー（VERCEL_ENV=preview）では閲覧可能。再公開時はこの行を削除。
+    hidden: process.env.VERCEL_ENV === "production",
     name: "プレリュンヌ",
     industry: "美容業",
     region: "愛知県",
