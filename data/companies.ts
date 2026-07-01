@@ -22,8 +22,7 @@ export interface Company {
   presidentImage?: string;
   imagePosition?: string;
   listImage?: string;
-  hidden?: boolean; // true の場合、一覧カードに表示しない＋詳細ページも404（データは保持）
-  listHidden?: boolean; // true の場合、環境に関わらず一覧カード・sitemapから常に除外（詳細ページ自体は生成・閲覧可）
+  hidden?: boolean; // true の場合、一覧カードに表示しない（データは保持）
   chapters: {
     title: string;
     content: string;
@@ -325,10 +324,8 @@ export const companies: Company[] = [
   },
   {
     id: "prelune",
-    // 本番のみ非公開（一覧カード除外＋詳細404）。確認プレビューでは詳細ページのみURL直打ちで閲覧可。
+    // 本番のみ非公開。確認プレビュー（VERCEL_ENV=preview）では閲覧可能。再公開時はこの行を削除。
     hidden: process.env.VERCEL_ENV === "production",
-    // 一覧カードは環境に関わらず常に非表示（プレビューでも掲載企業一覧に出さない）。
-    listHidden: true,
     name: "プレリュンヌ",
     industry: "美容業",
     region: "愛知県",
