@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const companyPages: MetadataRoute.Sitemap = companies
-    .filter((c) => !c.hidden && !c.listHidden)
+    .filter((c) => !c.hidden)
     .map((c) => ({
       url: `${BASE_URL}/cases/${c.id}`,
       lastModified: now,
