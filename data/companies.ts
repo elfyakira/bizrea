@@ -108,6 +108,7 @@ export const companies: Company[] = [
     leadText: "",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_yagi.mp4",
     chapters: [
       {
         title: "起業のきっかけと、人生を変えた前職での経験",
