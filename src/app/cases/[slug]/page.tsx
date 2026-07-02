@@ -53,6 +53,11 @@ export default async function CaseDetailPage({ params }: Props) {
   const contactHref = contactToForm ? "/contact" : company.contactUrl || company.url || "#";
   const contactTarget = contactToForm ? undefined : "_blank";
 
+  // 応募ボタンの遷移先をお問い合わせフォームにする企業
+  const applyToForm = ["takeyo"].includes(company.id);
+  const applyHref = applyToForm ? "/contact" : company.recruitmentUrl || "#";
+  const applyTarget = applyToForm ? undefined : "_blank";
+
   return (
     <main>
       {/* ===== ヒーロー ===== */}
@@ -245,8 +250,8 @@ export default async function CaseDetailPage({ params }: Props) {
                 </a>
                 {!hideApplyButton && (
                   <a
-                    href={company.recruitmentUrl || "#"}
-                    target="_blank"
+                    href={applyHref}
+                    target={applyTarget}
                     rel="noopener noreferrer"
                     className="flex-1 text-center bg-accent text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
                   >
@@ -284,8 +289,8 @@ export default async function CaseDetailPage({ params }: Props) {
                 </a>
                 {!hideApplyButton && (
                   <a
-                    href={company.recruitmentUrl || "#"}
-                    target="_blank"
+                    href={applyHref}
+                    target={applyTarget}
                     rel="noopener noreferrer"
                     className="text-center bg-accent text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
                   >
