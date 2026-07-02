@@ -108,6 +108,7 @@ export const companies: Company[] = [
     leadText: "",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_yagi.mp4",
     chapters: [
       {
         title: "起業のきっかけと、人生を変えた前職での経験",
@@ -166,6 +167,7 @@ export const companies: Company[] = [
     leadText: "年間約7億本——株式会社尾北が世に送り出すボルトの数だ。自動車をはじめ、その一本一本が誰かの暮らしや安全を支えている。システムエンジニア、ネットワークエンジニアという全く異なる世界から、結婚を機にものづくりの道へ飛び込んだ河村和幸氏。「思いを込めたその一本が、みんなの喜びと幸せを作り出す」という使命を掲げ、創業75年の技術を守りながら未来へつなぐ、その原点に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_kawamura.mp4",
     chapters: [
       {
         title: "結婚を機に、未経験の世界へ飛び込んだ",
