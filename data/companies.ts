@@ -865,7 +865,7 @@ export const companies: Company[] = [
   {
     id: "vital-core",
     name: "株式会社Vital core",
-    industry: "健康経営支援",
+    industry: "健康経営支援事業",
     region: "三重県",
     president: "代表取締役 野口 貴弘",
     catchphrase: "健康を核に、未来をつくる。——一人ひとりを大切にしながら、企業で働く人の健康を支える",
