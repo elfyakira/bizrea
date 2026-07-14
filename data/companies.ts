@@ -229,6 +229,7 @@ export const companies: Company[] = [
     leadText: "「過去はすべておかげさまに変える」「心を温かきは万能なり」——人の痛みが分かる経営者でありたいと語る、株式会社FORRISEの柳賢一氏。行政の現場で学んだ「誰一人取り残さない」という共生の視点を胸に、社員や仲間を第一にしながら、困っている人や世に埋もれた価値に寄り添い続ける。その原点と信念に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_yanagi.mp4",
     chapters: [
       {
         title: "人生の転機",
