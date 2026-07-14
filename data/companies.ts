@@ -811,6 +811,7 @@ export const companies: Company[] = [
     leadText: "春日井で創業七十二年を数える、うなぎ料理専門店。親子三代で通うお客様も多く、創業以来注ぎ足してきた秘伝のタレと、二十年以上うなぎに向き合ってきた職人の手仕事が強みだ。父からの事業承継を決意した経緯、うなぎが絶滅するかもしれないという危機やコロナ禍をどう乗り越えてきたのか。そして、ただおいしいだけではなく「懐かしさ」を届け、お客様の人生の一ページに残る店でありたいという想いに迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_maeno.mp4",
     chapters: [
       {
         title: "職人への憧れと、事業承継の決意",
