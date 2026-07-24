@@ -49,7 +49,7 @@ export default function MagazinePage() {
           <p className="mt-8 text-[17px] max-lg:text-[15px] leading-[2.2] text-white/80">
             Bizreaは、代表者の想いを引き出し、Web・雑誌・SNSを通じて届けています。<br />
             なかでも雑誌は、代表者の言葉をじっくり読める唯一のメディアです。画面を閉じても手元に残り、商談先でも、面接の場でも、何度でも読み返すことができる。<br />
-            経営者一人ひとりの信念と物語を、ぜひご覧ください。
+            代表者一人ひとりの信念と物語を、ぜひご覧ください。
           </p>
         </div>
       </section>
