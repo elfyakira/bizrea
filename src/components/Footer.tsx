@@ -27,7 +27,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-5 text-[13px] leading-[1.7] text-white/60 max-w-[280px]">
-              社長の想いを引き出し、
+              代表者の想いを引き出し、
               <br />
               &ldquo;伝わる言葉&rdquo;に整え、届ける。
             </p>
@@ -100,7 +100,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="mt-4 text-[13px] leading-[1.7] text-white/60">
-            社長の想いを引き出し、
+            代表者の想いを引き出し、
             <br />
             &ldquo;伝わる言葉&rdquo;に整え、届ける。
           </p>
