@@ -865,6 +865,13 @@ export const companies: Company[] = [
   },
 ];
 
+/**
+ * 掲載企業の一覧表示用（新しい企業が先頭）。
+ * companies は追加順（古い順）に並んでいるため、逆順にしたものを使う。
+ * 新しい企業は必ず companies の末尾に追加すること。
+ */
+export const companiesNewestFirst: Company[] = [...companies].reverse();
+
 export function getCompanyById(id: string): Company | undefined {
   return companies.find((c) => c.id === id);
 }
