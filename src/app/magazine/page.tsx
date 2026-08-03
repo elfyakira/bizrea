@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import MagazineList, { type Magazine } from "@/components/MagazineList";
 
 export const metadata: Metadata = {
   title: "雑誌 | Bizrea",
@@ -7,26 +7,44 @@ export const metadata: Metadata = {
     "社長インタビューを軸にした企業雑誌。営業・採用・社内教育に活用できる、読んで終わりではない企業ツールです。",
 };
 
-type Magazine = {
-  vol: number;
-  description: string;
-  cover: string;
-  pdf: string;
-  isLatest?: boolean;
-};
-
 // 雑誌を掲載するときは、下記フォーマットに沿って magazines 配列にオブジェクトを追加してください。
 // vol が大きい号（最新号）から順に並べ、最新号には isLatest: true を付けます。
+// 誌面画像（{pageBase}/p01.jpg …）と PDF は CDN に置きます。
 //
 // 【記入例】
 // {
 //   vol: 12,                                       // 号数（数値）
 //   description: "株式会社○○ 代表取締役 ○○氏。記事の紹介文。",  // カードに表示する説明文
+//   issue: "2026年12月",                            // カードに表示する発行時期
+//   pages: 40,                                     // 総ページ数（ビューアのページ送りに使う）
 //   cover: "/images/magazine/vol12.jpg",            // 表紙画像のパス（public 配下）
-//   pdf: "/pdf/bizrea-vol12.pdf",                   // PDFファイルのパス（public 配下）
+//   pageBase: "https://assets.singgroup.biz/magazine/vol12", // 誌面画像の置き場
+//   pdf: "https://assets.singgroup.biz/magazine/bizrea-vol12.pdf", // PDFのURL（CDN配信）
 //   isLatest: true,                                // 最新号のみ true（任意）。それ以外の号では省略
 // },
-const magazines: Magazine[] = [];
+const magazines: Magazine[] = [
+  {
+    vol: 2,
+    description:
+      "特集は noridaGARDEN&co. / nobodyknows＋ ノリ・ダ・ファンキーシビレサス氏。ほか、鰻処まえの・竹代・フォレスト個別指導塾 豊田校・紀創機械設計・ホニックの代表者インタビューを収録。",
+    issue: "2026年",
+    pages: 40,
+    cover: "/images/magazine/vol2.jpg",
+    pageBase: "https://assets.singgroup.biz/magazine/vol2",
+    pdf: "https://assets.singgroup.biz/magazine/bizrea-vol2.pdf",
+    isLatest: true,
+  },
+  {
+    vol: 1,
+    description:
+      "特集は名古屋グランパス所属 プロサッカー選手（MF）稲垣 祥氏。ほか、尾北・愛正・Sing.nexT・フライトップ・ゆめスタの代表者インタビューを収録した創刊号です。",
+    issue: "2026年",
+    pages: 40,
+    cover: "/images/magazine/vol1.jpg",
+    pageBase: "https://assets.singgroup.biz/magazine/vol1",
+    pdf: "https://assets.singgroup.biz/magazine/bizrea-vol1.pdf",
+  },
+];
 
 export default function MagazinePage() {
   return (
@@ -79,43 +97,8 @@ export default function MagazinePage() {
             最新号・バックナンバー
           </h2>
 
-          <div className="mt-14 max-lg:mt-10 grid grid-cols-3 max-lg:grid-cols-2 gap-6 max-lg:gap-4">
-            {magazines.map((mag) => (
-              <div key={mag.vol} className="bg-white rounded-[4px] overflow-hidden shadow-sm">
-                {/* 表紙画像 */}
-                <div className="aspect-[3/4] bg-[#E0DDD8] overflow-hidden relative">
-                  <div
-                    className="w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url('${mag.cover}')` }}
-                  />
-                  {mag.isLatest && (
-                    <span className="absolute top-3 left-3 bg-accent text-white text-[11px] font-bold px-3 py-1 rounded-sm">
-                      最新号
-                    </span>
-                  )}
-                </div>
-                {/* テキスト */}
-                <div className="p-5 max-lg:p-4">
-                  <p className="text-[18px] max-lg:text-[16px] font-medium text-[#222222]">
-                    Bizrea Vol.{String(mag.vol).padStart(2, "0")}
-                  </p>
-                  <p className="mt-2 text-[13px] max-lg:text-[12px] leading-[1.7] text-[#5A5A5A] line-clamp-3">
-                    {mag.description}
-                  </p>
-                  <Link
-                    href={mag.pdf}
-                    target="_blank"
-                    className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium text-accent hover:text-accent-dark transition-colors"
-                  >
-                    閲覧する
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+          <MagazineList magazines={magazines} />
+
         </div>
       </section>
     </main>

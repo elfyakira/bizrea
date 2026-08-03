@@ -229,6 +229,7 @@ export const companies: Company[] = [
     leadText: "「過去はすべておかげさまに変える」「心を温かきは万能なり」——人の痛みが分かる経営者でありたいと語る、株式会社FORRISEの柳賢一氏。行政の現場で学んだ「誰一人取り残さない」という共生の視点を胸に、社員や仲間を第一にしながら、困っている人や世に埋もれた価値に寄り添い続ける。その原点と信念に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_yanagi.mp4",
     chapters: [
       {
         title: "人生の転機",
@@ -464,6 +465,7 @@ export const companies: Company[] = [
     leadText: "「まずは、一人で悩まないでほしい」——。発達特性のある我が子の子育てと、2021年に夫を亡くした経験から、幸地賢枝氏は同じように悩む保護者を支える仕組みをつくろうと動き出した。発達特性のある子にも学びが必要だと考えるフォレストの理念に共感しながらも、その場所は名古屋にしかない。「無いのであれば、私が作ろう」——三河・豊田の地に豊田校を立ち上げた。子どもが安心して失敗やチャレンジでき、保護者が「困ったら相談してみよう」と思える居場所。否定から入らず、一人の保護者として寄り添う、その原点と信念に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_kochi.mp4",
     chapters: [
       {
         title: "豊田校での役割と、子どもと関わる仕事との出会い",
@@ -531,6 +533,7 @@ export const companies: Company[] = [
     leadText: "「機械設計は、ものづくりの始まりだ」——。30年以上にわたり、工場の生産設備やFA設備、搬送装置の設計を手がけてきた松浦紀貴氏。図面を描くだけでなく、お客様の頭の中にあるイメージを聞き取り、その期待を超える形へと近づけていく。在宅勤務の経験を経て、自らの技術を自分の形にしようと起業を決意した。コストダウンや省力化、そして「誰もが働ける」ものづくりを目指す、その原点と信念に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_matsuura.mp4",
     chapters: [
       {
         title: "機械設計という仕事と、起業への決意",
@@ -665,6 +668,7 @@ export const companies: Company[] = [
     leadText: "「お金が稼げなくても、面白い方を選ぶ」——。愛知県春日井市で農業を営む岡村典幸氏。さつまいもの栽培と干し芋づくり、そして企業向けの貸し農園を手がける。八百屋を始める同級生の誘いをきっかけに農家へ飛び込み、10年の修行を経て独立。鳶の仕事やコロナ禍といった苦しい時期も、農業へ戻るための糧に変えてきた。農業は思い通りにならない。だからこそ面白い。農業という入口を通じて、関わる人の暮らしをほんの少しだけ豊かにしたいと語る、その原点と信念に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_okamura.mp4",
     chapters: [
       {
         title: "「面白そう」から始まった、農業との出会い",
@@ -811,6 +815,7 @@ export const companies: Company[] = [
     leadText: "春日井で創業七十二年を数える、うなぎ料理専門店。親子三代で通うお客様も多く、創業以来注ぎ足してきた秘伝のタレと、二十年以上うなぎに向き合ってきた職人の手仕事が強みだ。父からの事業承継を決意した経緯、うなぎが絶滅するかもしれないという危機やコロナ禍をどう乗り越えてきたのか。そして、ただおいしいだけではなく「懐かしさ」を届け、お客様の人生の一ページに残る店でありたいという想いに迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_maeno.mp4",
     chapters: [
       {
         title: "職人への憧れと、事業承継の決意",
