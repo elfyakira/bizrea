@@ -532,6 +532,7 @@ export const companies: Company[] = [
     leadText: "「機械設計は、ものづくりの始まりだ」——。30年以上にわたり、工場の生産設備やFA設備、搬送装置の設計を手がけてきた松浦紀貴氏。図面を描くだけでなく、お客様の頭の中にあるイメージを聞き取り、その期待を超える形へと近づけていく。在宅勤務の経験を経て、自らの技術を自分の形にしようと起業を決意した。コストダウンや省力化、そして「誰もが働ける」ものづくりを目指す、その原点と信念に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_matsuura.mp4",
     chapters: [
       {
         title: "機械設計という仕事と、起業への決意",
