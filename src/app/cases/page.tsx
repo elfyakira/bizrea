@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
-import { companies } from "@data/companies";
+import { companiesNewestFirst } from "@data/companies";
 
 const industries = ["すべて", "製造業", "建設業", "物流業", "食品製造業", "IT・通信業", "採用支援", "農業", "飲食業", "サービス業", "その他"];
 const regions = ["すべて", "愛知県", "岐阜県", "三重県", "その他"];
@@ -16,7 +16,7 @@ export default function CasesPage() {
   const [region, setRegion] = useState("すべて");
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
-  const filtered = companies.filter((c) => {
+  const filtered = companiesNewestFirst.filter((c) => {
     if (c.hidden) return false;
     if (industry !== "すべて" && c.industry !== industry) return false;
     if (region !== "すべて" && c.region !== region) return false;
