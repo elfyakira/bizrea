@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { companies } from "@data/companies";
+import { companies, companiesNewestFirst } from "@data/companies";
 
-const videosCompanies = companies.filter((c) => c.videoId && !c.hidden);
+// 本編動画（videoUrl）を持つ企業を新しい順に表示する
+const videosCompanies = companiesNewestFirst.filter((c) => c.videoUrl && !c.hidden);
 
 function VideoCard({ company }: { company: typeof companies[number] }) {
   const [playing, setPlaying] = useState(false);
+  // 動画の冒頭を切り出したサムネイル。無い場合は詳細ページの画像にフォールバックする
+  const [thumb, setThumb] = useState(`/images/videos/${company.id}.jpg`);
 
   return (
     <div className="bg-white rounded-[4px] overflow-hidden shadow-sm">
@@ -16,16 +19,19 @@ function VideoCard({ company }: { company: typeof companies[number] }) {
         {playing ? (
           <video
             className="w-full h-full object-cover"
-            src={`/videos/${company.id}.mp4`}
+            src={company.videoUrl}
+            poster={thumb}
             autoPlay
             controls
             playsInline
           />
         ) : (
           <>
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: `url('${company.image}')` }}
+            <img
+              className="w-full h-full object-cover"
+              src={thumb}
+              alt={`${company.name} ${company.president}`}
+              onError={() => setThumb(company.image)}
             />
             <button
               onClick={() => setPlaying(true)}
