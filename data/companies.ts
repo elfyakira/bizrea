@@ -20,6 +20,7 @@ export interface Company {
   videoId: string;
   videoUrl?: string;
   presidentImage?: string;
+  affiliation?: string; // 企業名の下に添える所属など（例: nobodyknows＋ 所属メンバー）
   imagePosition?: string;
   listImage?: string;
   hidden?: boolean; // true の場合、一覧カードに表示しない（データは保持）
@@ -650,11 +651,12 @@ export const companies: Company[] = [
   {
     id: "norida-garden",
     name: "noridaGARDEN&co",
+    affiliation: "nobodyknows＋ 所属メンバー",
     industry: "農業",
     region: "愛知県",
     president: "ノリ・ダ・ファンキーシビレサス",
     catchphrase: "「面白い方を選ぶ」から始まる——農業を入口に、暮らしをほんの少し豊かにする",
-    desc: "愛知県春日井市で農業を営む岡村典幸氏。さつまいもの栽培と干し芋づくり、企業向けの貸し農園を手がける。八百屋を始める同級生の誘いから農家での10年の修行を経て独立。判断の軸は「面白いか、面白くないか」。農業という入口を通じて、企業や地域の人たちと、暮らしをほんの少しだけ豊かにすることを目指している。",
+    desc: "愛知県春日井市で農業を営むノリ・ダ・ファンキーシビレサス氏。さつまいもの栽培と干し芋づくり、企業向けの貸し農園を手がける。八百屋を始める同級生の誘いから農家での10年の修行を経て独立。判断の軸は「面白いか、面白くないか」。農業という入口を通じて、企業や地域の人たちと、暮らしをほんの少しだけ豊かにすることを目指している。",
     image: "",
     heroImage: "",
     founded: "",
@@ -664,7 +666,7 @@ export const companies: Company[] = [
     url: "https://www.instagram.com/noridagarden/?hl=ja",
     recruitmentUrl: "",
     contactUrl: "https://www.instagram.com/noridagarden/?hl=ja",
-    leadText: "「お金が稼げなくても、面白い方を選ぶ」——。愛知県春日井市で農業を営む岡村典幸氏。さつまいもの栽培と干し芋づくり、そして企業向けの貸し農園を手がける。八百屋を始める同級生の誘いをきっかけに農家へ飛び込み、10年の修行を経て独立。鳶の仕事やコロナ禍といった苦しい時期も、農業へ戻るための糧に変えてきた。農業は思い通りにならない。だからこそ面白い。農業という入口を通じて、関わる人の暮らしをほんの少しだけ豊かにしたいと語る、その原点と信念に迫る。",
+    leadText: "「お金が稼げなくても、面白い方を選ぶ」——。愛知県春日井市で農業を営むノリ・ダ・ファンキーシビレサス氏。さつまいもの栽培と干し芋づくり、そして企業向けの貸し農園を手がける。八百屋を始める同級生の誘いをきっかけに農家へ飛び込み、10年の修行を経て独立。鳶の仕事やコロナ禍といった苦しい時期も、農業へ戻るための糧に変えてきた。農業は思い通りにならない。だからこそ面白い。農業という入口を通じて、関わる人の暮らしをほんの少しだけ豊かにしたいと語る、その原点と信念に迫る。",
     interviewDate: "",
     videoId: "",
     videoUrl: "https://assets.singgroup.biz/pv/bizrea_okamura.mp4",

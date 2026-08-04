@@ -114,6 +114,9 @@ export default function CasesPage() {
                         {company.industry}
                       </span>
                       <h3 className="text-[18px] font-bold text-[#222222] mt-2">{company.name}</h3>
+                      {company.affiliation && (
+                        <p className="text-[12px] text-[#999999] mt-1">{company.affiliation}</p>
+                      )}
                       <p className="text-[13px] text-[#5A5A5A] mt-1">{company.president}</p>
                       <p className="text-[14px] text-[#222222] leading-[1.6] mt-3 line-clamp-2">
                         {company.catchphrase}

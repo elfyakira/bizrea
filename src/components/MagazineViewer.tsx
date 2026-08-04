@@ -39,6 +39,8 @@ export default function MagazineViewer({ magazine, onClose }: MagazineViewerProp
   // 連続したホイール/ピンチ操作でも直前の値を正しく参照できるようにする
   const scaleRef = useRef(1);
   const offsetRef = useRef({ x: 0, y: 0 });
+  // 直近のページ送り時刻。連打がダブルクリック拡大として拾われるのを防ぐ
+  const lastNavRef = useRef(0);
 
   // 画面幅で見開き / 単ページを切り替える
   useEffect(() => {
@@ -105,6 +107,7 @@ export default function MagazineViewer({ magazine, onClose }: MagazineViewerProp
     (delta: number) => {
       const next = index + delta;
       if (next < 0 || next >= spreads.length) return;
+      lastNavRef.current = Date.now();
       setCurrent(spreads[next][0]);
       resetZoom();
     },
@@ -196,6 +199,14 @@ export default function MagazineViewer({ magazine, onClose }: MagazineViewerProp
     );
     offsetRef.current = next;
     setOffset(next);
+  };
+
+  // ページ送りボタンを素早く2回押したときに、ダブルクリック拡大が誤発火しないようにする
+  const onStageDoubleClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('button, a, input')) return;
+    // ページ送り直後（ボタンが消える・切り替わる瞬間）の2回目のクリックも無視する
+    if (Date.now() - lastNavRef.current < 500) return;
+    zoomAt(e.clientX, e.clientY, scaleRef.current > 1 ? 1 : 2);
   };
 
   const endPointer = (e: React.PointerEvent) => {
@@ -298,7 +309,7 @@ export default function MagazineViewer({ magazine, onClose }: MagazineViewerProp
         onPointerMove={onPointerMove}
         onPointerUp={endPointer}
         onPointerCancel={endPointer}
-        onDoubleClick={(e) => zoomAt(e.clientX, e.clientY, zoomed ? 1 : 2)}
+        onDoubleClick={onStageDoubleClick}
         className={`relative flex-1 min-h-0 flex items-center justify-center px-16 py-5 max-lg:px-3 max-lg:py-3 overflow-hidden touch-none select-none ${
           zoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'
         }`}

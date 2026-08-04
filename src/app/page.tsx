@@ -3,27 +3,10 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { contact } from "@/lib/site";
-import { companiesNewestFirst, getCompanyById } from "@data/companies";
+import { companiesNewestFirst } from "@data/companies";
 import LazyPresidentVideo from "@/components/LazyPresidentVideo";
-
-/* ───────── ファーストビューのマーキー表示企業 ───────── */
-// ノリさん / 竹代さん / 前野さん / ホニックさん / 松浦さん / フォレストさん
-const HERO_MARQUEE_IDS = [
-  "norida-garden",
-  "takeyo",
-  "unagi",
-  "honic",
-  "kiso",
-  "forest-toyota",
-];
-
-// 2列に並べる。下段は並び順を逆にし、速度も変えて同じ動きに見えないようにする。
-// 1セットの幅が画面幅を下回ると右端に隙間ができるため、6社を2周分並べて1セットとする
-const HERO_MARQUEE_REVERSED = [...HERO_MARQUEE_IDS].reverse();
-const HERO_MARQUEE_ROWS = [
-  { ids: [...HERO_MARQUEE_IDS, ...HERO_MARQUEE_IDS], duration: "70s" },
-  { ids: [...HERO_MARQUEE_REVERSED, ...HERO_MARQUEE_REVERSED], duration: "90s" },
-];
+import HeroMarquee from "@/components/HeroMarquee";
+import PresidentMessage from "@/components/PresidentMessage";
 
 /* ───────── カウントアップフック ───────── */
 function useCountUp(end: number, suffix: string, duration = 1200) {
@@ -122,7 +105,7 @@ export default function Home() {
   return (
     <main>
       {/* ===== セクション①: ファーストビュー ===== */}
-      <section className="relative w-full h-screen overflow-hidden bg-white">
+      <section className="relative w-full min-h-screen overflow-hidden bg-white">
         <div
           className="absolute inset-0"
           style={{
@@ -134,46 +117,11 @@ export default function Home() {
           }}
         />
 
-        {/* 代表者カードが右から左へ流れ続けるマーキー（2列） */}
-        <div className="hero-marquee relative z-10 h-full flex flex-col justify-center gap-14 max-lg:gap-8 overflow-hidden translate-y-[8%] max-lg:translate-y-[6%]">
-          {HERO_MARQUEE_ROWS.map((row, rowIndex) => (
-            /* ネイビーは1枚の帯として横一直線につながり、その上を画像が流れる */
-            <div key={rowIndex} className="bg-[#1B2D4F] py-4 max-lg:py-2.5">
-              <div
-                className="flex w-max animate-marquee-left"
-                style={{ animationDuration: row.duration }}
-              >
-                {/* 同じリストを2セット並べて途切れないループにする */}
-                {[0, 1].map((set) => (
-                  <div key={set} className="flex shrink-0" aria-hidden={set === 1}>
-                    {row.ids.map((id, i) => (
-                      <Link
-                        key={`${set}-${i}-${id}`}
-                        href={`/cases/${id}`}
-                        // 複製したセットはキーボード操作の重複を避けるためフォーカス対象外にする
-                        tabIndex={set === 1 ? -1 : undefined}
-                        className="hero-marquee-card group relative z-0 hover:z-20 block shrink-0 w-[260px] max-lg:w-[160px] px-5 max-lg:px-3"
-                      >
-                        {/* ホバー時は画像だけを拡大し、ネイビーの帯からはみ出させる */}
-                        <div className="aspect-square overflow-hidden rounded-[2px] shadow-sm transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.4] group-hover:shadow-xl">
-                          <img
-                            className="w-full h-full object-cover"
-                            src={`/images/presidents/${id}.jpg`}
-                            alt={getCompanyById(id)?.name ?? ""}
-                            width={640}
-                            height={640}
-                            decoding="async"
-                          />
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <HeroMarquee />
       </section>
+
+      {/* ===== 人物紹介（ノリ・ダ・ファンキーシビレサス氏） ===== */}
+      <PresidentMessage />
 
       {/* ===== セクション②: About Us ===== */}
       <section className="bg-[#1B2D4F] py-[120px] max-lg:py-[72px]">
@@ -264,6 +212,11 @@ export default function Home() {
                     <p className="text-[12px] max-lg:text-[11px] text-[#5A5A5A] truncate">
                       {c.name}
                     </p>
+                    {c.affiliation && (
+                      <p className="text-[12px] max-lg:text-[11px] text-[#999999] truncate">
+                        {c.affiliation}
+                      </p>
+                    )}
                     <p className="mt-1.5 text-[17px] max-lg:text-[14px] font-bold text-[#222222] leading-[1.4]">
                       {c.president}
                     </p>

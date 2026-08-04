@@ -85,6 +85,11 @@ export default async function CaseDetailPage({ params }: Props) {
           >
             {company.name}
           </h1>
+          {company.affiliation && (
+            <p className="mt-2 text-[15px] max-lg:text-[13px] text-white/70">
+              {company.affiliation}
+            </p>
+          )}
           <p className="mt-3 text-[18px] max-lg:text-[15px] text-white/80">
             {company.president}
           </p>

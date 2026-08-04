@@ -52,6 +52,11 @@ function VideoCard({ company }: { company: typeof companies[number] }) {
         <p className="text-[16px] max-lg:text-[14px] font-medium text-[#222222]">
           {company.name}
         </p>
+        {company.affiliation && (
+          <p className="mt-1 text-[12px] max-lg:text-[11px] text-[#999999]">
+            {company.affiliation}
+          </p>
+        )}
         <p className="mt-1.5 text-[13px] max-lg:text-[12px] text-[#5A5A5A]">
           {company.president}
         </p>
