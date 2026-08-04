@@ -65,21 +65,11 @@ body {
 }
 
 .animate-marquee-left {
-  animation: marquee-left 40s linear infinite;
+  animation: marquee-left 95s linear infinite;
   will-change: transform;
   /* GPU 合成レイヤーに固定してカクつきを防ぐ */
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
-}
-
-/* カーソルを乗せている列だけ停止させる（もう一方の列は流れ続ける） */
-.animate-marquee-left:hover {
-  animation-play-state: paused;
-}
-
-/* 拡大中のカードだけ合成レイヤーに載せ、列全体の再描画を避ける */
-.hero-marquee-card:hover > * {
-  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
