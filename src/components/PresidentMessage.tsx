@@ -51,9 +51,6 @@ export default function PresidentMessage() {
             <p className="relative text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em]">
               INTERVIEWER
             </p>
-            <span className="relative inline-block mt-3 bg-[#1B2D4F] text-white text-[11px] max-lg:text-[10px] font-bold tracking-[0.08em] rounded-sm px-2.5 py-1">
-              Bizrea インタビュアー
-            </span>
             <h2
               className="relative mt-4 text-[32px] max-lg:text-[22px] font-medium text-[#222222] leading-[1.6]"
               style={{ fontFamily: "'Noto Serif JP', serif" }}
