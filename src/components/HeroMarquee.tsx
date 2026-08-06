@@ -15,6 +15,11 @@ const HERO_IDS = [
   'forest-toyota',
 ];
 
+// メインビジュアルでのみ名前の上に添える所属表記（カード一覧・詳細ページには出さない）
+const HERO_AFFILIATIONS: Record<string, string> = {
+  'norida-garden': 'nobodyknows＋ 所属メンバー',
+};
+
 // 1セットの幅が画面幅を下回ると右端に隙間ができるため、6社を2周ぶん並べて1セットとする
 const SET = [...HERO_IDS, ...HERO_IDS];
 
@@ -130,7 +135,7 @@ export default function HeroMarquee() {
                     </p>
                     {/* 所属が無い企業でも同じ高さになるよう、行そのものは常に描画する */}
                     <p className="text-[11px] max-lg:text-[10px] text-white/40 truncate">
-                      {company?.affiliation ?? ' '}
+                      {HERO_AFFILIATIONS[id] ?? company?.affiliation ?? ' '}
                     </p>
                     <p className="mt-1 text-[17px] max-lg:text-[14px] font-bold text-white leading-snug truncate">
                       {company?.president}
