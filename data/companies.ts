@@ -1489,7 +1489,7 @@ export const companies: Company[] = [
     image: "",
     heroImage: "",
     founded: "",
-    address: "",
+    address: "愛知県名古屋市東区砂田橋2丁目1-58",
     business: "高校サッカー部の指導・チーム運営、地域向けサッカー教室・健康教室の開催",
     employees: "",
     url: "",
@@ -1534,6 +1534,7 @@ export const companies: Company[] = [
     companyInfo: [
       { label: "団体名", value: "名古屋高校サッカー部" },
       { label: "監督", value: "山田 武久" },
+      { label: "所在地", value: "愛知県名古屋市東区砂田橋2丁目1-58" },
       { label: "活動内容", value: "高校サッカー部の指導・チーム運営、地域向けサッカー教室・健康教室の開催" },
     ],
   },
