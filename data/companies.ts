@@ -1134,8 +1134,8 @@ export const companies: Company[] = [
   {
     id: "mainichi-shukatsu",
     name: "毎日が就活",
-    industry: "その他",
-    region: "その他",
+    industry: "メディア・SNS",
+    region: "愛知県",
     president: "古田 陽平",
     catchphrase: "一度きりの人生、咲く場所も咲き方も自分で選べ——就活発信で、誰かの一歩を後押しする",
     desc: "「毎日が就活」というアカウント名で、自身の就職活動の実体験をもとに発信を行う就活発信者。面接や自己分析のリアルな過程を等身大で伝え、就活に悩む学生の背中を押す。数字よりも視聴者一人ひとりとの信頼を大切にし、毎日届くDMに一つひとつ向き合い続けている。",
@@ -1204,6 +1204,7 @@ export const companies: Company[] = [
     companyInfo: [
       { label: "会社名", value: "ツナガルツナゲル株式会社" },
       { label: "代表者", value: "猿田 公彦" },
+      { label: "所在地", value: "名古屋市中区栄二丁目2-1" },
       { label: "アカウント名", value: "毎日が就活" },
       { label: "発信者", value: "古田 陽平" },
       { label: "事業内容", value: "SNS発信、アフィリエイト事業等" },

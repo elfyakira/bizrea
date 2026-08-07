@@ -100,7 +100,7 @@ export default function HeroMarquee() {
         className="text-[44px] max-lg:text-[26px] font-medium text-[#1B2D4F] leading-[1.4] text-center px-6"
         style={{ fontFamily: "'Noto Serif JP', serif" }}
       >
-        想いを武器にする。
+        想いをカタチにする。
       </FadeInUp>
 
       {/* 拡大したカードの上下が切れないよう、クリップ枠に余白を持たせる */}
