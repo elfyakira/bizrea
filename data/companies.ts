@@ -1417,7 +1417,7 @@ export const companies: Company[] = [
     president: "代表取締役会長 浅井 直也",
     catchphrase: "長い時間軸で未来をつくり、今までの枠を一歩越えていく",
     desc: "1960年創業、血液自動分析装置向けのバルブやポンプを主軸とする流体制御機器メーカー。「細胞から宇宙まで」を掲げ、年間約400枚の新製品図面を描き続ける。10年、20年先にプラスとなる判断こそ経営者の役割と語り、現在は宇宙でビールをつくるプロジェクトにも挑戦している。",
-    image: "",
+    image: "/images/companies/takasago-electric-president.jpg",
     heroImage: "",
     founded: "1960年",
     address: "愛知県名古屋市緑区鳴海町杜若66番地",
