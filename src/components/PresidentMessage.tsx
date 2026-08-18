@@ -6,6 +6,9 @@ import { FadeInUp } from './animations';
 
 const COMPANY_ID = 'norida-garden';
 
+// このセクションでのみ名前の上に添える所属表記（カード一覧・詳細ページには出さない）
+const AFFILIATION = 'nobodyknows＋ 所属メンバー';
+
 /**
  * メインビジュアル直下の人物紹介セクション。
  * 左に代表者の写真、右に「Message」＋言葉と紹介文を置く。
@@ -67,11 +70,9 @@ export default function PresidentMessage() {
                 Bizrea インタビュアー
               </span>
               <p className="text-[13px] max-lg:text-[12px] text-[#5A5A5A]">{company.name}</p>
-              {company.affiliation && (
-                <p className="text-[13px] max-lg:text-[12px] text-[#999999]">
-                  {company.affiliation}
-                </p>
-              )}
+              <p className="text-[13px] max-lg:text-[12px] text-[#999999]">
+                {AFFILIATION}
+              </p>
               <p className="mt-1.5 text-[20px] max-lg:text-[17px] font-bold text-[#222222]">
                 {company.president}
               </p>

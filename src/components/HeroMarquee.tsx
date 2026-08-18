@@ -103,25 +103,28 @@ export default function HeroMarquee() {
         想いをカタチにする。
       </FadeInUp>
 
-      {/* 拡大したカードの上下が切れないよう、クリップ枠に余白を持たせる */}
-      <div className="w-full overflow-hidden py-10 max-lg:py-6">
+      {/* 拡大したカードと影の上下が切れないよう、クリップ枠に余白を持たせる。
+          余白ぶんは負のマージンで打ち消し、前後の間隔は元のまま（上下40px / SP 24px）に見せる */}
+      <div className="w-full overflow-hidden py-32 max-lg:py-28 -my-[88px]">
         <div ref={trackRef} className="flex w-max items-center animate-marquee-left">
         {/* 同じセットを2つ並べて途切れないループにする */}
         {[0, 1].map((set) => (
           <div key={set} className="flex items-center shrink-0" aria-hidden={set === 1}>
             {SET.map((id, i) => {
               const company = getCompanyById(id);
+              const affiliation = HERO_AFFILIATIONS[id] ?? company?.affiliation;
               return (
                 <Link
                   key={`${set}-${i}`}
                   data-hero-card
                   href={`/cases/${id}`}
                   tabIndex={set === 1 ? -1 : undefined}
-                  className="relative shrink-0 block mx-9 max-lg:mx-5 w-[300px] max-lg:w-[190px] bg-[#1B2D4F] rounded-[6px] overflow-hidden shadow-[0_12px_32px_rgba(27,45,79,0.18)] will-change-transform"
+                  className="relative shrink-0 block mx-9 max-lg:mx-5 w-[300px] max-lg:w-[190px] rounded-[6px] overflow-hidden shadow-[0_12px_32px_rgba(27,45,79,0.18)] will-change-transform"
                 >
-                  <div className="aspect-square overflow-hidden">
+                  {/* 拡大時に画像の角がカードの角丸からはみ出さないよう、画像側にも同じ角丸をかける */}
+                  <div className="aspect-square overflow-hidden rounded-t-[6px]">
                     <img
-                      className="w-full h-full object-cover"
+                      className="block w-full h-full object-cover rounded-t-[6px] [backface-visibility:hidden]"
                       src={`/images/presidents/${id}.jpg`}
                       alt={company?.name ?? ''}
                       width={640}
@@ -129,14 +132,23 @@ export default function HeroMarquee() {
                       decoding="async"
                     />
                   </div>
-                  <div className="px-4 py-4 max-lg:px-3 max-lg:py-3">
+                  {/* 所属行を詰めたぶんは下の余白で補い、カードの高さはノリさんのカードと揃える */}
+                  <div
+                    className={`bg-[#1B2D4F] px-4 pt-4 max-lg:px-3 max-lg:pt-3 ${
+                      affiliation ? 'pb-4 max-lg:pb-3' : 'pb-6 max-lg:pb-5'
+                    }`}
+                  >
                     <p className="text-[11px] max-lg:text-[10px] text-white/55 truncate">
                       {company?.name}
                     </p>
-                    {/* 所属が無い企業でも同じ高さになるよう、行そのものは常に描画する */}
-                    <p className="text-[11px] max-lg:text-[10px] text-white/40 truncate">
-                      {HERO_AFFILIATIONS[id] ?? company?.affiliation ?? ' '}
-                    </p>
+                    {/* 所属がある企業（ノリさん）だけ行を出し、無い企業は社名と氏名の間隔を少し詰める */}
+                    {affiliation ? (
+                      <p className="text-[11px] max-lg:text-[10px] text-white/40 truncate">
+                        {affiliation}
+                      </p>
+                    ) : (
+                      <div className="h-2 max-lg:h-1.5" aria-hidden />
+                    )}
                     <p className="mt-1 text-[17px] max-lg:text-[14px] font-bold text-white leading-snug truncate">
                       {company?.president}
                     </p>
