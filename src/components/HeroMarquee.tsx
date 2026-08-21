@@ -92,16 +92,39 @@ export default function HeroMarquee() {
   return (
     <div className="relative z-10 min-h-screen flex flex-col items-center justify-center gap-20 max-lg:gap-10 pt-40 max-lg:pt-28 pb-28 max-lg:pb-16">
       {/* ページを開いたときにふわっと出す */}
-      <FadeInUp
-        as="h1"
-        delay={200}
-        duration={1200}
-        distance={24}
-        className="text-[44px] max-lg:text-[26px] font-medium text-[#1B2D4F] leading-[1.4] text-center px-6"
-        style={{ fontFamily: "'Noto Serif JP', serif" }}
-      >
-        想いをカタチにする。
-      </FadeInUp>
+      <div className="flex flex-col items-center gap-6 max-lg:gap-4">
+        <FadeInUp
+          as="h1"
+          delay={200}
+          duration={1200}
+          distance={24}
+          className="text-[44px] max-lg:text-[26px] font-medium text-[#1B2D4F] leading-[1.4] text-center px-6"
+          style={{ fontFamily: "'Noto Serif JP', serif" }}
+        >
+          {/* SPでは「代表者の想いを、」で改行して2行に収める */}
+          代表者の想いを、<br className="lg:hidden" />伝わるコンテンツに。
+        </FadeInUp>
+
+        {/* 提供コンテンツの並び。区切りの × だけ少し薄くして単語を読みやすくする */}
+        <FadeInUp
+          as="p"
+          delay={500}
+          duration={1200}
+          distance={16}
+          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 px-6 text-[13px] max-lg:text-[10px] font-medium tracking-[0.18em] text-[#1B2D4F]/70 text-center"
+        >
+          {['INTERVIEW', 'MAGAZINE', 'MOVIE', 'SNS', 'WEB'].map((label, i) => (
+            <span key={label} className="flex items-center gap-x-3">
+              {i > 0 && (
+                <span className="text-[#1B2D4F]/35" aria-hidden>
+                  &times;
+                </span>
+              )}
+              {label}
+            </span>
+          ))}
+        </FadeInUp>
+      </div>
 
       {/* 拡大したカードと影の上下が切れないよう、クリップ枠に余白を持たせる。
           余白ぶんは負のマージンで打ち消し、前後の間隔は元のまま（上下40px / SP 24px）に見せる */}
