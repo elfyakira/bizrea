@@ -1668,7 +1668,7 @@ export const companies: Company[] = [
     ],
     photos: [],
     companyInfo: [
-      { label: "事業所名", value: "児童発達支援「和音」" },
+      { label: "事業所名", value: "株式会社ムーサ\n児童発達支援「和音」" },
       { label: "代表者", value: "長谷川 高徳" },
       { label: "所在地", value: "愛知県春日井市稲口町3丁目6-6-2" },
       { label: "事業内容", value: "障害児通所支援事業　児童発達支援" },
