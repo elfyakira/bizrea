@@ -111,12 +111,12 @@ export default function HeroMarquee() {
           delay={500}
           duration={1200}
           distance={16}
-          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 px-6 text-[13px] max-lg:text-[10px] font-medium tracking-[0.18em] text-[#1B2D4F]/70 text-center"
+          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 px-6 text-[15px] max-lg:text-[11px] font-medium tracking-[0.18em] text-[#1B2D4F]/85 text-center"
         >
           {['INTERVIEW', 'MAGAZINE', 'MOVIE', 'SNS', 'WEB'].map((label, i) => (
             <span key={label} className="flex items-center gap-x-3">
               {i > 0 && (
-                <span className="text-[#1B2D4F]/35" aria-hidden>
+                <span className="text-[#1B2D4F]/45" aria-hidden>
                   &times;
                 </span>
               )}
