@@ -93,7 +93,7 @@ export default function PresidentMessage() {
             <div className="mt-8 max-lg:mt-6">
               <Link
                 href={`/cases/${company.id}`}
-                className="group inline-flex items-center gap-6 max-lg:gap-4 bg-[#1E4D9E] text-white text-[15px] max-lg:text-[14px] font-bold tracking-[0.14em] px-8 py-4 max-lg:px-6 max-lg:py-[14px] hover:bg-[#173C7C] transition-colors duration-200"
+                className="group inline-flex items-center gap-6 max-lg:gap-4 bg-accent text-white text-[15px] max-lg:text-[14px] font-bold tracking-[0.14em] px-8 py-4 max-lg:px-6 max-lg:py-[14px] rounded-full hover:bg-accent-dark transition-colors duration-200"
               >
                 インタビューを読む
                 {/* 丸囲みの矢印。ホバーで少しだけ右に出す */}
