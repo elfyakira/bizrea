@@ -85,7 +85,7 @@ export default function PresidentMessage() {
             </p>
 
             <h2
-              className="relative mt-8 max-lg:mt-6 pt-8 max-lg:pt-6 border-t border-[#E0DDD8] text-[32px] max-lg:text-[22px] font-medium text-[#222222] leading-[1.6]"
+              className="relative mt-8 max-lg:mt-6 pt-8 max-lg:pt-6 border-t border-[#E0DDD8] text-[28px] max-lg:text-[20px] font-medium text-[#222222] leading-[1.6]"
               style={{ fontFamily: "'Noto Serif JP', serif" }}
             >
               {quote}
