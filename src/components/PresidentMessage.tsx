@@ -62,8 +62,13 @@ export default function PresidentMessage() {
 
             {/* 肩書き → 氏名の順で先に見せ、インタビュアーであることを主役にする */}
             <div className="relative flex items-center gap-4">
-              <span className="inline-flex items-center shrink-0 bg-accent text-white text-[18px] max-lg:text-[15px] font-bold tracking-[0.12em] rounded-full px-6 py-2.5 max-lg:px-5 max-lg:py-2">
+              {/* 吹き出し型のバッジ。左下にしっぽを付ける */}
+              <span className="relative inline-flex items-center shrink-0 bg-accent text-white text-[18px] max-lg:text-[15px] font-bold tracking-[0.12em] rounded-[12px] px-6 py-2.5 max-lg:px-5 max-lg:py-2">
                 Bizrea インタビュアー
+                <span
+                  aria-hidden
+                  className="absolute left-6 max-lg:left-5 top-full w-0 h-0 border-t-[10px] max-lg:border-t-[8px] border-t-accent border-r-[10px] max-lg:border-r-[8px] border-r-transparent"
+                />
               </span>
               <span className="h-px flex-1 bg-accent/25" aria-hidden />
             </div>
