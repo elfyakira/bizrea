@@ -73,14 +73,14 @@ export default function PresidentMessage() {
               <span className="h-px flex-1 bg-accent/25" aria-hidden />
             </div>
 
-            <p className="relative mt-5 max-lg:mt-4 text-[13px] max-lg:text-[12px] text-[#5A5A5A]">
+            <p className="relative mt-5 max-lg:mt-4 text-[15px] max-lg:text-[13px] text-[#5A5A5A]">
               {company.name}
             </p>
-            <p className="relative text-[13px] max-lg:text-[12px] text-[#999999]">{AFFILIATION}</p>
-            <p className="relative mt-2 text-[28px] max-lg:text-[20px] font-bold text-[#222222] leading-snug">
+            <p className="relative text-[15px] max-lg:text-[13px] text-[#999999]">{AFFILIATION}</p>
+            <p className="relative mt-2 text-[32px] max-lg:text-[23px] font-bold text-[#222222] leading-snug">
               {company.president}
             </p>
-            <p className="relative mt-3 text-[14px] max-lg:text-[13px] text-[#5A5A5A]">
+            <p className="relative mt-3 text-[16px] max-lg:text-[14px] text-[#5A5A5A]">
               代表者への取材を担当しています。
             </p>
 
