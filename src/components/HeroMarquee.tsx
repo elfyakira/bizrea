@@ -136,13 +136,14 @@ export default function HeroMarquee() {
             {SET.map((id, i) => {
               const company = getCompanyById(id);
               const affiliation = HERO_AFFILIATIONS[id] ?? company?.affiliation;
+              // SPは1枚で画面がほぼ埋まる幅（80vw）にする。タブレット幅で大きくなりすぎないよう360pxで頭打ち
               return (
                 <Link
                   key={`${set}-${i}`}
                   data-hero-card
                   href={`/cases/${id}`}
                   tabIndex={set === 1 ? -1 : undefined}
-                  className="relative shrink-0 block mx-9 max-lg:mx-5 w-[300px] max-lg:w-[240px] rounded-[6px] overflow-hidden shadow-[0_12px_32px_rgba(27,45,79,0.18)] will-change-transform"
+                  className="relative shrink-0 block mx-9 max-lg:mx-3 w-[300px] max-lg:w-[80vw] max-lg:max-w-[360px] rounded-[6px] overflow-hidden shadow-[0_12px_32px_rgba(27,45,79,0.18)] will-change-transform"
                 >
                   {/* 拡大時に画像の角がカードの角丸からはみ出さないよう、画像側にも同じ角丸をかける */}
                   <div className="aspect-square overflow-hidden rounded-t-[6px]">
