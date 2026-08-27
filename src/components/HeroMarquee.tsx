@@ -115,8 +115,12 @@ export default function HeroMarquee() {
         >
           {['INTERVIEW', 'MAGAZINE', 'MOVIE', 'SNS', 'WEB'].map((label, i) => (
             <span key={label} className="flex items-center gap-x-3">
+              {/* SPでは SNS から2行目に折り返すため、行頭に来る SNS の × だけ隠す */}
               {i > 0 && (
-                <span className="text-[#1B2D4F]/45" aria-hidden>
+                <span
+                  className={`text-[#1B2D4F]/45 ${label === 'SNS' ? 'max-lg:hidden' : ''}`}
+                  aria-hidden
+                >
                   &times;
                 </span>
               )}
