@@ -142,7 +142,7 @@ export default function HeroMarquee() {
                   data-hero-card
                   href={`/cases/${id}`}
                   tabIndex={set === 1 ? -1 : undefined}
-                  className="relative shrink-0 block mx-9 max-lg:mx-5 w-[300px] max-lg:w-[190px] rounded-[6px] overflow-hidden shadow-[0_12px_32px_rgba(27,45,79,0.18)] will-change-transform"
+                  className="relative shrink-0 block mx-9 max-lg:mx-5 w-[300px] max-lg:w-[240px] rounded-[6px] overflow-hidden shadow-[0_12px_32px_rgba(27,45,79,0.18)] will-change-transform"
                 >
                   {/* 拡大時に画像の角がカードの角丸からはみ出さないよう、画像側にも同じ角丸をかける */}
                   <div className="aspect-square overflow-hidden rounded-t-[6px]">
@@ -157,22 +157,22 @@ export default function HeroMarquee() {
                   </div>
                   {/* 所属行を詰めたぶんは下の余白で補い、カードの高さはノリさんのカードと揃える */}
                   <div
-                    className={`bg-[#1B2D4F] px-4 pt-4 max-lg:px-3 max-lg:pt-3 ${
-                      affiliation ? 'pb-4 max-lg:pb-3' : 'pb-6 max-lg:pb-5'
+                    className={`bg-[#1B2D4F] px-4 pt-4 ${
+                      affiliation ? 'pb-4' : 'pb-6'
                     }`}
                   >
-                    <p className="text-[11px] max-lg:text-[10px] text-white/55 truncate">
+                    <p className="text-[11px] text-white/55 truncate">
                       {company?.name}
                     </p>
                     {/* 所属がある企業（ノリさん）だけ行を出し、無い企業は社名と氏名の間隔を少し詰める */}
                     {affiliation ? (
-                      <p className="text-[11px] max-lg:text-[10px] text-white/40 truncate">
+                      <p className="text-[11px] text-white/40 truncate">
                         {affiliation}
                       </p>
                     ) : (
-                      <div className="h-2 max-lg:h-1.5" aria-hidden />
+                      <div className="h-2" aria-hidden />
                     )}
-                    <p className="mt-1 text-[17px] max-lg:text-[14px] font-bold text-white leading-snug truncate">
+                    <p className="mt-1 text-[17px] font-bold text-white leading-snug truncate">
                       {company?.president}
                     </p>
                   </div>
