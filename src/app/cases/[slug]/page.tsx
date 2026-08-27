@@ -37,6 +37,11 @@ const industryColors: Record<string, string> = {
   "飲食業": "bg-[#C0453B] text-white",
 };
 
+// 詳細ページの見出しだけ、一覧カードとは別の表記にする企業
+const HERO_TITLES: Record<string, string> = {
+  nobodyknows: "nobodyknows＋",
+};
+
 export default async function CaseDetailPage({ params }: Props) {
   const { slug } = await params;
   const company = getCompanyById(slug);
@@ -46,7 +51,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["sorairo", "prelune", "paluu", "kiso", "norida-garden", "prizeout", "waon", "hapikura"].includes(company.id);
+  const hideApplyButton = ["sorairo", "prelune", "paluu", "kiso", "norida-garden", "nobodyknows", "prizeout", "waon", "hapikura"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
@@ -83,7 +88,7 @@ export default async function CaseDetailPage({ params }: Props) {
             className="text-[36px] max-lg:text-[24px] font-medium text-white leading-[1.4]"
             style={{ fontFamily: "'Noto Serif JP', serif" }}
           >
-            {company.name}
+            {HERO_TITLES[company.id] ?? company.name}
           </h1>
           {company.affiliation && (
             <p className="mt-2 text-[15px] max-lg:text-[13px] text-white/70">
