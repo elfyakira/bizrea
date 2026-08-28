@@ -1676,7 +1676,7 @@ export const companies: Company[] = [
   },
   {
     id: "teara",
-    name: "女優系イラストレーター TEARA",
+    name: "女優系イラストレーター",
     industry: "イラストレーター",
     region: "愛知県",
     president: "前田 奈子",
