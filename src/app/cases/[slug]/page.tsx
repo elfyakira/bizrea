@@ -202,7 +202,7 @@ export default async function CaseDetailPage({ params }: Props) {
                     </div>
                   )}
 
-                  <h2 id={`chapter-${ci}`} className="text-[22px] max-lg:text-[18px] font-bold text-[#222222] mt-20 max-lg:mt-16 mb-5 max-lg:mb-4 first:mt-0 scroll-mt-28">
+                  <h2 id={`chapter-${ci}`} className={`text-[22px] max-lg:text-[18px] font-bold text-[#222222] mb-5 max-lg:mb-4 scroll-mt-28 ${ci > 0 ? "mt-10" : ""}`}>
                     {chapter.title}
                   </h2>
 
