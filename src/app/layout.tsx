@@ -9,7 +9,8 @@ import PageViewTracker from "@/components/PageViewTracker";
 import ClickTracker from "@/components/ClickTracker";
 import { seo, company, contact, locations, images } from "@/lib/site";
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-B6Z4SWP7YJ";
 
 // JSON-LD構造化データ
 const jsonLd = {
