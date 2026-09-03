@@ -1425,7 +1425,7 @@ export const companies: Company[] = [
     heroImage: "",
     founded: "1959年",
     address: "愛知県名古屋市緑区鳴海町杜若66番地",
-    business: "ソレノイドバルブ（電磁弁）およびポンプを中心とする流体制御機器等の設計・製造・販売",
+    business: "バルブやポンプなど流体制御機器の開発、設計、製造、販売",
     employees: "",
     url: "",
     recruitmentUrl: "https://takasago-elec.co.jp/recruit/",
