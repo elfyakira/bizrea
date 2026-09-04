@@ -886,6 +886,7 @@ export const companies: Company[] = [
     leadText: "「健康を核に、未来をつくる」を掲げ、企業で働く人の健康を支える株式会社Vital core。代表の野口貴弘氏は、作業療法士として10年以上病院で患者と向き合う中で医療の限界を感じ、「もっと早い段階で健康について伝えられる人が必要だ」と起業を決意した。リハビリで培った身体の分析力を活かし、従業員と一緒に続けられる健康づくりに取り組む。その原点と、一人ひとりを大切にする信念に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_noguchi.mp4",
     chapters: [
       {
         title: "「医療の限界」から起業へ——きっかけと決意",
