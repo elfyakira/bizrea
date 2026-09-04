@@ -82,6 +82,11 @@ export const metadata: Metadata = {
     description: seo.defaultDescription,
     images: ["/opengraph-image"],
   },
+
+  // サイト所有権の確認(Google Search Console)
+  verification: {
+    google: "YIFJ3qWLbTuosl5ag16XSex_vIIPv0K6PhQuk3lvyvY",
+  },
 };
 
 // Viewport
