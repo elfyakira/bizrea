@@ -1154,6 +1154,7 @@ export const companies: Company[] = [
     leadText: "「バズりたい」——そんな気持ちから始めたSNS発信は、いつしか誰かの人生を支えるものになった。就職活動では、SNS活動をしていることが引っかかり第一志望の企業に落ちるという挫折を経験。それでも自己分析に立ち返り、「自分がワクワクするのはSNSだ」と気づいた。数字よりも信頼を、そして視聴者の立場に立ち続けることを信念に発信を続ける「毎日が就活」の古田陽平氏。その原点と、これから描く景色に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_furuta.mp4",
     chapters: [
       {
         title: "最初は「人と違うことをしたい」という思いから始まった",
