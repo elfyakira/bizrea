@@ -42,6 +42,26 @@ const HERO_TITLES: Record<string, string> = {
   nobodyknows: "nobodyknows＋",
 };
 
+// 本文中の URL をリンクにして表示する（末尾の句読点や閉じ括弧はリンクに含めない）
+const URL_PATTERN = /(https?:\/\/[^\s、。）」』]+)/g;
+function renderTextWithLinks(text: string) {
+  return text.split(URL_PATTERN).map((part, i) =>
+    /^https?:\/\//.test(part) ? (
+      <a
+        key={i}
+        href={part}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-[#1B2D4F] underline underline-offset-2 hover:text-accent transition-colors duration-200 break-all"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    )
+  );
+}
+
 export default async function CaseDetailPage({ params }: Props) {
   const { slug } = await params;
   const company = getCompanyById(slug);
@@ -211,13 +231,13 @@ export default async function CaseDetailPage({ params }: Props) {
                       if (paragraph.startsWith("——")) {
                         return (
                           <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] font-bold text-[#1B2D4F]">
-                            {paragraph}
+                            {renderTextWithLinks(paragraph)}
                           </p>
                         );
                       }
                       return (
                         <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
-                          {paragraph}
+                          {renderTextWithLinks(paragraph)}
                         </p>
                       );
                     })}
