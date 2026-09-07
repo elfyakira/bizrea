@@ -871,10 +871,10 @@ export const companies: Company[] = [
     name: "株式会社Vital core",
     industry: "健康経営支援事業",
     region: "三重県",
-    president: "代表取締役 野口 貴弘",
+    president: "取締役 野口 貴弘",
     catchphrase: "健康を核に、未来をつくる。——一人ひとりを大切にしながら、企業で働く人の健康を支える",
     desc: "作業療法士として10年以上病院に勤務した経験を持つ代表が立ち上げた、企業で働く人の健康を支える事業。腰痛や肩こりなどの不調を広い意味での「職業病」と捉え、従業員と一緒にセルフプログラムをつくり、継続的な健康づくりを進める。",
-    image: "",
+    image: "/images/videos/vital-core.jpg",
     heroImage: "",
     founded: "",
     address: "三重県四日市市栄町1-11 くすの木ビル",
@@ -886,6 +886,7 @@ export const companies: Company[] = [
     leadText: "「健康を核に、未来をつくる」を掲げ、企業で働く人の健康を支える株式会社Vital core。代表の野口貴弘氏は、作業療法士として10年以上病院で患者と向き合う中で医療の限界を感じ、「もっと早い段階で健康について伝えられる人が必要だ」と起業を決意した。リハビリで培った身体の分析力を活かし、従業員と一緒に続けられる健康づくりに取り組む。その原点と、一人ひとりを大切にする信念に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_noguchi.mp4",
     chapters: [
       {
         title: "「医療の限界」から起業へ——きっかけと決意",
@@ -1492,7 +1493,7 @@ export const companies: Company[] = [
     president: "監督 山田 武久",
     catchphrase: "「成長至上主義」で、一人ひとりの可能性を伸ばす——名古屋高校サッカー部が目指す、勝利と個の成長",
     desc: "全国高校サッカー選手権大会でベスト8に進出した名古屋高校サッカー部。160人の部員を抱えながら、「勝利至上主義」ではなく「成長至上主義」を掲げ、フィジカル測定や血液検査による個の見える化、海外遠征、地域のサッカー教室まで、勝利と個の成長の両方を追い求めている。",
-    image: "",
+    image: "/images/videos/nagoya-hs-soccer.jpg",
     heroImage: "",
     founded: "",
     address: "愛知県名古屋市東区砂田橋2丁目1-58",
@@ -1504,6 +1505,7 @@ export const companies: Company[] = [
     leadText: "「勝利至上主義」ではなく「成長至上主義」——名古屋高校サッカー部が掲げる言葉である。昨日よりも今日、今日よりも明日。一人ひとりが少しずつ前に進むことを主眼に置きながら、勝ちにもこだわり抜く。夜間定時制高校での教員経験から得た「下から支える」指導観、選手一人ひとりを数値化して向き合う個の育成、そして地域に愛されるチームづくり。文武両道で日本一を目指すチームの、その原点とこれからに迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_yamada.mp4",
     chapters: [
       {
         title: "英語とサッカー、どちらも「世界で通用する言語」だった",

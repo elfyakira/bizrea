@@ -9,8 +9,9 @@ const videosCompanies = companiesNewestFirst.filter((c) => c.videoUrl && !c.hidd
 
 function VideoCard({ company }: { company: typeof companies[number] }) {
   const [playing, setPlaying] = useState(false);
-  // 動画の冒頭を切り出したサムネイル。無い場合は詳細ページの画像にフォールバックする
-  const [thumb, setThumb] = useState(`/images/videos/${company.id}.jpg`);
+  // 動画の冒頭を切り出したサムネイル。無い場合は詳細ページの画像、それも無い場合は背景色だけにする
+  // （空文字を src に入れると画像リンク切れの表示になるため、null にして img ごと出さない）
+  const [thumb, setThumb] = useState<string | null>(`/images/videos/${company.id}.jpg`);
 
   return (
     <div className="bg-white rounded-[4px] overflow-hidden shadow-sm">
@@ -20,19 +21,21 @@ function VideoCard({ company }: { company: typeof companies[number] }) {
           <video
             className="w-full h-full object-cover"
             src={company.videoUrl}
-            poster={thumb}
+            poster={thumb ?? undefined}
             autoPlay
             controls
             playsInline
           />
         ) : (
           <>
-            <img
-              className="w-full h-full object-cover"
-              src={thumb}
-              alt={`${company.name} ${company.president}`}
-              onError={() => setThumb(company.image)}
-            />
+            {thumb && (
+              <img
+                className="w-full h-full object-cover"
+                src={thumb}
+                alt={`${company.name} ${company.president}`}
+                onError={() => setThumb(thumb === company.image ? null : company.image || null)}
+              />
+            )}
             <button
               onClick={() => setPlaying(true)}
               className="absolute inset-0 flex items-center justify-center group"
