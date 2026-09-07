@@ -52,7 +52,7 @@ function renderTextWithLinks(text: string) {
         href={part}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-[#222222] underline underline-offset-2 hover:text-accent transition-colors duration-200 break-all"
+        className="text-[#2F4C82] underline underline-offset-2 hover:text-accent transition-colors duration-200 break-all"
       >
         {part}
       </a>
