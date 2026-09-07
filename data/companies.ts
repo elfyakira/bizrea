@@ -1143,7 +1143,7 @@ export const companies: Company[] = [
     president: "古田 陽平",
     catchphrase: "一度きりの人生、咲く場所も咲き方も自分で選べ——就活発信で、誰かの一歩を後押しする",
     desc: "「毎日が就活」というアカウント名で、自身の就職活動の実体験をもとに発信を行う就活発信者。面接や自己分析のリアルな過程を等身大で伝え、就活に悩む学生の背中を押す。数字よりも視聴者一人ひとりとの信頼を大切にし、毎日届くDMに一つひとつ向き合い続けている。",
-    image: "",
+    image: "/images/videos/mainichi-shukatsu.jpg",
     heroImage: "",
     founded: "",
     address: "",
