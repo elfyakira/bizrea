@@ -1685,7 +1685,7 @@ export const companies: Company[] = [
     president: "前田 奈子",
     catchphrase: "「可愛い」は、自分で作れる——感情を、目に見える形に。",
     desc: "春日井市を拠点に活動する「女優系イラストレーター」。企業のオリジナルキャラクターや店舗の看板イラスト、書籍の表紙・挿絵などを手掛けながら、俳優・モデルとしても活動する。イラストと演技、二つの「表現」で人の感情を形にしている。",
-    image: "/images/companies/teara-president.jpg",
+    image: "",
     heroImage: "",
     founded: "",
     address: "愛知県春日井市",
