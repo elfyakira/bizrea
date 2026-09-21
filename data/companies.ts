@@ -1741,6 +1741,7 @@ export const companies: Company[] = [
     ],
     photos: [],
     companyInfo: [
+      { label: "企業名", value: "tearLo" },
       { label: "代表者", value: "前田 奈子" },
       { label: "所在地", value: "愛知県春日井市" },
       { label: "活動内容", value: "オリジナルキャラクターイラスト制作・俳優" },
