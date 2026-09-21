@@ -1917,8 +1917,8 @@ export const companies: Company[] = [
     image: "",
     heroImage: "",
     founded: "",
-    address: "愛知県名古屋市千種区今池1丁目2番5号",
-    business: "タレント育成・マネージメント事業、キャスティング事業、エンタメコンテンツ企画・制作・運営事業、代理店業務、スポーツ×エンターテイメント事業",
+    address: "〒464-0850 名古屋市千種区今池1-2-5",
+    business: "エンタメ事業",
     employees: "",
     url: "https://tykpromotion.com/",
     contactUrl: "https://tykpromotion.com/contact/",
@@ -1982,9 +1982,9 @@ export const companies: Company[] = [
     photos: [],
     companyInfo: [
       { label: "企業名", value: "株式会社TYK Promotion" },
-      { label: "代表者", value: "YO!YO!YOSUKE" },
-      { label: "所在地", value: "愛知県名古屋市千種区今池1丁目2番5号" },
-      { label: "事業内容", value: "タレント育成・マネージメント事業、キャスティング事業、エンタメコンテンツ企画・制作・運営事業、代理店業務、スポーツ×エンターテイメント事業" },
+      { label: "代表者", value: "臼井 陽介" },
+      { label: "所在地", value: "〒464-0850 名古屋市千種区今池1-2-5" },
+      { label: "事業内容", value: "エンタメ事業" },
     ],
   },
 ];
