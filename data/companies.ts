@@ -1741,7 +1741,6 @@ export const companies: Company[] = [
     ],
     photos: [],
     companyInfo: [
-      { label: "屋号", value: "TEARA（ティアラ）" },
       { label: "代表者", value: "前田 奈子" },
       { label: "活動拠点", value: "愛知県春日井市" },
       { label: "活動内容", value: "キャラクターイラスト制作（企業オリジナルキャラクター、店舗看板イラスト、書籍の表紙・挿絵など）、俳優・モデル業" },
