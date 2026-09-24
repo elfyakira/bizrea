@@ -2067,8 +2067,8 @@ export const companies: Company[] = [
     image: "",
     heroImage: "",
     founded: "",
-    address: "愛知県春日井市鳥居松町",
-    business: "個人向けキャリア支援「キャリroom」（転職・独立・副業・キャリアデザイン）、企業向け「キャリア・ブリッジ」（従業員の成長・対話を支える仕組みづくり）、メンタルヘルス・健康経営・コミュニケーションをテーマとした講演・研修",
+    address: "愛知県春日井市鳥居松町6-50-2三原ビル鳥居松301",
+    business: "講師業・キャリアコンサルタント",
     employees: "",
     url: "https://www.pis-aqua.com/",
     contactUrl: "https://www.pis-aqua.com/",
@@ -2121,8 +2121,8 @@ export const companies: Company[] = [
     companyInfo: [
       { label: "企業名", value: "PisAQUA" },
       { label: "代表者", value: "藤井 恵理子" },
-      { label: "所在地", value: "愛知県春日井市鳥居松町" },
-      { label: "事業内容", value: "個人向けキャリア支援「キャリroom」、企業向けキャリア支援「キャリア・ブリッジ」、メンタルヘルス・健康経営・コミュニケーションをテーマとした講演・研修" },
+      { label: "所在地", value: "愛知県春日井市鳥居松町6-50-2三原ビル鳥居松301" },
+      { label: "事業内容", value: "講師業・キャリアコンサルタント" },
     ],
   },
 ];
