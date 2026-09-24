@@ -24,6 +24,16 @@ export interface Company {
   imagePosition?: string;
   listImage?: string;
   hidden?: boolean; // true の場合、一覧カードに表示しない（データは保持）
+  // 詳細ページを複数人分のタブに分けて表示する（未指定なら従来どおり1本の記事）
+  personTabs?: {
+    label: string; // タブに出す名前
+    image?: string;
+    imagePosition?: string;
+    videoUrl?: string;
+    chapters?: { title: string; content: string }[];
+    quotes?: string[];
+    photos?: { src: string; caption: string }[];
+  }[];
   chapters: {
     title: string;
     content: string;
@@ -2123,6 +2133,54 @@ export const companies: Company[] = [
       { label: "代表者", value: "藤井 恵理子" },
       { label: "所在地", value: "愛知県春日井市鳥居松町6-50-2三原ビル鳥居松301" },
       { label: "事業内容", value: "講師業・キャリアコンサルタント" },
+    ],
+  },
+  {
+    id: "p-loco",
+    name: "P-Loco",
+    industry: "その他",
+    region: "愛知県",
+    president: "準備中",
+    catchphrase: "",
+    desc: "（準備中）",
+    image: "",
+    heroImage: "",
+    founded: "",
+    address: "",
+    business: "",
+    employees: "",
+    url: "",
+    recruitmentUrl: "",
+    leadText: "（準備中）",
+    interviewDate: "",
+    videoId: "",
+    chapters: [],
+    quotes: [],
+    photos: [],
+    companyInfo: [
+      { label: "企業名", value: "P-Loco" },
+    ],
+    personTabs: [
+      {
+        label: "1人目",
+        chapters: [
+          {
+            title: "（準備中）",
+            content: "インタビュー本文は準備中です。",
+          },
+        ],
+        quotes: [],
+      },
+      {
+        label: "2人目",
+        chapters: [
+          {
+            title: "（準備中）",
+            content: "インタビュー本文は準備中です。",
+          },
+        ],
+        quotes: [],
+      },
     ],
   },
 ];

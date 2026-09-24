@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { companies, getCompanyById } from "@data/companies";
+import CaseTabs from "@/components/CaseTabs";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -71,7 +72,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara"].includes(company.id);
+  const hideApplyButton = ["p-loco", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
@@ -82,6 +83,168 @@ export default async function CaseDetailPage({ params }: Props) {
   const applyToForm = ["takeyo"].includes(company.id);
   const applyHref = applyToForm ? "/contact" : company.recruitmentUrl || "#";
   const applyTarget = applyToForm ? undefined : "_blank";
+
+  type ArticleSource = {
+    image: string;
+    imagePosition?: string;
+    videoUrl?: string;
+    videoId: string;
+    chapters: { title: string; content: string }[];
+    quotes: string[];
+    photos: { src: string; caption: string }[];
+  };
+
+  // 記事本文（動画/写真＋チャプター＋ボタン）。タブがある企業は人数分描画する
+  const renderArticle = (src: ArticleSource, idPrefix: string) => (
+    <>
+          {/* 動画 / ヒーロー画像 */}
+          <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#1B2D4F] shadow-sm">
+            {src.videoUrl ? (
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                src={src.videoUrl}
+                poster={src.image || undefined}
+                controls
+                playsInline
+                preload="metadata"
+              />
+            ) : src.videoId ? (
+              <>
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${src.image}')` }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 max-lg:w-14 max-lg:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-white hover:scale-110 transition-all duration-200">
+                    <svg className="w-8 h-8 max-lg:w-6 max-lg:h-6 text-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </>
+            ) : src.image ? (
+              <img
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: src.imagePosition ?? "center 35%" }}
+                src={src.image}
+                alt={`${company.name} ${company.president}`}
+              />
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-white/80">
+                <svg className="w-12 h-12 max-lg:w-10 max-lg:h-10 mb-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <p className="text-[15px] max-lg:text-[13px] font-medium tracking-wider">動画準備中</p>
+              </div>
+            )}
+          </div>
+
+          {/* インタビュー記事 */}
+          <div className="mt-12 max-lg:mt-8 bg-white rounded-[4px] p-8 max-lg:p-5 shadow-sm">
+            {/* チャプター目次 */}
+            {src.chapters.length > 1 && (
+              <nav className="mb-10 max-lg:mb-8 border border-[#E0DDD8] rounded-[4px] p-5 max-lg:p-4 bg-[#F6F4F1]">
+                <p className="text-[13px] font-bold text-[#5A5A5A] mb-3">チャプターを選んで見る</p>
+                <ol className="space-y-2">
+                  {src.chapters.map((chapter, ci) => (
+                    <li key={ci}>
+                      <a
+                        href={`#${idPrefix}chapter-${ci}`}
+                        className="flex items-start gap-2 text-[14px] max-lg:text-[13px] text-[#222222] hover:text-accent transition-colors"
+                      >
+                        <span className="text-accent font-medium flex-shrink-0">{ci + 1}.</span>
+                        {chapter.title}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+
+            {src.chapters.map((chapter, ci) => (
+              <div key={ci}>
+                {ci > 0 && src.photos[ci - 1] && (
+                  <div className="my-10 max-lg:my-6">
+                    <div
+                      className="w-full aspect-[3/2] bg-[#E0DDD8] bg-cover bg-center rounded-[4px]"
+                      style={{ backgroundImage: `url('${src.photos[ci - 1].src}')` }}
+                    />
+                    <p className="mt-2 text-[13px] text-[#5A5A5A]">
+                      {src.photos[ci - 1].caption}
+                    </p>
+                  </div>
+                )}
+
+                <h2 id={`${idPrefix}chapter-${ci}`} className={`text-[22px] max-lg:text-[18px] font-bold text-[#222222] mb-5 max-lg:mb-4 scroll-mt-28 ${ci > 0 ? "mt-10" : ""}`}>
+                  {chapter.title}
+                </h2>
+
+                <div className="space-y-5 max-lg:space-y-4">
+                  {chapter.content.split("\n\n").map((paragraph, pi) => {
+                    if (paragraph.startsWith("——")) {
+                      return (
+                        <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] font-bold text-[#1B2D4F]">
+                          {renderTextWithLinks(paragraph)}
+                        </p>
+                      );
+                    }
+                    return (
+                      <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
+                        {renderTextWithLinks(paragraph)}
+                      </p>
+                    );
+                  })}
+                </div>
+
+                {src.quotes[ci] && (
+                  <blockquote className="my-10 max-lg:my-6 border-l-[3px] border-accent pl-6">
+                    <p
+                      className="text-[20px] max-lg:text-[17px] leading-[1.7] text-[#1B2D4F]"
+                      style={{ fontFamily: "'Noto Serif JP', serif" }}
+                    >
+                      &ldquo;{src.quotes[ci]}&rdquo;
+                    </p>
+                  </blockquote>
+                )}
+              </div>
+            ))}
+
+            {src.photos.length > 0 && (
+              <div className="mt-10 max-lg:mt-6">
+                <div
+                  className="w-full aspect-[3/2] bg-[#E0DDD8] bg-cover bg-center rounded-[4px]"
+                  style={{ backgroundImage: `url('${src.photos[src.photos.length - 1].src}')` }}
+                />
+                <p className="mt-2 text-[13px] text-[#5A5A5A]">
+                  {src.photos[src.photos.length - 1].caption}
+                </p>
+              </div>
+            )}
+
+            {/* 企業への問い合わせ・応募ボタン */}
+            <div className="mt-14 max-lg:mt-10 flex max-lg:flex-col gap-4">
+              <a
+                href={contactHref}
+                target={contactTarget}
+                rel="noopener noreferrer"
+                className="flex-1 text-center bg-[#1B2D4F] text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
+              >
+                この企業に問い合わせする
+              </a>
+              {!hideApplyButton && (
+                <a
+                  href={applyHref}
+                  target={applyTarget}
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center bg-accent text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+                >
+                  この企業に応募する
+                </a>
+              )}
+            </div>
+          </div>
+    </>
+  );
 
   return (
     <main>
@@ -144,152 +307,27 @@ export default async function CaseDetailPage({ params }: Props) {
 
           {/* ===== 左カラム ===== */}
           <div className="lg:flex-1 min-w-0">
-            {/* 動画 / ヒーロー画像 */}
-            <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#1B2D4F] shadow-sm">
-              {company.videoUrl ? (
-                <video
-                  className="absolute inset-0 w-full h-full object-cover"
-                  src={company.videoUrl}
-                  poster={company.image || undefined}
-                  controls
-                  playsInline
-                  preload="metadata"
-                />
-              ) : company.videoId ? (
-                <>
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('${company.image}')` }}
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 max-lg:w-14 max-lg:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-white hover:scale-110 transition-all duration-200">
-                      <svg className="w-8 h-8 max-lg:w-6 max-lg:h-6 text-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
-                </>
-              ) : company.image ? (
-                <img
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ objectPosition: company.imagePosition ?? "center 35%" }}
-                  src={company.image}
-                  alt={`${company.name} ${company.president}`}
-                />
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white/80">
-                  <svg className="w-12 h-12 max-lg:w-10 max-lg:h-10 mb-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                  </svg>
-                  <p className="text-[15px] max-lg:text-[13px] font-medium tracking-wider">動画準備中</p>
-                </div>
-              )}
-            </div>
-
-            {/* インタビュー記事 */}
-            <div className="mt-12 max-lg:mt-8 bg-white rounded-[4px] p-8 max-lg:p-5 shadow-sm">
-              {/* チャプター目次 */}
-              {company.chapters.length > 1 && (
-                <nav className="mb-10 max-lg:mb-8 border border-[#E0DDD8] rounded-[4px] p-5 max-lg:p-4 bg-[#F6F4F1]">
-                  <p className="text-[13px] font-bold text-[#5A5A5A] mb-3">チャプターを選んで見る</p>
-                  <ol className="space-y-2">
-                    {company.chapters.map((chapter, ci) => (
-                      <li key={ci}>
-                        <a
-                          href={`#chapter-${ci}`}
-                          className="flex items-start gap-2 text-[14px] max-lg:text-[13px] text-[#222222] hover:text-accent transition-colors"
-                        >
-                          <span className="text-accent font-medium flex-shrink-0">{ci + 1}.</span>
-                          {chapter.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </nav>
-              )}
-
-              {company.chapters.map((chapter, ci) => (
-                <div key={ci}>
-                  {ci > 0 && company.photos[ci - 1] && (
-                    <div className="my-10 max-lg:my-6">
-                      <div
-                        className="w-full aspect-[3/2] bg-[#E0DDD8] bg-cover bg-center rounded-[4px]"
-                        style={{ backgroundImage: `url('${company.photos[ci - 1].src}')` }}
-                      />
-                      <p className="mt-2 text-[13px] text-[#5A5A5A]">
-                        {company.photos[ci - 1].caption}
-                      </p>
-                    </div>
-                  )}
-
-                  <h2 id={`chapter-${ci}`} className={`text-[22px] max-lg:text-[18px] font-bold text-[#222222] mb-5 max-lg:mb-4 scroll-mt-28 ${ci > 0 ? "mt-10" : ""}`}>
-                    {chapter.title}
-                  </h2>
-
-                  <div className="space-y-5 max-lg:space-y-4">
-                    {chapter.content.split("\n\n").map((paragraph, pi) => {
-                      if (paragraph.startsWith("——")) {
-                        return (
-                          <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] font-bold text-[#1B2D4F]">
-                            {renderTextWithLinks(paragraph)}
-                          </p>
-                        );
-                      }
-                      return (
-                        <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
-                          {renderTextWithLinks(paragraph)}
-                        </p>
-                      );
-                    })}
-                  </div>
-
-                  {company.quotes[ci] && (
-                    <blockquote className="my-10 max-lg:my-6 border-l-[3px] border-accent pl-6">
-                      <p
-                        className="text-[20px] max-lg:text-[17px] leading-[1.7] text-[#1B2D4F]"
-                        style={{ fontFamily: "'Noto Serif JP', serif" }}
-                      >
-                        &ldquo;{company.quotes[ci]}&rdquo;
-                      </p>
-                    </blockquote>
-                  )}
-                </div>
-              ))}
-
-              {company.photos.length > 0 && (
-                <div className="mt-10 max-lg:mt-6">
-                  <div
-                    className="w-full aspect-[3/2] bg-[#E0DDD8] bg-cover bg-center rounded-[4px]"
-                    style={{ backgroundImage: `url('${company.photos[company.photos.length - 1].src}')` }}
-                  />
-                  <p className="mt-2 text-[13px] text-[#5A5A5A]">
-                    {company.photos[company.photos.length - 1].caption}
-                  </p>
-                </div>
-              )}
-
-              {/* 企業への問い合わせ・応募ボタン */}
-              <div className="mt-14 max-lg:mt-10 flex max-lg:flex-col gap-4">
-                <a
-                  href={contactHref}
-                  target={contactTarget}
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center bg-[#1B2D4F] text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
-                >
-                  この企業に問い合わせする
-                </a>
-                {!hideApplyButton && (
-                  <a
-                    href={applyHref}
-                    target={applyTarget}
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center bg-accent text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
-                  >
-                    この企業に応募する
-                  </a>
+            {company.personTabs && company.personTabs.length > 0 ? (
+              <CaseTabs
+                labels={company.personTabs.map((t) => t.label)}
+                panels={company.personTabs.map((t, ti) =>
+                  renderArticle(
+                    {
+                      image: t.image ?? "",
+                      imagePosition: t.imagePosition,
+                      videoUrl: t.videoUrl,
+                      videoId: "",
+                      chapters: t.chapters ?? [],
+                      quotes: t.quotes ?? [],
+                      photos: t.photos ?? [],
+                    },
+                    `t${ti}-`
+                  )
                 )}
-              </div>
-            </div>
+              />
+            ) : (
+              renderArticle(company, "")
+            )}
           </div>
 
           {/* ===== 右カラム: サイドバー ===== */}
