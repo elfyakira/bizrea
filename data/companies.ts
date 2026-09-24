@@ -2140,7 +2140,7 @@ export const companies: Company[] = [
     name: "P-Loco",
     industry: "その他",
     region: "愛知県",
-    president: "準備中",
+    president: "p-loco",
     catchphrase: "",
     desc: "（準備中）",
     image: "",
