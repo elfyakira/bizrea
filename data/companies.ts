@@ -1840,7 +1840,7 @@ export const companies: Company[] = [
     image: "/images/companies/sugiura-hatsujo-president.jpg",
     heroImage: "",
     founded: "",
-    address: "愛知県高浜市",
+    address: "愛知県高浜市論地町2-5-5",
     business: "精密バネ（圧縮・引張・ねじり・板バネ・ゼンマイ）の製造、1個からの試作・小ロット製作、人工衛星向け部品や農作業補助器具などの開発",
     employees: "",
     url: "https://s-spring.jp/",
@@ -1901,7 +1901,7 @@ export const companies: Company[] = [
     companyInfo: [
       { label: "企業名", value: "有限会社杉浦発条" },
       { label: "代表取締役", value: "杉浦 弘則" },
-      { label: "所在地", value: "愛知県高浜市" },
+      { label: "所在地", value: "愛知県高浜市論地町2-5-5" },
       { label: "創業", value: "創業58年" },
       { label: "事業内容", value: "精密バネ（圧縮・引張・ねじり・板バネ・ゼンマイ）の製造、1個からの試作・小ロット製作、人工衛星向け部品や農作業補助器具などの開発" },
     ],
