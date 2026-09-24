@@ -1998,8 +1998,8 @@ export const companies: Company[] = [
     image: "",
     heroImage: "",
     founded: "令和4年3月",
-    address: "〒451-0045 愛知県名古屋市西区名駅二丁目34番17号 セントラル名古屋1101号",
-    business: "障がい福祉事業の立ち上げ・運営支援、北欧型福祉モデルの研修・コンサルティング、医療・福祉・地域が連携する福祉ビレッジの構築支援、生成AIを活用した業務効率化・情報発信・集客/マーケティング支援",
+    address: "愛知県名古屋市西区名駅二丁目34番17号セントラル名古屋1101",
+    business: "障がい福祉施設のAI研修",
     employees: "",
     url: "https://nukumorinoizumi.jp/",
     contactUrl: "https://nukumorinoizumi.jp/",
@@ -2052,9 +2052,9 @@ export const companies: Company[] = [
     companyInfo: [
       { label: "企業名", value: "株式会社ぬくもりの泉" },
       { label: "代表取締役", value: "野田 直裕" },
-      { label: "所在地", value: "〒451-0045 愛知県名古屋市西区名駅二丁目34番17号 セントラル名古屋1101号" },
+      { label: "所在地", value: "愛知県名古屋市西区名駅二丁目34番17号セントラル名古屋1101" },
       { label: "設立", value: "令和4年3月" },
-      { label: "事業内容", value: "障がい福祉事業の立ち上げ・運営支援、北欧型福祉モデルの研修・コンサルティング、医療・福祉・地域が連携する福祉ビレッジの構築支援、生成AIを活用した業務効率化・情報発信・集客支援" },
+      { label: "事業内容", value: "障がい福祉施設のAI研修" },
     ],
   },
 ];
