@@ -85,6 +85,9 @@ export default async function CaseDetailPage({ params }: Props) {
   const applyTarget = applyToForm ? undefined : "_blank";
 
   type ArticleSource = {
+    personName?: string;
+    personRole?: string;
+    personCatchphrase?: string;
     image: string;
     imagePosition?: string;
     videoUrl?: string;
@@ -97,6 +100,25 @@ export default async function CaseDetailPage({ params }: Props) {
   // 記事本文（動画/写真＋チャプター＋ボタン）。タブがある企業は人数分描画する
   const renderArticle = (src: ArticleSource, idPrefix: string) => (
     <>
+          {/* タブ内の見出し（人物ごとのキャッチコピーと名前） */}
+          {(src.personCatchphrase || src.personName) && (
+            <div className="mb-6 max-lg:mb-4">
+              {src.personCatchphrase && (
+                <p
+                  className="text-[24px] max-lg:text-[19px] font-medium text-[#1B2D4F] leading-[1.5]"
+                  style={{ fontFamily: "'Noto Serif JP', serif" }}
+                >
+                  {src.personCatchphrase}
+                </p>
+              )}
+              {(src.personRole || src.personName) && (
+                <p className="mt-3 max-lg:mt-2 text-[15px] max-lg:text-[13px] text-[#5A5A5A]">
+                  {[src.personRole, src.personName].filter(Boolean).join("　")}
+                </p>
+              )}
+            </div>
+          )}
+
           {/* 動画 / ヒーロー画像 */}
           <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#1B2D4F] shadow-sm">
             {src.videoUrl ? (
@@ -313,6 +335,9 @@ export default async function CaseDetailPage({ params }: Props) {
                 panels={company.personTabs.map((t, ti) =>
                   renderArticle(
                     {
+                      personName: t.personName,
+                      personRole: t.personRole,
+                      personCatchphrase: t.personCatchphrase,
                       image: t.image ?? "",
                       imagePosition: t.imagePosition,
                       videoUrl: t.videoUrl,
