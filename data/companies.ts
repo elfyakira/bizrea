@@ -2053,7 +2053,6 @@ export const companies: Company[] = [
       { label: "企業名", value: "株式会社ぬくもりの泉" },
       { label: "代表取締役", value: "野田 直裕" },
       { label: "所在地", value: "愛知県名古屋市西区名駅二丁目34番17号セントラル名古屋1101" },
-      { label: "設立", value: "令和4年3月" },
       { label: "事業内容", value: "障がい福祉施設のAI研修" },
     ],
   },
