@@ -42,6 +42,9 @@ const HERO_TITLES: Record<string, string> = {
   nobodyknows: "nobodyknows＋",
 };
 
+// 対談形式の記事で、段落頭の話者名（例「ノリさん：」）を太字にするためのパターン
+const SPEAKER_PATTERN = /^(.{1,12}さん)：/;
+
 // 本文中の URL をリンクにして表示する（末尾の句読点や閉じ括弧はリンクに含めない）
 const URL_PATTERN = /(https?:\/\/[^\s、。）」』]+)/g;
 function renderTextWithLinks(text: string) {
@@ -232,6 +235,15 @@ export default async function CaseDetailPage({ params }: Props) {
                         return (
                           <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] font-bold text-[#1B2D4F]">
                             {renderTextWithLinks(paragraph)}
+                          </p>
+                        );
+                      }
+                      const speaker = paragraph.match(SPEAKER_PATTERN);
+                      if (speaker) {
+                        return (
+                          <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
+                            <span className="font-bold text-[#1B2D4F]">{speaker[1]}</span>
+                            {renderTextWithLinks(paragraph.slice(speaker[0].length))}
                           </p>
                         );
                       }
