@@ -243,7 +243,7 @@ export default async function CaseDetailPage({ params }: Props) {
                         return (
                           <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
                             <span className="font-bold text-[#1B2D4F]">{speaker[1]}</span>
-                            {renderTextWithLinks(paragraph.slice(speaker[0].length))}
+                            {renderTextWithLinks(paragraph.slice(speaker[1].length))}
                           </p>
                         );
                       }
