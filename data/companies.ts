@@ -1369,6 +1369,7 @@ export const companies: Company[] = [
     leadText: "「『これしかない』ではなく、『これが一番好き』と考えることです」——名古屋のヒップホップグループ「nobodyknows＋」のノリ・ダ・ファンキーシビレサス氏。高校の同級生と始めたラップが、いつしか大きな活動になっていった。目標を持たないまま走り続けた先で訪れた1年の休みに農業と出会い、初めて「これがやりたい」と思えるものを見つける。音楽を辞める理由がないまま続けてきた歩みと、次なる挑戦に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_nobodyknows.mp4",
     chapters: [
       {
         title: "同級生との出会いから始まったラップ",
