@@ -108,6 +108,13 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <head>
+        {/* CSS 内の @import だとサイトの CSS を読み終えるまでフォントの取得が始まらないため、head から直接読み込む */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
