@@ -8,41 +8,21 @@ Allow: /
 Disallow: /api/
 
 # AI クローラー(LLMO 対応)— すべて許可
+# 個別に User-agent を指定したクローラーは * のルールを引き継がないため、/api/ の除外もここに書く
 User-agent: GPTBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
 User-agent: Claude-SearchBot
-Allow: /
-
 User-agent: Claude-User
-Allow: /
-
 User-agent: Claude-Web
-Allow: /
-
 User-agent: Google-Extended
-Allow: /
-
 User-agent: anthropic-ai
-Allow: /
-
 User-agent: Applebot-Extended
-Allow: /
-
 User-agent: PerplexityBot
-Allow: /
-
 User-agent: Bytespider
 Allow: /
+Disallow: /api/
 
 Sitemap: ${BASE_URL}/sitemap.xml
 `;
