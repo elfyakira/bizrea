@@ -1,5 +1,5 @@
 import MagazineList, { type Magazine } from "@/components/MagazineList";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "雑誌",
@@ -47,9 +47,39 @@ const magazines: Magazine[] = [
   },
 ];
 
+// 雑誌 Bizrea と各号の構造化データ（検索エンジンとAIが号ごとの収録内容を理解するため）
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Periodical",
+  "@id": `${SITE_URL}/magazine#periodical`,
+  name: "Bizrea",
+  url: `${SITE_URL}/magazine`,
+  inLanguage: "ja",
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  hasPart: magazines.map((mag) => ({
+    "@type": "PublicationIssue",
+    name: `Bizrea Vol.${String(mag.vol).padStart(2, "0")}`,
+    issueNumber: String(mag.vol),
+    description: mag.description,
+    // issue は「2026年」「2026年12月」のような表記なので、年（と月）だけを取り出す
+    datePublished: mag.issue.replace(/^(\d{4})年(?:(\d{1,2})月)?.*$/, (_, y, m) => (m ? `${y}-${m.padStart(2, "0")}` : y)),
+    image: `${SITE_URL}${mag.cover}`,
+    numberOfPages: mag.pages,
+    associatedMedia: {
+      "@type": "MediaObject",
+      contentUrl: mag.pdf,
+      encodingFormat: "application/pdf",
+    },
+  })),
+};
+
 export default function MagazinePage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ===== ヒーロー ===== */}
       <section className="relative pt-32 pb-20 max-lg:pt-24 max-lg:pb-14 overflow-hidden">
         <div className="absolute inset-0 bg-[#1B2D4F]">
