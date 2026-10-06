@@ -1,10 +1,14 @@
 import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "導入メリット",
   description: "Bizreaは営業力・採用力・組織定着の3つの成果を、ひとつのサービスで実現します。社長インタビューを軸にしたコンテンツの活用メリットをご紹介。",
-};
+  path: "/merit",
+  // 現在はナビゲーションから辿れないページのため検索対象から外す
+  noindex: true,
+});
 
 function Quote({ text, author }: { text: string; author: string }) {
   return (

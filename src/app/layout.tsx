@@ -12,24 +12,36 @@ import { seo, company, contact, locations, images } from "@/lib/site";
 const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-B6Z4SWP7YJ";
 
-// JSON-LD構造化データ
+// JSON-LD構造化データ（サイト運営者とサイト自体の情報）
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: company.name,
-  description: seo.defaultDescription,
-  url: seo.siteUrl,
-  telephone: contact.phone,
-  email: contact.email,
-  address: locations.headquarters.address
-    ? {
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${seo.siteUrl}/#organization`,
+      name: company.name,
+      url: seo.siteUrl,
+      logo: `${seo.siteUrl}${images.logo}`,
+      description: company.business,
+      slogan: company.catchphrase,
+      telephone: contact.phone,
+      email: contact.email,
+      address: {
         "@type": "PostalAddress",
-        streetAddress: locations.headquarters.address,
-        postalCode: locations.headquarters.zipCode,
+        addressRegion: locations.headquarters.address,
         addressCountry: "JP",
-      }
-    : undefined,
-  image: images.logo,
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${seo.siteUrl}/#website`,
+      name: company.name,
+      url: seo.siteUrl,
+      description: seo.defaultDescription,
+      inLanguage: "ja",
+      publisher: { "@id": `${seo.siteUrl}/#organization` },
+    },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -39,11 +51,6 @@ export const metadata: Metadata = {
     template: `%s${seo.titleSuffix || ""}`,
   },
   description: seo.defaultDescription,
-
-  // canonical URL
-  alternates: {
-    canonical: "/",
-  },
 
   // robots
   robots: {
@@ -64,7 +71,6 @@ export const metadata: Metadata = {
     description: seo.defaultDescription,
     locale: "ja_JP",
     type: "website",
-    url: seo.siteUrl,
     siteName: company.name,
     images: [
       {

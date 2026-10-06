@@ -1,10 +1,14 @@
 import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "コンテンツ紹介",
   description: "Bizreaで制作する雑誌・動画・WEBコンテンツの詳細をご紹介。ひとつのインタビューから3つの武器を制作します。",
-};
+  path: "/content",
+  // 現在はナビゲーションから辿れないページのため検索対象から外す
+  noindex: true,
+});
 
 function SpecTable({ rows }: { rows: [string, string][] }) {
   return (

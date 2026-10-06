@@ -1,11 +1,15 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "料金・プラン",
   description: "Bizreaの料金プランをご紹介。ライト・スタンダード・プレミアムの3プランから、御社に最適なプランをご提案します。",
-};
+  path: "/pricing",
+  // 現在はナビゲーションから辿れないページのため検索対象から外す
+  noindex: true,
+});
 
 const plans = [
   {

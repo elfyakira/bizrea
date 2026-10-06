@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { companies, getCompanyById } from "@data/companies";
+import { companies, getCompanyById, type Company } from "@data/companies";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -15,9 +16,62 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const company = getCompanyById(slug);
   if (!company) return {};
-  return {
-    title: `${company.name} | Bizrea`,
+  return pageMetadata({
+    title: interviewTitle(company),
     description: `${company.name}の社長インタビュー。${company.catchphrase} ${company.desc}`,
+    path: `/cases/${company.id}`,
+    image: ogImage(company),
+    type: "article",
+  });
+}
+
+// 検索結果・SNSで「どの会社の誰の話か」が分かるよう、社名と代表者名をタイトルに入れる
+function interviewTitle(company: Company) {
+  return `${company.name} ${company.president} インタビュー`;
+}
+
+function ogImage(company: Company) {
+  return company.image || company.presidentImage || company.listImage || company.heroImage || undefined;
+}
+
+// 記事・掲載企業・パンくずの構造化データ（検索エンジンとAIが記事の中身を理解するため）
+function buildJsonLd(company: Company) {
+  const url = `${SITE_URL}/cases/${company.id}`;
+  const image = ogImage(company);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${url}#article`,
+        headline: interviewTitle(company),
+        description: company.leadText || company.desc,
+        url,
+        mainEntityOfPage: url,
+        image: image ? `${SITE_URL}${image}` : undefined,
+        inLanguage: "ja",
+        articleSection: company.industry,
+        author: { "@id": `${SITE_URL}/#organization` },
+        publisher: { "@id": `${SITE_URL}/#organization` },
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: {
+          "@type": "Organization",
+          name: company.name,
+          url: company.url || undefined,
+          description: company.business || company.desc,
+          address: company.address
+            ? { "@type": "PostalAddress", streetAddress: company.address, addressCountry: "JP" }
+            : undefined,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: company.name, item: url },
+        ],
+      },
+    ],
   };
 }
 
@@ -88,6 +142,10 @@ export default async function CaseDetailPage({ params }: Props) {
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(company)) }}
+      />
       {/* ===== ヒーロー ===== */}
       <section className="relative pt-32 pb-16 max-lg:pt-24 max-lg:pb-10 overflow-hidden">
         <div className="absolute inset-0 bg-[#1B2D4F]">
