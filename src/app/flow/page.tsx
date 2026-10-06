@@ -1,10 +1,14 @@
 import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "制作の流れ",
   description: "Bizreaの制作プロセスをご紹介。無料相談から納品・活用サポートまで、社長にご負担いただくのは取材の半日だけです。",
-};
+  path: "/flow",
+  // 現在はナビゲーションから辿れないページのため検索対象から外す
+  noindex: true,
+});
 
 const steps = [
   {

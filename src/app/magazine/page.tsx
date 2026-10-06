@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import MagazineList, { type Magazine } from "@/components/MagazineList";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "雑誌 | Bizrea",
+export const metadata = pageMetadata({
+  title: "雑誌",
   description:
     "社長インタビューを軸にした企業雑誌。営業・採用・社内教育に活用できる、読んで終わりではない企業ツールです。",
-};
+  path: "/magazine",
+});
 
 // 雑誌を掲載するときは、下記フォーマットに沿って magazines 配列にオブジェクトを追加してください。
 // vol が大きい号（最新号）から順に並べ、最新号には isLatest: true を付けます。

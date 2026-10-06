@@ -1,10 +1,14 @@
 import PageHero from "@/components/PageHero";
 import CtaSection from "@/components/CtaSection";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Bizreaとは",
   description: "Bizreaは社長インタビューを軸にした企業ブランディングコンテンツサービスです。雑誌・動画・WEBの三位一体で、企業の本質を伝わる形にします。",
-};
+  path: "/about",
+  // 現在はナビゲーションから辿れないページのため検索対象から外す
+  noindex: true,
+});
 
 export default function AboutPage() {
   return (
