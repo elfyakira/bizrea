@@ -131,7 +131,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const hideApplyButton = ["saboharu", "sugiura-hatsujo", "pisaqua", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "vital-core-yamanaka", "herbzen-eva", "mainichi-shukatsu", "kasugai-okashina", "nagoya-hs-soccer", "nobodyknows", "prizeout", "waon", "hapikura", "flytop", "aisei", "honic", "takeyo"].includes(company.id);
 
   // 問い合わせボタンを非表示にする企業
-  const hideContactButton = ["aisei"].includes(company.id);
+  const hideContactButton = ["aisei", "sorairo"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
