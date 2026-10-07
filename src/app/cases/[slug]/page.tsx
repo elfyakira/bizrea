@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { companies, getCompanyById, type Company } from "@data/companies";
 import CaseTabs from "@/components/CaseTabs";
+import CaseTabText from "@/components/CaseTabText";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 type Props = {
@@ -160,22 +161,15 @@ export default async function CaseDetailPage({ params }: Props) {
   // 記事本文（動画/写真＋チャプター＋ボタン）。タブがある企業は人数分描画する
   const renderArticle = (src: ArticleSource, idPrefix: string) => (
     <>
-          {/* タブ内の見出し（人物ごとのキャッチコピーと名前） */}
-          {(src.personCatchphrase || src.personName) && (
+          {/* タブ内の見出し（人物ごとのキャッチコピー。役職・名前はヒーローに表示） */}
+          {src.personCatchphrase && (
             <div className="mb-6 max-lg:mb-4">
-              {src.personCatchphrase && (
-                <p
-                  className="text-[24px] max-lg:text-[19px] font-medium text-[#1B2D4F] leading-[1.5]"
-                  style={{ fontFamily: "'Noto Serif JP', serif" }}
-                >
-                  {src.personCatchphrase}
-                </p>
-              )}
-              {(src.personRole || src.personName) && (
-                <p className="mt-3 max-lg:mt-2 text-[15px] max-lg:text-[13px] text-[#5A5A5A]">
-                  {[src.personRole, src.personName].filter(Boolean).join("　")}
-                </p>
-              )}
+              <p
+                className="text-[24px] max-lg:text-[19px] font-medium text-[#1B2D4F] leading-[1.5]"
+                style={{ fontFamily: "'Noto Serif JP', serif" }}
+              >
+                {src.personCatchphrase}
+              </p>
             </div>
           )}
 
@@ -378,7 +372,15 @@ export default async function CaseDetailPage({ params }: Props) {
             </p>
           )}
           <p className="mt-3 text-[18px] max-lg:text-[15px] text-white/80">
-            {company.president}
+            {company.personTabs && company.personTabs.length > 0 ? (
+              <CaseTabText
+                texts={company.personTabs.map(
+                  (t) => [t.personRole, t.personName].filter(Boolean).join("　") || company.president
+                )}
+              />
+            ) : (
+              company.president
+            )}
           </p>
           {company.catchphrase && (
             <p className="mt-5 text-[20px] max-lg:text-[16px] text-white/90 leading-[1.6]"

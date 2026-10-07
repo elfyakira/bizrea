@@ -7,6 +7,9 @@ interface CaseTabsProps {
   panels: ReactNode[];
 }
 
+// タブ切り替えを他のコンポーネント（CaseTabText）に知らせるイベント名
+export const CASE_TAB_EVENT = 'casetabs:change';
+
 /**
  * 詳細ページで複数人分の記事を切り替えるタブ。
  * パネルの中身はサーバー側で描画したものを受け取り、選択中以外は hidden にする。
@@ -14,6 +17,11 @@ interface CaseTabsProps {
  */
 export default function CaseTabs({ labels, panels }: CaseTabsProps) {
   const [active, setActive] = useState(0);
+
+  const select = (i: number) => {
+    setActive(i);
+    window.dispatchEvent(new CustomEvent(CASE_TAB_EVENT, { detail: i }));
+  };
 
   return (
     <div>
@@ -24,7 +32,7 @@ export default function CaseTabs({ labels, panels }: CaseTabsProps) {
             type="button"
             role="tab"
             aria-selected={active === i}
-            onClick={() => setActive(i)}
+            onClick={() => select(i)}
             className={`flex-1 text-[15px] max-lg:text-[13px] font-bold py-3 max-lg:py-2.5 rounded-[4px] transition-colors duration-200 ${
               active === i
                 ? 'bg-[#1B2D4F] text-white'
