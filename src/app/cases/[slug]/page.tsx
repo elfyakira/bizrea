@@ -133,7 +133,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const hideApplyButton = ["alive", "lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "takeyo", "ainochikara"].includes(company.id);
 
   // 問い合わせボタンを非表示にする企業
-  const hideContactButton = ["aisei", "sorairo"].includes(company.id);
+  const hideContactButton = ["aisei", "sorairo", "p-loco"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
@@ -144,6 +144,38 @@ export default async function CaseDetailPage({ params }: Props) {
   const applyToForm = ["takeyo"].includes(company.id);
   const applyHref = applyToForm ? "/contact" : company.recruitmentUrl || "#";
   const applyTarget = applyToForm ? undefined : "_blank";
+
+  // サイドバーの情報ボックス（企業情報 / 人物のプロフィール）
+  const renderInfoBox = (title: string, rows: { label: string; value: string }[]) => (
+    <div className="bg-white rounded-[4px] p-6 shadow-sm">
+      <h3 className="text-[14px] font-bold text-[#222222] mb-4">{title}</h3>
+      <table className="w-full">
+        <tbody>
+          {rows.map((info, i) => (
+            <tr key={i} className="border-b border-[#E0DDD8] last:border-b-0">
+              <td className="py-2.5 text-[12px] text-[#5A5A5A] w-[30%] align-top">
+                {info.label}
+              </td>
+              <td className="py-2.5 text-[12px] text-[#222222] whitespace-pre-line">
+                {info.label === "URL" ? (
+                  <a
+                    href={info.value}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:underline underline-offset-4 break-all"
+                  >
+                    {info.value}
+                  </a>
+                ) : (
+                  info.value
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 
   type ArticleSource = {
     personName?: string;
@@ -374,7 +406,7 @@ export default async function CaseDetailPage({ params }: Props) {
           <p className="mt-3 text-[18px] max-lg:text-[15px] text-white/80">
             {company.personTabs && company.personTabs.length > 0 ? (
               <CaseTabText
-                texts={company.personTabs.map(
+                items={company.personTabs.map(
                   (t) => [t.personRole, t.personName].filter(Boolean).join("　") || company.president
                 )}
               />
@@ -475,35 +507,16 @@ export default async function CaseDetailPage({ params }: Props) {
               </div>
               )}
 
-              {/* 企業情報 */}
-              <div className="bg-white rounded-[4px] p-6 shadow-sm">
-                <h3 className="text-[14px] font-bold text-[#222222] mb-4">企業情報</h3>
-                <table className="w-full">
-                  <tbody>
-                    {company.companyInfo.map((info, i) => (
-                      <tr key={i} className="border-b border-[#E0DDD8] last:border-b-0">
-                        <td className="py-2.5 text-[12px] text-[#5A5A5A] w-[30%] align-top">
-                          {info.label}
-                        </td>
-                        <td className="py-2.5 text-[12px] text-[#222222] whitespace-pre-line">
-                          {info.label === "URL" ? (
-                            <a
-                              href={info.value}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-accent hover:underline underline-offset-4 break-all"
-                            >
-                              {info.value}
-                            </a>
-                          ) : (
-                            info.value
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              {/* 企業情報（タブがある企業は、プロフィールのある人物のタブでプロフィールに切り替える） */}
+              {company.personTabs && company.personTabs.length > 0 ? (
+                <CaseTabText
+                  items={company.personTabs.map((t) =>
+                    t.profile ? renderInfoBox("プロフィール", t.profile) : renderInfoBox("企業情報", company.companyInfo)
+                  )}
+                />
+              ) : (
+                renderInfoBox("企業情報", company.companyInfo)
+              )}
             </div>
           </aside>
         </div>

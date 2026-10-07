@@ -36,6 +36,7 @@ export interface Company {
     chapters?: { title: string; content: string }[];
     quotes?: string[];
     photos?: { src: string; caption: string }[];
+    profile?: { label: string; value: string }[]; // 指定するとサイドバーの「企業情報」をこの人の「プロフィール」に切り替える
   }[];
   chapters: {
     title: string;
@@ -2168,7 +2169,11 @@ export const companies: Company[] = [
       {
         label: "小林 あい",
         personName: "小林 あい",
-        personRole: "P-Loco リーダー・青色担当",
+        personRole: "リーダー・青色担当",
+        profile: [
+          { label: "名前", value: "小林 あい" },
+          { label: "担当", value: "リーダー・青色" },
+        ],
         personCatchphrase: "「応援してもらえることは、決して当たり前じゃない」",
         chapters: [
           {
@@ -2203,7 +2208,13 @@ export const companies: Company[] = [
       {
         label: "佐々木 明音",
         personName: "佐々木 明音",
-        personRole: "P-Loco 黒色担当",
+        personRole: "黒色担当",
+        profile: [
+          { label: "担当", value: "黒色" },
+          { label: "誕生日", value: "11月15日" },
+          { label: "身長", value: "158cm" },
+          { label: "一言", value: "ソロデビュー・CMモデル・CMソングでも活躍中" },
+        ],
         personCatchphrase: "「みんながいるから、楽しく頑張れる」",
         chapters: [
           {
