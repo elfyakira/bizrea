@@ -131,6 +131,9 @@ export default async function CaseDetailPage({ params }: Props) {
   // 応募ボタンを非表示にする企業
   const hideApplyButton = ["alive", "lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "takeyo"].includes(company.id);
 
+  // 「この会社で働いてみたい」リンクを非表示にする企業
+  const hideRecruitLink = ["takeyo"].includes(company.id);
+
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
   const contactHref = contactToForm ? "/contact" : company.contactUrl || company.url || "#";
@@ -477,7 +480,7 @@ export default async function CaseDetailPage({ params }: Props) {
                     この会社のWEBサイトを見る
                   </a>
                 )}
-                {company.recruitmentUrl && (
+                {company.recruitmentUrl && !hideRecruitLink && (
                   <a
                     href={company.recruitmentUrl}
                     target="_blank"
