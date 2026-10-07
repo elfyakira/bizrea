@@ -1934,7 +1934,7 @@ export const companies: Company[] = [
   {
     id: "lanchester-kasugai",
     name: "ランチェスター経営春日井",
-    industry: "経営コンサルティング",
+    industry: "小企業専門の経営支援業",
     region: "愛知県",
     president: "代表 熊谷 文男",
     catchphrase: "小さな会社には、必ず「宝」がある。",
@@ -1943,7 +1943,7 @@ export const companies: Company[] = [
     heroImage: "",
     founded: "",
     address: "愛知県春日井市浅山町2-1-23",
-    business: "経営コンサルティング業",
+    business: "小企業専門の経営支援業",
     employees: "",
     url: "",
     recruitmentUrl: "",
@@ -2010,7 +2010,7 @@ export const companies: Company[] = [
       { label: "企業名", value: "ランチェスター経営春日井" },
       { label: "代表者", value: "熊谷 文男" },
       { label: "所在地", value: "愛知県春日井市浅山町2-1-23" },
-      { label: "事業内容", value: "経営コンサルティング業" },
+      { label: "事業内容", value: "小企業専門の経営支援業" },
     ],
   },
 ];
