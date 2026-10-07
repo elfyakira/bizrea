@@ -131,8 +131,8 @@ export default async function CaseDetailPage({ params }: Props) {
   // 応募ボタンを非表示にする企業
   const hideApplyButton = ["alive", "lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "takeyo"].includes(company.id);
 
-  // 「この会社で働いてみたい」リンクを非表示にする企業
-  const hideRecruitLink = ["takeyo"].includes(company.id);
+  // 問い合わせボタンを非表示にする企業
+  const hideContactButton = ["aisei"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
@@ -313,15 +313,18 @@ export default async function CaseDetailPage({ params }: Props) {
             )}
 
             {/* 企業への問い合わせ・応募ボタン */}
+            {(!hideContactButton || !hideApplyButton) && (
             <div className="mt-14 max-lg:mt-10 flex max-lg:flex-col gap-4">
-              <a
-                href={contactHref}
-                target={contactTarget}
-                rel="noopener noreferrer"
-                className="flex-1 text-center bg-[#1B2D4F] text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
-              >
-                この企業に問い合わせする
-              </a>
+              {!hideContactButton && (
+                <a
+                  href={contactHref}
+                  target={contactTarget}
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center bg-[#1B2D4F] text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
+                >
+                  この企業に問い合わせする
+                </a>
+              )}
               {!hideApplyButton && (
                 <a
                   href={applyHref}
@@ -333,6 +336,7 @@ export default async function CaseDetailPage({ params }: Props) {
                 </a>
               )}
             </div>
+            )}
           </div>
     </>
   );
@@ -444,15 +448,18 @@ export default async function CaseDetailPage({ params }: Props) {
               </div>
 
               {/* 問い合わせ・応募ボタン */}
+              {(!hideContactButton || !hideApplyButton) && (
               <div className="flex flex-col gap-3">
-                <a
-                  href={contactHref}
-                  target={contactTarget}
-                  rel="noopener noreferrer"
-                  className="text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
-                >
-                  この企業に問い合わせする
-                </a>
+                {!hideContactButton && (
+                  <a
+                    href={contactHref}
+                    target={contactTarget}
+                    rel="noopener noreferrer"
+                    className="text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
+                  >
+                    この企業に問い合わせする
+                  </a>
+                )}
                 {!hideApplyButton && (
                   <a
                     href={applyHref}
@@ -464,36 +471,7 @@ export default async function CaseDetailPage({ params }: Props) {
                   </a>
                 )}
               </div>
-
-              {/* リンク集 */}
-              <div className="bg-white rounded-[4px] p-6 shadow-sm space-y-3">
-                {company.url && (
-                  <a
-                    href={company.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-[14px] text-accent hover:text-accent-dark transition-colors"
-                  >
-                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" />
-                    </svg>
-                    この会社のWEBサイトを見る
-                  </a>
-                )}
-                {company.recruitmentUrl && !hideRecruitLink && (
-                  <a
-                    href={company.recruitmentUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-[14px] text-accent hover:text-accent-dark transition-colors"
-                  >
-                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    この会社で働いてみたい
-                  </a>
-                )}
-              </div>
+              )}
 
               {/* 企業情報 */}
               <div className="bg-white rounded-[4px] p-6 shadow-sm">
