@@ -2696,8 +2696,12 @@ export const companies: Company[] = [
         personName: "本田 剛文",
         personRole: "代表取締役",
         profile: [
-          { label: "名前", value: "本田 剛文" },
-          { label: "役職", value: "株式会社名古屋おこし 代表取締役" },
+          { label: "誕生日", value: "1992年11月3日" },
+          { label: "出身地", value: "愛知県" },
+          { label: "身長", value: "171cm" },
+          { label: "血液型", value: "O型" },
+          { label: "特技", value: "弓道参段、お喋り、日本伝統文化検定２級、世界遺産検定2級" },
+          { label: "趣味", value: "猫、マーベル、マーベルグッズ集め、実況、格闘技、日本舞踊" },
         ],
         personCatchphrase: "「自分たちの選択に、自分たちで責任を持つ」",
         chapters: [
@@ -2760,8 +2764,12 @@ export const companies: Company[] = [
         personName: "吉原 雅斗",
         personRole: "緑色担当",
         profile: [
-          { label: "名前", value: "吉原 雅斗" },
-          { label: "担当", value: "緑" },
+          { label: "誕生日", value: "1994年7月22日" },
+          { label: "出身地", value: "愛知県" },
+          { label: "身長", value: "184cm" },
+          { label: "血液型", value: "A型" },
+          { label: "特技", value: "書道、ダンス、鼻笛演奏" },
+          { label: "趣味", value: "韓国、ゲーム（家にあるゲーム機材はプロレベル）、K-POP" },
         ],
         personCatchphrase: "「5人で叶えたい夢がある。」",
         chapters: [
