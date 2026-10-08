@@ -96,6 +96,7 @@ const industryColors: Record<string, string> = {
 // 詳細ページの見出しだけ、一覧カードとは別の表記にする企業
 const HERO_TITLES: Record<string, string> = {
   nobodyknows: "nobodyknows＋",
+  "nagoya-okoshi": "でらっくす・ボーイズ",
 };
 
 // 対談形式の記事で、段落頭の話者名（例「ノリさん：」）を太字にするためのパターン
