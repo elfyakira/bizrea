@@ -25,6 +25,17 @@ export const metadata = pageMetadata({
 // },
 const magazines: Magazine[] = [
   {
+    vol: 3,
+    description:
+      "特集は元ラグビー日本代表 一般社団法人スクラム 代表理事 長江 有祐氏。ほか、Vital core・名古屋高校サッカー部・nobodyknows＋ ノリ・ダ・ファンキーシビレサス氏・愛知県議会議員 伊藤 貴治氏のインタビューを収録。",
+    issue: "2026年秋",
+    pages: 38,
+    cover: "/images/magazine/vol3.jpg",
+    pageBase: "https://assets.singgroup.biz/magazine/vol3",
+    pdf: "https://assets.singgroup.biz/magazine/bizrea-vol3.pdf",
+    isLatest: true,
+  },
+  {
     vol: 2,
     description:
       "特集は noridaGARDEN&co. / nobodyknows＋ ノリ・ダ・ファンキーシビレサス氏。ほか、鰻処まえの・竹代・フォレスト個別指導塾 豊田校・紀創機械設計・ホニックの代表者インタビューを収録。",
@@ -33,7 +44,6 @@ const magazines: Magazine[] = [
     cover: "/images/magazine/vol2.jpg",
     pageBase: "https://assets.singgroup.biz/magazine/vol2",
     pdf: "https://assets.singgroup.biz/magazine/bizrea-vol2.pdf",
-    isLatest: true,
   },
   {
     vol: 1,
