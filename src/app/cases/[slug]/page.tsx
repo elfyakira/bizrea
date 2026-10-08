@@ -128,7 +128,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["lanchester-kasugai", "saboharu", "sugiura-hatsujo", "pisaqua", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "vital-core-yamanaka", "herbzen-eva", "mainichi-shukatsu", "kasugai-okashina", "nagoya-hs-soccer", "nobodyknows", "prizeout", "waon", "hapikura", "flytop", "aisei", "honic", "takeyo"].includes(company.id);
+  const hideApplyButton = ["takaharu", "lanchester-kasugai", "saboharu", "sugiura-hatsujo", "pisaqua", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "vital-core-yamanaka", "herbzen-eva", "mainichi-shukatsu", "kasugai-okashina", "nagoya-hs-soccer", "nobodyknows", "prizeout", "waon", "hapikura", "flytop", "aisei", "honic", "takeyo"].includes(company.id);
 
   // 問い合わせボタンを非表示にする企業
   const hideContactButton = ["aisei", "sorairo"].includes(company.id);
