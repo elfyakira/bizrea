@@ -748,7 +748,7 @@ export const companies: Company[] = [
     business: "ワイヤーハーネスの加工・ユニットの組み付け、自社オリジナル製品（トランス）の製造・販売、貿易",
     employees: "",
     url: "http://www.takeshiro.co.jp/",
-    recruitmentUrl: "http://www.takeshiro.co.jp/recruit.htm",
+    recruitmentUrl: "http://www.takeshiro.co.jp/recruit.html",
     contactUrl: "http://www.takeshiro.co.jp/",
     leadText: "ワイヤーハーネスの加工やユニットの組み付けを行う竹代・小牧工場。今回お話を伺ったのは、パートタイマーとして入社し、現在は工場長として現場を支える方です。前職での経験を活かして再びワイヤーハーネスの仕事に戻った経緯、ものづくりの難しさと楽しさ、そして仲間や品質に対する想いについて伺いました。",
     interviewDate: "",

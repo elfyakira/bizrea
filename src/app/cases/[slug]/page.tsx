@@ -142,7 +142,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const contactTarget = contactToForm ? undefined : "_blank";
 
   // 応募ボタンの遷移先をお問い合わせフォームにする企業
-  const applyToForm = ["takeyo"].includes(company.id);
+  const applyToForm = ([] as string[]).includes(company.id);
   const applyHref = applyToForm ? "/contact" : company.recruitmentUrl || "#";
   const applyTarget = applyToForm ? undefined : "_blank";
 
