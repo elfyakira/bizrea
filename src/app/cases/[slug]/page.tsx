@@ -141,6 +141,17 @@ export default async function CaseDetailPage({ params }: Props) {
   const contactHref = contactToForm ? "/contact" : company.contactUrl || company.url || "#";
   const contactTarget = contactToForm ? undefined : "_blank";
 
+  const contactButton = (
+    <a
+      href={contactHref}
+      target={contactTarget}
+      rel="noopener noreferrer"
+      className="block text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
+    >
+      この企業に問い合わせする
+    </a>
+  );
+
   // 応募ボタンの遷移先をお問い合わせフォームにする企業
   const applyToForm = ([] as string[]).includes(company.id);
   const applyHref = applyToForm ? "/contact" : company.recruitmentUrl || "#";
@@ -485,16 +496,7 @@ export default async function CaseDetailPage({ params }: Props) {
               {/* 問い合わせ・応募ボタン */}
               {(!hideContactButton || !hideApplyButton) && (
               <div className="flex flex-col gap-3">
-                {!hideContactButton && (
-                  <a
-                    href={contactHref}
-                    target={contactTarget}
-                    rel="noopener noreferrer"
-                    className="text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
-                  >
-                    この企業に問い合わせする
-                  </a>
-                )}
+                {!hideContactButton && contactButton}
                 {!hideApplyButton && (
                   <a
                     href={applyHref}
@@ -508,7 +510,7 @@ export default async function CaseDetailPage({ params }: Props) {
               </div>
               )}
 
-              {/* 企業情報（タブがある企業は、プロフィールのある人物のタブでプロフィールに切り替える。showCompanyInfo なら企業情報の下にプロフィールを出す） */}
+              {/* 企業情報（タブがある企業は、プロフィールのある人物のタブでプロフィールに切り替える。showCompanyInfo なら企業情報・問い合わせボタンの下にプロフィールを出す） */}
               {company.personTabs && company.personTabs.length > 0 ? (
                 <CaseTabText
                   items={company.personTabs.map((t) =>
@@ -516,6 +518,7 @@ export default async function CaseDetailPage({ params }: Props) {
                       t.showCompanyInfo ? (
                         <div className="space-y-6">
                           {renderInfoBox("企業情報", company.companyInfo)}
+                          {company.contactUrl && contactButton}
                           {renderInfoBox("プロフィール", t.profile)}
                         </div>
                       ) : (
