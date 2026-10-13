@@ -1374,7 +1374,7 @@ export const companies: Company[] = [
     president: "ノリ・ダ・ファンキーシビレサス",
     catchphrase: "「これしかない」ではなく、「これが一番好き」でいい——音楽を続ける先で見つけた、次なる挑戦",
     desc: "名古屋を拠点に活動するヒップホップグループ「nobodyknows＋」のメンバー、ノリ・ダ・ファンキーシビレサス氏。高校の同級生とのラップから始まり、有名になることを目標にせず「なるようになる」と歩んできた。活動休止期間に出会った農業に初めての目標を見つけ、今も音楽と農業の両方に向き合い続けている。",
-    image: "",
+    image: "/images/companies/nobodyknows-president.jpg",
     heroImage: "",
     founded: "",
     address: "",
