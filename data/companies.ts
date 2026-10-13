@@ -37,6 +37,7 @@ export interface Company {
     quotes?: string[];
     photos?: { src: string; caption: string }[];
     profile?: { label: string; value: string }[]; // 指定するとサイドバーの「企業情報」をこの人の「プロフィール」に切り替える
+    showCompanyInfo?: boolean; // profile があるタブでも、プロフィールの上に「企業情報」を出す
   }[];
   chapters: {
     title: string;
@@ -2695,6 +2696,7 @@ export const companies: Company[] = [
         label: "本田 剛文",
         personName: "本田 剛文",
         personRole: "代表取締役",
+        showCompanyInfo: true,
         profile: [
           { label: "誕生日", value: "1992年11月3日" },
           { label: "出身地", value: "愛知県" },

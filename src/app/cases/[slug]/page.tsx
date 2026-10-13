@@ -508,11 +508,22 @@ export default async function CaseDetailPage({ params }: Props) {
               </div>
               )}
 
-              {/* 企業情報（タブがある企業は、プロフィールのある人物のタブでプロフィールに切り替える） */}
+              {/* 企業情報（タブがある企業は、プロフィールのある人物のタブでプロフィールに切り替える。showCompanyInfo なら企業情報の下にプロフィールを出す） */}
               {company.personTabs && company.personTabs.length > 0 ? (
                 <CaseTabText
                   items={company.personTabs.map((t) =>
-                    t.profile ? renderInfoBox("プロフィール", t.profile) : renderInfoBox("企業情報", company.companyInfo)
+                    t.profile ? (
+                      t.showCompanyInfo ? (
+                        <div className="space-y-6">
+                          {renderInfoBox("企業情報", company.companyInfo)}
+                          {renderInfoBox("プロフィール", t.profile)}
+                        </div>
+                      ) : (
+                        renderInfoBox("プロフィール", t.profile)
+                      )
+                    ) : (
+                      renderInfoBox("企業情報", company.companyInfo)
+                    )
                   )}
                 />
               ) : (
