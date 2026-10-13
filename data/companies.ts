@@ -1630,6 +1630,7 @@ export const companies: Company[] = [
     leadText: "昔は、人と話すことがうまくできなかった——。教室の隅で絵を描いていた少女は、11年の活動を経て「女優系イラストレーター」として、企業のキャラクターから短編映画の舞台まで、二つの「表現」の場に立っている。屋号「tearLo」に込めたのは、涙と愛。春日井で育った前田奈子氏が、コンプレックスも悲しみも表現に変えてきた道のりと、「感情」を何より大切にする理由に迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_maeda.mp4",
     chapters: [
       {
         title: "イラストレーターと俳優——二つの「表現」で生きる",
