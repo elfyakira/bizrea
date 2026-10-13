@@ -2676,7 +2676,7 @@ export const companies: Company[] = [
     image: "",
     heroImage: "",
     founded: "",
-    address: "",
+    address: "名古屋市中区栄2丁目3-1 名古屋広小路ビルヂング 1F",
     business: "",
     employees: "",
     url: "",
@@ -2690,6 +2690,7 @@ export const companies: Company[] = [
     companyInfo: [
       { label: "企業名", value: "株式会社Nagoya Okoshi" },
       { label: "代表者", value: "本田 剛文" },
+      { label: "所在地", value: "名古屋市中区栄2丁目3-1 名古屋広小路ビルヂング 1F" },
     ],
     personTabs: [
       {
