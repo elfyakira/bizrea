@@ -9,9 +9,10 @@ const videosCompanies = companiesNewestFirst.filter((c) => c.videoUrl && !c.hidd
 
 function VideoCard({ company }: { company: typeof companies[number] }) {
   const [playing, setPlaying] = useState(false);
-  // 動画の冒頭を切り出したサムネイル。無い場合は詳細ページの画像、それも無い場合は背景色だけにする
+  // 詳細ページの動画と同じサムネイル（company.image）。無い場合は動画の冒頭を切り出した画像、それも無い場合は背景色だけにする
   // （空文字を src に入れると画像リンク切れの表示になるため、null にして img ごと出さない）
-  const [thumb, setThumb] = useState<string | null>(`/images/videos/${company.id}.jpg`);
+  const fallbackThumb = `/images/videos/${company.id}.jpg`;
+  const [thumb, setThumb] = useState<string | null>(company.image || fallbackThumb);
 
   return (
     <div className="bg-white rounded-[4px] overflow-hidden shadow-sm">
@@ -33,7 +34,7 @@ function VideoCard({ company }: { company: typeof companies[number] }) {
                 className="w-full h-full object-cover"
                 src={thumb}
                 alt={`${company.name} ${company.president}`}
-                onError={() => setThumb(thumb === company.image ? null : company.image || null)}
+                onError={() => setThumb(thumb === fallbackThumb ? null : fallbackThumb)}
               />
             )}
             <button
