@@ -161,7 +161,7 @@ export default function HomePage() {
             backgroundSize: "60px 60px",
           }}
         />
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-10">
+        <div className="relative z-10 max-w-[1320px] mx-auto px-4 lg:px-10">
           <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em] text-center">
             FEATURED
           </p>
@@ -172,66 +172,31 @@ export default function HomePage() {
             掲載企業
           </h2>
           <div className="mt-14 max-lg:mt-10 grid grid-cols-4 max-lg:grid-cols-2 gap-5 max-lg:gap-3">
-            {companiesNewestFirst.filter((c) => !c.hidden).map((c) => {
-              const regionColors: Record<string, string> = {
-                "愛知県": "bg-[#3B82A0] text-white",
-                "岐阜県": "bg-[#6B8E5B] text-white",
-                "三重県": "bg-[#A07B3B] text-white",
-              };
-              const industryColors: Record<string, string> = {
-                "製造業": "bg-[#E67635] text-white",
-                "建設業": "bg-[#4A7B8C] text-white",
-                "物流業": "bg-[#7B6B8E] text-white",
-                "食品製造業": "bg-[#C4784A] text-white",
-                "IT・通信業": "bg-[#5B7ABF] text-white",
-                "採用支援": "bg-[#3B8C6E] text-white",
-                "農業": "bg-[#5C8A3A] text-white",
-                "飲食業": "bg-[#C0453B] text-white",
-              };
-              const regionClass = regionColors[c.region] || "bg-[#888888] text-white";
-              const industryClass = industryColors[c.industry] || "bg-[#888888] text-white";
-
-              return (
-                <Link key={c.id} href={`/cases/${c.id}`} className="bg-white rounded-[4px] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
-                  <div className="aspect-square bg-[#E0DDD8] overflow-hidden">
-                    {c.presidentImage ? (
-                      <img
-                        className="w-full h-full object-cover"
-                        style={c.id === "paluu" ? { transform: "scale(1.15)" } : undefined}
-                        src={c.presidentImage}
-                        alt={`${c.name} ${c.president}`}
-                      />
-                    ) : (
-                      <LazyPresidentVideo
-                        id={c.id}
-                        className="w-full h-full object-cover"
-                      />
-                    )}
-                  </div>
-                  <div className="px-4 py-4 max-lg:px-3 max-lg:py-3">
-                    <p className="text-[12px] max-lg:text-[11px] text-[#5A5A5A] truncate">
-                      {c.name}
-                    </p>
-                    {c.affiliation && (
-                      <p className="text-[12px] max-lg:text-[11px] text-[#999999] truncate">
-                        {c.affiliation}
-                      </p>
-                    )}
-                    <p className="mt-1.5 text-[17px] max-lg:text-[14px] font-bold text-[#222222] leading-[1.4]">
-                      {c.president}
-                    </p>
-                    <div className="mt-3 flex gap-1.5 flex-wrap">
-                      <span className={`text-[10px] max-lg:text-[9px] font-medium rounded-sm px-2 py-0.5 ${regionClass}`}>
-                        {c.region}
-                      </span>
-                      <span className={`text-[10px] max-lg:text-[9px] font-medium rounded-sm px-2 py-0.5 ${industryClass}`}>
-                        {c.industry}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+            {companiesNewestFirst.filter((c) => !c.hidden).map((c) => (
+              <Link
+                key={c.id}
+                href={`/cases/${c.id}`}
+                aria-label={`${c.name} ${c.president}`}
+                className="block rounded-[4px] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
+              >
+                {/* カードは企業のトップ画像（620×440）と同じ比率。画像に会社名・名前が入っているので文字は載せない */}
+                <div className="aspect-[31/22] bg-[#E0DDD8] overflow-hidden">
+                  {c.presidentImage ? (
+                    <img
+                      className="w-full h-full object-cover"
+                      style={c.id === "paluu" ? { transform: "scale(1.15)" } : undefined}
+                      src={c.presidentImage}
+                      alt={`${c.name} ${c.president}`}
+                    />
+                  ) : (
+                    <LazyPresidentVideo
+                      id={c.id}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
