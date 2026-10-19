@@ -5,14 +5,13 @@ import { useEffect, useRef } from 'react';
 import { getCompanyById } from '@data/companies';
 import { FadeInUp } from './animations';
 
-// ノリさん / 竹代さん / 前野さん / ホニックさん / 松浦さん / フォレストさん
+// 長江さん / 野口さん / 山田さん / ノリさん（nobodyknows＋）/ 伊藤さん
 const HERO_IDS = [
-  'norida-garden',
-  'takeyo',
-  'unagi',
-  'honic',
-  'kiso',
-  'forest-toyota',
+  'scrum',
+  'vital-core',
+  'nagoya-hs-soccer',
+  'nobodyknows',
+  'takaharu',
 ];
 
 // メインビジュアルでのみ名前の上に添える所属表記（カード一覧・詳細ページには出さない）
@@ -20,7 +19,7 @@ const HERO_AFFILIATIONS: Record<string, string> = {
   'norida-garden': 'nobodyknows＋ 所属メンバー',
 };
 
-// 1セットの幅が画面幅を下回ると右端に隙間ができるため、6社を2周ぶん並べて1セットとする
+// 1セットの幅が画面幅を下回ると右端に隙間ができるため、5人を2周ぶん並べて1セットとする
 const SET = [...HERO_IDS, ...HERO_IDS];
 
 // カード幅300px + 左右余白72px = 372px 間隔なので、拡大は隣と重ならない範囲（〜1.18倍 = 354px）に収める
