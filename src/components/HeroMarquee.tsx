@@ -6,6 +6,7 @@ import { getCompanyById } from '@data/companies';
 import { FadeInUp } from './animations';
 
 // 長江さん / 野口さん / 山田さん / ノリさん（nobodyknows＋）/ 伊藤さん
+// 写真は英字の名前が入っていないメインビジュアル用（/images/presidents/hero/{id}.jpg）
 const HERO_IDS = [
   'scrum',
   'vital-core',
@@ -152,7 +153,7 @@ export default function HeroMarquee() {
                   <div className="aspect-square overflow-hidden rounded-t-[6px]">
                     <img
                       className="block w-full h-full object-cover rounded-t-[6px] [backface-visibility:hidden]"
-                      src={`/images/presidents/${id}.jpg`}
+                      src={`/images/presidents/hero/${id}.jpg`}
                       alt={company?.name ?? ''}
                       width={640}
                       height={640}
