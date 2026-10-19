@@ -6,7 +6,7 @@ import { getCompanyById } from '@data/companies';
 import { FadeInUp } from './animations';
 
 // 長江さん / 野口さん / 山田さん / ノリさん（nobodyknows＋）/ 伊藤さん
-// 写真は英字の名前が入っていないメインビジュアル用（/images/presidents/hero/{id}.jpg）
+// 写真は英字の名前が入っていないメインビジュアル用（/images/presidents/hero/{id}.jpg）。どれもカード動画の最初のコマ
 const HERO_IDS = [
   'scrum',
   'vital-core',
