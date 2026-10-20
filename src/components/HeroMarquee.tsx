@@ -6,7 +6,7 @@ import { getCompanyById } from '@data/companies';
 import { FadeInUp } from './animations';
 
 // 長江さん / 野口さん / 山田さん / ノリさん（nobodyknows＋）/ 伊藤さん
-// 写真は英字の名前が入っていないメインビジュアル用（/images/presidents/hero/{id}.jpg）。どれもカード動画の最初のコマ
+// 画像は掲載企業カードと同じ企業のトップ画像（company.presidentImage, 620×440）。会社名・名前が画像に入っているので文字は載せない
 const HERO_IDS = [
   'scrum',
   'vital-core',
@@ -15,15 +15,10 @@ const HERO_IDS = [
   'takaharu',
 ];
 
-// メインビジュアルでのみ名前の上に添える所属表記（カード一覧・詳細ページには出さない）
-const HERO_AFFILIATIONS: Record<string, string> = {
-  'norida-garden': 'nobodyknows＋ 所属メンバー',
-};
-
 // 1セットの幅が画面幅を下回ると右端に隙間ができるため、5人を2周ぶん並べて1セットとする
 const SET = [...HERO_IDS, ...HERO_IDS];
 
-// カード幅300px + 左右余白72px = 372px 間隔なので、拡大は隣と重ならない範囲（〜1.18倍 = 354px）に収める
+// カード幅400px + 左右余白72px = 472px 間隔なので、拡大は隣と重ならない範囲（〜1.18倍 = 472px）に収める
 const HOVER_BOOST = 0.18; // ホバー時の拡大率（+18%）
 const HOVER_EASE = 0.12; // 1フレームあたりの追従率（約0.4秒でなめらかに拡大しきる）
 
@@ -139,7 +134,6 @@ export default function HeroMarquee() {
           <div key={set} className="flex items-center shrink-0" aria-hidden={set === 1}>
             {SET.map((id, i) => {
               const company = getCompanyById(id);
-              const affiliation = HERO_AFFILIATIONS[id] ?? company?.affiliation;
               // SPは1枚で画面がほぼ埋まる幅（80vw）にする。タブレット幅で大きくなりすぎないよう360pxで頭打ち
               return (
                 <Link
@@ -147,39 +141,19 @@ export default function HeroMarquee() {
                   data-hero-card
                   href={`/cases/${id}`}
                   tabIndex={set === 1 ? -1 : undefined}
-                  className="relative shrink-0 block mx-9 max-lg:mx-3 w-[300px] max-lg:w-[80vw] max-lg:max-w-[360px] rounded-[6px] overflow-hidden shadow-[0_12px_32px_rgba(27,45,79,0.18)] will-change-transform"
+                  aria-label={company ? `${company.name} ${company.president}` : undefined}
+                  className="relative shrink-0 block mx-9 max-lg:mx-3 w-[400px] max-lg:w-[80vw] max-lg:max-w-[360px] rounded-[6px] overflow-hidden shadow-[0_12px_32px_rgba(27,45,79,0.18)] will-change-transform"
                 >
                   {/* 拡大時に画像の角がカードの角丸からはみ出さないよう、画像側にも同じ角丸をかける */}
-                  <div className="aspect-square overflow-hidden rounded-t-[6px]">
+                  <div className="aspect-[31/22] overflow-hidden rounded-[6px] bg-[#E0DDD8]">
                     <img
-                      className="block w-full h-full object-cover rounded-t-[6px] [backface-visibility:hidden]"
-                      src={`/images/presidents/hero/${id}.jpg`}
-                      alt={company?.name ?? ''}
-                      width={640}
-                      height={640}
+                      className="block w-full h-full object-cover rounded-[6px] [backface-visibility:hidden]"
+                      src={company?.presidentImage || `/images/presidents/hero/${id}.jpg`}
+                      alt={company ? `${company.name} ${company.president}` : ''}
+                      width={620}
+                      height={440}
                       decoding="async"
                     />
-                  </div>
-                  {/* 所属行を詰めたぶんは下の余白で補い、カードの高さはノリさんのカードと揃える */}
-                  <div
-                    className={`bg-[#1B2D4F] px-4 pt-4 ${
-                      affiliation ? 'pb-4' : 'pb-6'
-                    }`}
-                  >
-                    <p className="text-[11px] text-white/55 truncate">
-                      {company?.name}
-                    </p>
-                    {/* 所属がある企業（ノリさん）だけ行を出し、無い企業は社名と氏名の間隔を少し詰める */}
-                    {affiliation ? (
-                      <p className="text-[11px] text-white/40 truncate">
-                        {affiliation}
-                      </p>
-                    ) : (
-                      <div className="h-2" aria-hidden />
-                    )}
-                    <p className="mt-1 text-[17px] font-bold text-white leading-snug truncate">
-                      {company?.president}
-                    </p>
                   </div>
                 </Link>
               );
