@@ -23,7 +23,7 @@ export default function SnsSection() {
             BIZREAの最新情報をSNSでチェック
           </h2>
           <p className="text-[15px] max-lg:text-[13px] text-white tracking-[0.15em] mt-2">
-            FOLLOW US
+            / FOLLOW US /
           </p>
         </FadeInUp>
         <FadeInUp waitForTop={false} delay={200} duration={900} distance={24}>
