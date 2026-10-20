@@ -10,9 +10,9 @@ export default function SnsSection() {
   ].filter((a) => a.url);
   if (accounts.length === 0) return null;
 
-  // 背景はフッターと同じ紺。直前の紺のセクション（CTA等）やフッターとの境目が分かるよう上下に薄い線を引く
+  // 背景はフッターと同じ紺。境目の線は引かず、前後の紺のセクションとつなげて見せる
   return (
-    <section className="bg-[#1B2D4F] border-y border-white/[0.08] py-16 max-lg:py-12">
+    <section className="bg-[#1B2D4F] py-16 max-lg:py-12">
       <div className="max-w-[680px] mx-auto px-6 text-center">
         {/* 見出し → アイコンの順に下からふわっと出す */}
         <FadeInUp waitForTop={false} duration={900} distance={24}>
