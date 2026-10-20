@@ -1,12 +1,12 @@
 import { social } from "@/lib/site";
-import { InstagramIcon, TikTokIcon } from "./SocialIcons";
+import { InstagramColorIcon, TikTokColorIcon } from "./SocialIcons";
 import { FadeInUp } from "./animations";
 
 // フッターの直前に出す、公式SNSアカウントの案内（全ページ共通）
 export default function SnsSection() {
   const accounts = [
-    { name: "Instagram", url: social.instagram, Icon: InstagramIcon },
-    { name: "TikTok", url: social.tiktok, Icon: TikTokIcon },
+    { name: "Instagram", url: social.instagram, Icon: InstagramColorIcon },
+    { name: "TikTok", url: social.tiktok, Icon: TikTokColorIcon },
   ].filter((a) => a.url);
   if (accounts.length === 0) return null;
 
@@ -16,15 +16,15 @@ export default function SnsSection() {
       <div className="max-w-[680px] mx-auto px-6 text-center">
         {/* 見出し → アイコンの順に下からふわっと出す */}
         <FadeInUp waitForTop={false} duration={900} distance={24}>
-          <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em]">
-            FOLLOW US
-          </p>
           <h2
-            className="mt-3 text-[24px] max-lg:text-[19px] font-medium text-white leading-[1.6]"
+            className="text-[24px] max-lg:text-[19px] font-medium text-white leading-[1.6]"
             style={{ fontFamily: "'Noto Serif JP', serif" }}
           >
-            BIZREAの最新情報をSNSでチェック。
+            BIZREAの最新情報をSNSでチェック
           </h2>
+          <p className="text-[15px] max-lg:text-[13px] text-accent tracking-[0.15em] mt-2">
+            FOLLOW US
+          </p>
         </FadeInUp>
         <FadeInUp waitForTop={false} delay={200} duration={900} distance={24}>
           <div className="mt-8 max-lg:mt-6 flex items-center justify-center gap-14 max-lg:gap-10">
