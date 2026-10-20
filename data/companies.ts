@@ -2549,6 +2549,7 @@ export const companies: Company[] = [
     catchphrase: "英語を学ぶだけではなく、自分の意見を伝えられる人へ。",
     desc: "英語の保育園や子ども英会話、学童、理工系プログラムに特化したSTEMスクールを運営。英語をコミュニケーションの道具として使い、自分の考えを持ち、それを相手に伝えられる人を育てることを大切に、一人ひとりの個性や非認知能力を育んでいる。",
     image: "",
+    presidentImage: "/images/presidents/cards/alive.png",
     heroImage: "",
     founded: "",
     address: "名古屋市東区泉1丁目21-12 いずみ21ビル",
