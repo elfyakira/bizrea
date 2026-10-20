@@ -10,6 +10,8 @@ interface FadeInUpProps {
   className?: string;
   style?: React.CSSProperties;
   as?: ElementType;
+  /** false にするとスクロール位置が0になるのを待たずに監視を始める（ページ下部など、途中の位置から開かれうる要素用） */
+  waitForTop?: boolean;
 }
 
 // スクロール位置が0になるまで待ち、さらに少し待機
@@ -35,6 +37,7 @@ export default function FadeInUp({
   className = '',
   style: externalStyle,
   as: Component = 'div',
+  waitForTop = true,
 }: FadeInUpProps) {
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -56,7 +59,7 @@ export default function FadeInUp({
     let cancelled = false;
 
     // スクロール位置が0になってからIntersectionObserverを開始
-    waitForScrollTop().then(() => {
+    (waitForTop ? waitForScrollTop() : Promise.resolve()).then(() => {
       if (cancelled || !element) return;
 
       observer = new IntersectionObserver(
@@ -79,7 +82,7 @@ export default function FadeInUp({
       cancelled = true;
       observer?.disconnect();
     };
-  }, []);
+  }, [waitForTop]);
 
   // delayが1未満の場合は秒単位と見なしてミリ秒に変換
   const delayMs = delay < 1 ? delay * 1000 : delay;
