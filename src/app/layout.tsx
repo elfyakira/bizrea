@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SnsSection from "@/components/SnsSection";
 import ScrollTracker from "@/components/ScrollTracker";
 import PageViewTracker from "@/components/PageViewTracker";
 import ClickTracker from "@/components/ClickTracker";
@@ -144,6 +145,7 @@ export default function RootLayout({
         <ClickTracker />
         <Header />
         {children}
+        <SnsSection />
         <Footer />
         <ScrollTracker />
       </body>
