@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import ScrollTracker from "@/components/ScrollTracker";
 import PageViewTracker from "@/components/PageViewTracker";
 import ClickTracker from "@/components/ClickTracker";
-import { seo, company, contact, locations, images } from "@/lib/site";
+import { seo, company, contact, locations, images, social } from "@/lib/site";
 
 const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-B6Z4SWP7YJ";
@@ -31,6 +31,7 @@ const jsonLd = {
         addressRegion: locations.headquarters.address,
         addressCountry: "JP",
       },
+      sameAs: [social.instagram, social.tiktok].filter(Boolean),
     },
     {
       "@type": "WebSite",

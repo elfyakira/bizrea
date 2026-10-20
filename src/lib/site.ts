@@ -53,6 +53,7 @@ export interface SiteData {
   };
   social: {
     instagram: string;
+    tiktok: string;
   };
   images: {
     logo: string;
@@ -159,4 +160,5 @@ export const contact = site.contact;
 export const locations = site.locations;
 export const seo = site.seo;
 export const images = site.images;
+export const social = site.social;
 export const googleForm = site.googleForm;
