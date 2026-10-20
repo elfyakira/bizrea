@@ -10,9 +10,9 @@ export default function SnsSection() {
   ].filter((a) => a.url);
   if (accounts.length === 0) return null;
 
-  // 直前が同じ背景色のページ（お問い合わせ等）でも区切りが分かるよう上に線を引く
+  // 背景はフッターと同じ紺。直前の紺のセクション（CTA等）やフッターとの境目が分かるよう上下に薄い線を引く
   return (
-    <section className="bg-[#F6F4F1] border-t border-[#E0DDD8] py-16 max-lg:py-12">
+    <section className="bg-[#1B2D4F] border-y border-white/[0.08] py-16 max-lg:py-12">
       <div className="max-w-[680px] mx-auto px-6 text-center">
         {/* 見出し → アイコンの順に下からふわっと出す */}
         <FadeInUp waitForTop={false} duration={900} distance={24}>
@@ -20,7 +20,7 @@ export default function SnsSection() {
             FOLLOW US
           </p>
           <h2
-            className="mt-3 text-[24px] max-lg:text-[19px] font-medium text-[#1B2D4F] leading-[1.6]"
+            className="mt-3 text-[24px] max-lg:text-[19px] font-medium text-white leading-[1.6]"
             style={{ fontFamily: "'Noto Serif JP', serif" }}
           >
             BIZREAの最新情報をSNSでチェック。
@@ -35,7 +35,7 @@ export default function SnsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Bizrea 公式${name}`}
-                className="flex flex-col items-center gap-2 text-[#1B2D4F] hover:text-accent transition-colors duration-200"
+                className="flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors duration-200"
               >
                 <Icon className="w-11 h-11 max-lg:w-10 max-lg:h-10" />
                 <span
