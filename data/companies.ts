@@ -602,6 +602,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "松浦 紀貴" },
       { label: "所在地", value: "愛知県春日井市高森台" },
       { label: "事業内容", value: "機械設計（生産設備・FA設備・搬送装置等の設計）、コストダウン・省力化・省人化の提案" },
+      { label: "SNS", value: "https://x.com/Norizouks\nhttps://www.facebook.com/people/%E7%B4%80%E5%89%B5%E6%A9%9F%E6%A2%B0%E8%A8%AD%E8%A8%88/61589630604613/" },
     ],
   },
   {

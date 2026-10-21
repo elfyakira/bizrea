@@ -10,6 +10,7 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 const SNS_ICONS = [
   { name: "Instagram", pattern: /^https?:\/\/(www\.)?instagram\.com\//, icon: "/images/icons/instagram.svg" },
   { name: "X", pattern: /^https?:\/\/(www\.)?(x|twitter)\.com\//, icon: "/images/icons/x.svg" },
+  { name: "Facebook", pattern: /^https?:\/\/(www\.)?facebook\.com\//, icon: "/images/icons/facebook.svg" },
 ];
 
 type Props = {
