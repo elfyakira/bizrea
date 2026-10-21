@@ -896,6 +896,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "前野 祐一郎" },
       { label: "所在地", value: "本店　春日井市八事町3-83\n瑞穂通店　春日井市瑞穂通8-24-1" },
       { label: "事業内容", value: "うなぎ料理専門店" },
+      { label: "SNS", value: "https://www.youtube.com/channel/UCFrxXqMJ19VGxTsitravYLA\nhttps://www.instagram.com/maeno.unagi/\nhttps://www.tiktok.com/@unagidokoromaeno" },
     ],
   },
   {
