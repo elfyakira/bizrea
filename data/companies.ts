@@ -1039,6 +1039,8 @@ export const companies: Company[] = [
       { label: "代表者", value: "日下 江利子" },
       { label: "所在地", value: "愛知県名古屋市中村区名駅4丁目24-5 第2森ビル401（研究開発・製造拠点：春日井ラボ 愛知県春日井市高山町）" },
       { label: "事業内容", value: "伝統酒粕と和漢ハーブを活用した完全植物性・無添加プレミアム発酵調味料の製造販売、および職域セルフ薬膳ソリューションの展開" },
+
+      { label: "SNS", value: "https://www.instagram.com/herbzen_eva/" },
     ],
   },
   {
