@@ -2204,6 +2204,8 @@ export const companies: Company[] = [
       { label: "代表者", value: "藤井 恵理子" },
       { label: "所在地", value: "愛知県春日井市鳥居松町6-50-2三原ビル鳥居松301" },
       { label: "事業内容", value: "講師業・キャリアコンサルタント" },
+
+      { label: "SNS", value: "https://www.instagram.com/pis_aqua.e/\nhttps://www.facebook.com/pisaqua" },
     ],
   },
   {
