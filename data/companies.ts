@@ -89,6 +89,7 @@ export const companies: Company[] = [
       { label: "所在地", value: "愛知県春日井市如意申町７丁目15−５ アーバンハイツ春日井 302号" },
       { label: "事業内容", value: "高校生向けキャリア情報誌「ゆめマガ」の発刊、採用HP制作、会社PR動画制作" },
       { label: "URL", value: "https://yumesuta.com/" },
+      { label: "SNS", value: "https://www.instagram.com/yumesuta_co.ltd/" },
     ],
   },
   {
@@ -516,6 +517,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "幸地 賢枝（教室長）" },
       { label: "所在地", value: "愛知県豊田市西町3丁目26桜井ビル2F" },
       { label: "事業内容", value: "学習塾の運営、子育て支援（生徒指導・保護者面談・進路相談）、発達特性・不登校の子どもの受け入れ" },
+      { label: "SNS", value: "https://www.instagram.com/forest.toyota/\nhttps://x.com/forest_toyota" },
     ],
   },
   {
@@ -584,6 +586,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "松浦 紀貴" },
       { label: "所在地", value: "愛知県春日井市高森台" },
       { label: "事業内容", value: "機械設計（生産設備・FA設備・搬送装置等の設計）、コストダウン・省力化・省人化の提案" },
+      { label: "SNS", value: "https://x.com/Norizouks\nhttps://www.facebook.com/people/%E7%B4%80%E5%89%B5%E6%A9%9F%E6%A2%B0%E8%A8%AD%E8%A8%88/61589630604613/" },
     ],
   },
   {
@@ -726,6 +729,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "ノリ・ダ・ファンキーシビレサス" },
       { label: "所在地", value: "愛知県春日井市桃山町" },
       { label: "事業内容", value: "さつまいもの栽培・加工品（干し芋等）製造、企業向け貸し農園" },
+      { label: "SNS", value: "https://www.instagram.com/noridagarden/" },
     ],
   },
   {
@@ -804,6 +808,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "渡邉 尚子" },
       { label: "所在地", value: "愛知県小牧市本庄170" },
       { label: "事業内容", value: "ワイヤーハーネスの加工・ユニットの組み付け、自社オリジナル製品（トランス）の製造・販売、貿易" },
+      { label: "SNS", value: "https://www.facebook.com/196708takeshiro" },
     ],
   },
   {
@@ -875,6 +880,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "前野 祐一郎" },
       { label: "所在地", value: "本店　春日井市八事町3-83\n瑞穂通店　春日井市瑞穂通8-24-1" },
       { label: "事業内容", value: "うなぎ料理専門店" },
+      { label: "SNS", value: "https://www.youtube.com/channel/UCFrxXqMJ19VGxTsitravYLA\nhttps://www.instagram.com/maeno.unagi/\nhttps://www.tiktok.com/@unagidokoromaeno" },
     ],
   },
   {
@@ -1017,6 +1023,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "日下 江利子" },
       { label: "所在地", value: "愛知県名古屋市中村区名駅4丁目24-5 第2森ビル401（研究開発・製造拠点：春日井ラボ 愛知県春日井市高山町）" },
       { label: "事業内容", value: "伝統酒粕と和漢ハーブを活用した完全植物性・無添加プレミアム発酵調味料の製造販売、および職域セルフ薬膳ソリューションの展開" },
+      { label: "SNS", value: "https://www.instagram.com/herbzen_eva/" },
     ],
   },
   {
@@ -1088,6 +1095,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "長江 有祐" },
       { label: "所在地", value: "愛知県春日井市中切町1-5-4" },
       { label: "事業内容", value: "中部大学ラグビー部のブランディング" },
+      { label: "SNS", value: "https://www.instagram.com/chubu_tigers/\nhttps://x.com/chubu_tigers\nhttps://www.tiktok.com/@chubu_tigers" },
     ],
   },
   {
@@ -1150,6 +1158,7 @@ export const companies: Company[] = [
       { label: "活動名", value: "はぴのす（不登校の中高生向けオンラインコミュニティ）" },
       { label: "共同代表", value: "児玉 萌花・堀場 睦未" },
       { label: "事業内容", value: "不登校の中高生向けオンラインコミュニティ「はぴのす」の運営" },
+      { label: "SNS", value: "https://www.instagram.com/hapikura31618\nhttps://x.com/happy_cluster" },
     ],
   },
   {
@@ -1231,6 +1240,7 @@ export const companies: Company[] = [
       { label: "アカウント名", value: "毎日が就活" },
       { label: "発信者", value: "古田 陽平" },
       { label: "事業内容", value: "SNS発信、アフィリエイト事業等" },
+      { label: "SNS", value: "https://www.tiktok.com/@everydayshukatu\nhttps://www.instagram.com/everydayshukatu/" },
     ],
   },
   {
@@ -1298,6 +1308,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "樋口 明日美" },
       { label: "所在地", value: "愛知県春日井市下市場町6-13-10" },
       { label: "事業内容", value: "教育事業" },
+      { label: "SNS", value: "https://www.instagram.com/us_athleteclub" },
     ],
   },
   {
@@ -1369,6 +1380,7 @@ export const companies: Company[] = [
       { label: "オーナー", value: "井上 義崇" },
       { label: "所在地", value: "愛知県春日井市柏原町3-259 カシハラUハウス" },
       { label: "事業内容", value: "美容室の運営" },
+      { label: "SNS", value: "https://www.instagram.com/imocobra/\nhttps://www.facebook.com/people/%E6%98%A5%E6%97%A5%E4%BA%95%E3%81%AE%E7%BE%8E%E5%AE%B9%E9%99%A2%E3%83%98%E3%82%A2%E3%82%B5%E3%83%AD%E3%83%B3%E7%A6%85%E3%82%A2%E3%83%BC%E3%83%A6%E3%83%AB%E3%83%B4%E3%82%A7%E3%83%BC%E3%83%80%E3%82%B9%E3%83%91%E3%82%B5%E3%83%AD%E3%83%B3%E7%A6%85/100046528973080/" },
     ],
   },
   {
@@ -1435,6 +1447,7 @@ export const companies: Company[] = [
       { label: "グループ名", value: "nobodyknows＋" },
       { label: "メンバー", value: "Crystal Boy、ヤス一番？、ノリノリで歌う坂梨、ノリ・ダ・ファンキーシビレサス、DJ MITSU" },
       { label: "活動内容", value: "音楽グループ「nobodyknows＋」としての音楽活動（楽曲制作・ライブ）、トークイベントの企画・出演" },
+      { label: "SNS", value: "https://www.instagram.com/noridagarden/\nhttps://x.com/nk_staff\nhttps://www.youtube.com/channel/UCh1E5xa7wkeb_xzSyM8CkxA" },
     ],
   },
   {
@@ -1505,6 +1518,7 @@ export const companies: Company[] = [
       { label: "代表取締役会長", value: "浅井 直也" },
       { label: "所在地", value: "愛知県名古屋市緑区鳴海町杜若66番地" },
       { label: "事業内容", value: "バルブやポンプなど流体制御機器の開発、設計、製造、販売" },
+      { label: "SNS", value: "https://www.youtube.com/channel/UCYYBVDTT2ewI7wIhjzrpwhw\nhttps://www.facebook.com/people/%E9%AB%98%E7%A0%82%E9%9B%BB%E6%B0%97%E5%B7%A5%E6%A5%AD%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-%E6%8E%A1%E7%94%A8/100057165591559/" },
     ],
   },
   {
@@ -1633,6 +1647,7 @@ export const companies: Company[] = [
       { label: "代表取締役社長", value: "春日井 大介" },
       { label: "所在地", value: "愛知県名古屋市西区花の木1丁目3-14" },
       { label: "事業内容", value: "菓子類の製造並びに販売" },
+      { label: "SNS", value: "https://www.instagram.com/kasugai_seika_official/\nhttps://x.com/KasugaiSeika" },
     ],
   },
   {
@@ -1701,6 +1716,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "長谷川 高徳" },
       { label: "所在地", value: "愛知県春日井市稲口町3丁目6-6-2" },
       { label: "事業内容", value: "障害児通所支援事業　児童発達支援" },
+      { label: "SNS", value: "https://www.instagram.com/waon_kasugai/\nhttps://www.youtube.com/channel/UCtpqMoYv8Y37pM8ccc544fQ\nhttps://www.tiktok.com/@waon_kasugai" },
     ],
   },
   {
@@ -1774,6 +1790,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "前田 奈子" },
       { label: "所在地", value: "愛知県春日井市" },
       { label: "活動内容", value: "オリジナルキャラクターイラスト制作・俳優" },
+      { label: "SNS", value: "https://x.com/nakoko84\nhttps://www.instagram.com/nakoko84/\nhttps://www.youtube.com/channel/UCuHEOjPTxl_ZBS11yBT5SgA\nhttps://www.facebook.com/people/%E5%89%8D%E7%94%B0-%E5%A5%88%E5%AD%90/100009422342430/" },
     ],
   },
   {
@@ -1856,6 +1873,7 @@ export const companies: Company[] = [
       { label: "氏名", value: "伊藤 貴治" },
       { label: "活動地域", value: "愛知県" },
       { label: "活動内容", value: "議員活動（福祉、産業振興・スタートアップ支援、防災・インフラ整備など）、子どもたちの夢を後押しする夢事業・「夢先生」授業の実施" },
+      { label: "SNS", value: "https://www.instagram.com/takaharu.itou10/\nhttps://www.facebook.com/itotakaharutomonokai" },
     ],
   },
   {
@@ -1934,6 +1952,7 @@ export const companies: Company[] = [
       { label: "所在地", value: "愛知県高浜市論地町2-5-5" },
       { label: "創業", value: "1967年" },
       { label: "事業内容", value: "精密バネの製造。圧縮・引張・ねじり・板バネ・ゼンマイなどを1個から試作〜量産しています。図面がなくてもご相談いただけます。近年は人工衛星向けの部品や、農業現場の困りごとから生まれた器具の開発も手がけています。" },
+      { label: "SNS", value: "https://www.instagram.com/s_spring1967/" },
     ],
   },
   {
@@ -2074,6 +2093,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "藤井 恵理子" },
       { label: "所在地", value: "愛知県春日井市鳥居松町6-50-2三原ビル鳥居松301" },
       { label: "事業内容", value: "講師業・キャリアコンサルタント" },
+      { label: "SNS", value: "https://www.instagram.com/pis_aqua.e/\nhttps://www.facebook.com/pisaqua" },
     ],
   },
   {
@@ -2162,6 +2182,7 @@ export const companies: Company[] = [
       { label: "代表", value: "木下 雅博" },
       { label: "所在地", value: "愛知県春日井市高蔵寺町北４丁目1−１５ 高蔵寺ファーストビル 5階" },
       { label: "事業内容", value: "SNS運用代行、動画制作、地域メディア「サボはる」の運営、企業・店舗のPR支援、採用・集客支援、SNS活用セミナー、AI導入コンサルティング" },
+      { label: "SNS", value: "https://www.instagram.com/saboharu_kasugai/" },
     ],
   },
   {
