@@ -1978,6 +1978,8 @@ export const companies: Company[] = [
       { label: "所在地", value: "愛知県高浜市論地町2-5-5" },
       { label: "創業", value: "1967年" },
       { label: "事業内容", value: "精密バネの製造。圧縮・引張・ねじり・板バネ・ゼンマイなどを1個から試作〜量産しています。図面がなくてもご相談いただけます。近年は人工衛星向けの部品や、農業現場の困りごとから生まれた器具の開発も手がけています。" },
+
+      { label: "SNS", value: "https://www.instagram.com/s_spring1967/" },
     ],
   },
   {
