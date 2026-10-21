@@ -1539,6 +1539,8 @@ export const companies: Company[] = [
       { label: "代表取締役会長", value: "浅井 直也" },
       { label: "所在地", value: "愛知県名古屋市緑区鳴海町杜若66番地" },
       { label: "事業内容", value: "バルブやポンプなど流体制御機器の開発、設計、製造、販売" },
+
+      { label: "SNS", value: "https://www.youtube.com/channel/UCYYBVDTT2ewI7wIhjzrpwhw\nhttps://www.facebook.com/people/%E9%AB%98%E7%A0%82%E9%9B%BB%E6%B0%97%E5%B7%A5%E6%A5%AD%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-%E6%8E%A1%E7%94%A8/100057165591559/" },
     ],
   },
   {
