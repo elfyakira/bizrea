@@ -1814,6 +1814,8 @@ export const companies: Company[] = [
       { label: "代表者", value: "前田 奈子" },
       { label: "所在地", value: "愛知県春日井市" },
       { label: "活動内容", value: "オリジナルキャラクターイラスト制作・俳優" },
+
+      { label: "SNS", value: "https://x.com/nakoko84\nhttps://www.instagram.com/nakoko84/\nhttps://www.youtube.com/channel/UCuHEOjPTxl_ZBS11yBT5SgA\nhttps://www.facebook.com/people/%E5%89%8D%E7%94%B0-%E5%A5%88%E5%AD%90/100009422342430/" },
     ],
   },
   {
