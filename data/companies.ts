@@ -1175,6 +1175,8 @@ export const companies: Company[] = [
       { label: "活動名", value: "はぴのす（不登校の中高生向けオンラインコミュニティ）" },
       { label: "共同代表", value: "児玉 萌花・堀場 睦未" },
       { label: "事業内容", value: "不登校の中高生向けオンラインコミュニティ「はぴのす」の運営" },
+
+      { label: "SNS", value: "https://www.instagram.com/hapikura31618\nhttps://x.com/happy_cluster" },
     ],
   },
   {
