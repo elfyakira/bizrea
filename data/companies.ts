@@ -1258,6 +1258,8 @@ export const companies: Company[] = [
       { label: "アカウント名", value: "毎日が就活" },
       { label: "発信者", value: "古田 陽平" },
       { label: "事業内容", value: "SNS発信、アフィリエイト事業等" },
+
+      { label: "SNS", value: "https://www.tiktok.com/@everydayshukatu\nhttps://www.instagram.com/everydayshukatu/" },
     ],
   },
   {
