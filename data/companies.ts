@@ -744,6 +744,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "ノリ・ダ・ファンキーシビレサス" },
       { label: "所在地", value: "愛知県春日井市桃山町" },
       { label: "事業内容", value: "さつまいもの栽培・加工品（干し芋等）製造、企業向け貸し農園" },
+      { label: "SNS", value: "https://www.instagram.com/noridagarden/" },
     ],
   },
   {
@@ -1452,6 +1453,7 @@ export const companies: Company[] = [
       { label: "グループ名", value: "nobodyknows＋" },
       { label: "メンバー", value: "Crystal Boy、ヤス一番？、ノリノリで歌う坂梨、ノリ・ダ・ファンキーシビレサス、DJ MITSU" },
       { label: "活動内容", value: "音楽グループ「nobodyknows＋」としての音楽活動（楽曲制作・ライブ）、トークイベントの企画・出演" },
+      { label: "SNS", value: "https://www.instagram.com/noridagarden/\nhttps://x.com/nk_staff\nhttps://www.youtube.com/channel/UCh1E5xa7wkeb_xzSyM8CkxA" },
     ],
   },
   {

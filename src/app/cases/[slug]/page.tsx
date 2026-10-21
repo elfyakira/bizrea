@@ -11,6 +11,7 @@ const SNS_ICONS = [
   { name: "Instagram", pattern: /^https?:\/\/(www\.)?instagram\.com\//, icon: "/images/icons/instagram.svg" },
   { name: "X", pattern: /^https?:\/\/(www\.)?(x|twitter)\.com\//, icon: "/images/icons/x.svg" },
   { name: "Facebook", pattern: /^https?:\/\/(www\.)?facebook\.com\//, icon: "/images/icons/facebook.svg" },
+  { name: "YouTube", pattern: /^https?:\/\/(www\.)?(youtube\.com|youtu\.be)\//, icon: "/images/icons/youtube.svg" },
 ];
 
 type Props = {
