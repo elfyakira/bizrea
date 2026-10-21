@@ -1739,6 +1739,8 @@ export const companies: Company[] = [
       { label: "代表者", value: "長谷川 高徳" },
       { label: "所在地", value: "愛知県春日井市稲口町3丁目6-6-2" },
       { label: "事業内容", value: "障害児通所支援事業　児童発達支援" },
+
+      { label: "SNS", value: "https://www.instagram.com/waon_kasugai/\nhttps://www.youtube.com/channel/UCtpqMoYv8Y37pM8ccc544fQ\nhttps://www.tiktok.com/@waon_kasugai" },
     ],
   },
   {
