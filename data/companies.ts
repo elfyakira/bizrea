@@ -2062,6 +2062,8 @@ export const companies: Company[] = [
       { label: "代表者", value: "臼井 陽介" },
       { label: "所在地", value: "〒464-0850 名古屋市千種区今池1-2-5" },
       { label: "事業内容", value: "エンタメ事業" },
+
+      { label: "SNS", value: "https://x.com/YOSUKE0722" },
     ],
   },
   {
