@@ -823,6 +823,8 @@ export const companies: Company[] = [
       { label: "代表者", value: "渡邉 尚子" },
       { label: "所在地", value: "愛知県小牧市本庄170" },
       { label: "事業内容", value: "ワイヤーハーネスの加工・ユニットの組み付け、自社オリジナル製品（トランス）の製造・販売、貿易" },
+
+      { label: "SNS", value: "https://www.facebook.com/196708takeshiro" },
     ],
   },
   {
