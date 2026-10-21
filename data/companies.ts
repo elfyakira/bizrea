@@ -1327,6 +1327,8 @@ export const companies: Company[] = [
       { label: "代表者", value: "樋口 明日美" },
       { label: "所在地", value: "愛知県春日井市下市場町6-13-10" },
       { label: "事業内容", value: "教育事業" },
+
+      { label: "SNS", value: "https://www.instagram.com/us_athleteclub" },
     ],
   },
   {
