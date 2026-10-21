@@ -1898,6 +1898,8 @@ export const companies: Company[] = [
       { label: "氏名", value: "伊藤 貴治" },
       { label: "活動地域", value: "愛知県" },
       { label: "活動内容", value: "議員活動（福祉、産業振興・スタートアップ支援、防災・インフラ整備など）、子どもたちの夢を後押しする夢事業・「夢先生」授業の実施" },
+
+      { label: "SNS", value: "https://www.instagram.com/takaharu.itou10/\nhttps://www.facebook.com/itotakaharutomonokai" },
     ],
   },
   {
