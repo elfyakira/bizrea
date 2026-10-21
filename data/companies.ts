@@ -104,6 +104,7 @@ export const companies: Company[] = [
       { label: "所在地", value: "愛知県春日井市如意申町７丁目15−５ アーバンハイツ春日井 302号" },
       { label: "事業内容", value: "高校生向けキャリア情報誌「ゆめマガ」の発刊、採用HP制作、会社PR動画制作" },
       { label: "URL", value: "https://yumesuta.com/" },
+      { label: "SNS", value: "https://www.instagram.com/yumesuta_co.ltd/" },
     ],
   },
   {

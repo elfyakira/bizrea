@@ -169,7 +169,8 @@ export default async function CaseDetailPage({ params }: Props) {
                 {info.label}
               </td>
               <td className="py-2.5 text-[12px] text-[#222222] whitespace-pre-line">
-                {info.label === "URL" ? (
+                {/* URL・SNS など http から始まる値はリンクにする */}
+                {/^https?:\/\//.test(info.value) ? (
                   <a
                     href={info.value}
                     target="_blank"
