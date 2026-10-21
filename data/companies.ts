@@ -1670,7 +1670,7 @@ export const companies: Company[] = [
       { label: "所在地", value: "愛知県名古屋市西区花の木1丁目3-14" },
       { label: "事業内容", value: "菓子類の製造並びに販売" },
 
-      { label: "SNS", value: "https://www.instagram.com/tomohikohara/\nhttps://x.com/KasugaiSeika" },
+      { label: "SNS", value: "https://www.instagram.com/kasugai_seika_official/\nhttps://x.com/KasugaiSeika" },
     ],
   },
   {
