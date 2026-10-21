@@ -2402,6 +2402,8 @@ export const companies: Company[] = [
       { label: "代表", value: "木下 雅博" },
       { label: "所在地", value: "愛知県春日井市高蔵寺町北４丁目1−１５ 高蔵寺ファーストビル 5階" },
       { label: "事業内容", value: "SNS運用代行、動画制作、地域メディア「サボはる」の運営、企業・店舗のPR支援、採用・集客支援、SNS活用セミナー、AI導入コンサルティング" },
+
+      { label: "SNS", value: "https://www.instagram.com/saboharu_kasugai/" },
     ],
   },
   {
