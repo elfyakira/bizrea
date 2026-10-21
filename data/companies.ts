@@ -1111,6 +1111,8 @@ export const companies: Company[] = [
       { label: "代表者", value: "長江 有祐" },
       { label: "所在地", value: "愛知県春日井市中切町1-5-4" },
       { label: "事業内容", value: "中部大学ラグビー部のブランディング" },
+
+      { label: "SNS", value: "https://www.instagram.com/chubu_tigers/\nhttps://x.com/chubu_tigers\nhttps://www.tiktok.com/@chubu_tigers" },
     ],
   },
   {
