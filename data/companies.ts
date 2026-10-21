@@ -1669,6 +1669,8 @@ export const companies: Company[] = [
       { label: "代表取締役社長", value: "春日井 大介" },
       { label: "所在地", value: "愛知県名古屋市西区花の木1丁目3-14" },
       { label: "事業内容", value: "菓子類の製造並びに販売" },
+
+      { label: "SNS", value: "https://www.instagram.com/tomohikohara/\nhttps://x.com/KasugaiSeika" },
     ],
   },
   {
