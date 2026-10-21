@@ -2664,6 +2664,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "三井 博美" },
       { label: "本部所在地", value: "名古屋市東区泉1丁目21-12 いずみ21ビル" },
       { label: "事業内容", value: "英語保育園、子ども英会話スクール、英語学童、STEM教育、英語イマージョン教育、リーダーシップ・起業家育成プログラム、キャリア教育など、教育事業を展開。英語力と非認知能力を育む独自の教育プログラムの開発・提供をはじめ、国内外の教育機関や専門家との連携、各種教育イベントの企画・運営、外国人講師の派遣、フランチャイズ事業の展開などの教育サービスを提供しています。" },
+      { label: "SNS", value: "https://www.youtube.com/channel/UC89YEiS0QW3YhVIfe2_U1LA\nhttps://www.instagram.com/international.alive/" },
     ],
   },
   {
