@@ -169,8 +169,18 @@ export default async function CaseDetailPage({ params }: Props) {
                 {info.label}
               </td>
               <td className="py-2.5 text-[12px] text-[#222222] whitespace-pre-line">
-                {/* URL・SNS など http から始まる値はリンクにする */}
-                {/^https?:\/\//.test(info.value) ? (
+                {/* Instagram はアイコン、それ以外の http から始まる値（URL など）は文字のリンクにする */}
+                {/instagram\.com/.test(info.value) ? (
+                  <a
+                    href={info.value}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${company.name} 公式Instagram`}
+                    className="inline-block align-middle hover:opacity-80 transition-opacity duration-200"
+                  >
+                    <img className="block w-7 h-7" src="/images/icons/instagram.svg" alt="" width={28} height={28} />
+                  </a>
+                ) : /^https?:\/\//.test(info.value) ? (
                   <a
                     href={info.value}
                     target="_blank"
