@@ -6,6 +6,12 @@ import CaseTabs from "@/components/CaseTabs";
 import CaseTabText from "@/components/CaseTabText";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 
+// 企業情報でアイコン表示する SNS
+const SNS_ICONS = [
+  { name: "Instagram", pattern: /^https?:\/\/(www\.)?instagram\.com\//, icon: "/images/icons/instagram.svg" },
+  { name: "X", pattern: /^https?:\/\/(www\.)?(x|twitter)\.com\//, icon: "/images/icons/x.svg" },
+];
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -157,6 +163,15 @@ export default async function CaseDetailPage({ params }: Props) {
   const applyHref = applyToForm ? "/contact" : company.recruitmentUrl || "#";
   const applyTarget = applyToForm ? undefined : "_blank";
 
+  // 企業情報の値が SNS の URL だけ（改行区切りで複数可）なら、アイコン表示用に分解して返す
+  const snsLinks = (value: string) => {
+    const links = value.split("\n").map((url) => {
+      const sns = SNS_ICONS.find((s) => s.pattern.test(url));
+      return sns ? { url, name: sns.name, icon: sns.icon } : null;
+    });
+    return links.every(Boolean) ? (links as { url: string; name: string; icon: string }[]) : null;
+  };
+
   // サイドバーの情報ボックス（企業情報 / 人物のプロフィール）
   const renderInfoBox = (title: string, rows: { label: string; value: string }[]) => (
     <div className="bg-white rounded-[4px] p-6 shadow-sm">
@@ -169,17 +184,22 @@ export default async function CaseDetailPage({ params }: Props) {
                 {info.label}
               </td>
               <td className="py-2.5 text-[12px] text-[#222222] whitespace-pre-line">
-                {/* Instagram はアイコン、それ以外の http から始まる値（URL など）は文字のリンクにする */}
-                {/instagram\.com/.test(info.value) ? (
-                  <a
-                    href={info.value}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${company.name} 公式Instagram`}
-                    className="inline-block align-middle hover:opacity-80 transition-opacity duration-200"
-                  >
-                    <img className="block w-7 h-7" src="/images/icons/instagram.svg" alt="" width={28} height={28} />
-                  </a>
+                {/* SNS の URL（改行区切りで複数可）はアイコン、それ以外の http から始まる値（URL など）は文字のリンクにする */}
+                {snsLinks(info.value) ? (
+                  <div className="flex items-center gap-3">
+                    {snsLinks(info.value)!.map(({ url, name, icon }) => (
+                      <a
+                        key={url}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${company.name} 公式${name}`}
+                        className="block hover:opacity-80 transition-opacity duration-200"
+                      >
+                        <img className="block w-7 h-7" src={icon} alt="" width={28} height={28} />
+                      </a>
+                    ))}
+                  </div>
                 ) : /^https?:\/\//.test(info.value) ? (
                   <a
                     href={info.value}

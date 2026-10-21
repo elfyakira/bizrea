@@ -533,6 +533,7 @@ export const companies: Company[] = [
       { label: "代表者", value: "幸地 賢枝（教室長）" },
       { label: "所在地", value: "愛知県豊田市西町3丁目26桜井ビル2F" },
       { label: "事業内容", value: "学習塾の運営、子育て支援（生徒指導・保護者面談・進路相談）、発達特性・不登校の子どもの受け入れ" },
+      { label: "SNS", value: "https://www.instagram.com/forest.toyota/\nhttps://x.com/forest_toyota" },
     ],
   },
   {
