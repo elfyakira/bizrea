@@ -1400,6 +1400,8 @@ export const companies: Company[] = [
       { label: "オーナー", value: "井上 義崇" },
       { label: "所在地", value: "愛知県春日井市柏原町3-259 カシハラUハウス" },
       { label: "事業内容", value: "美容室の運営" },
+
+      { label: "SNS", value: "https://www.instagram.com/imocobra/\nhttps://www.facebook.com/people/%E6%98%A5%E6%97%A5%E4%BA%95%E3%81%AE%E7%BE%8E%E5%AE%B9%E9%99%A2%E3%83%98%E3%82%A2%E3%82%B5%E3%83%AD%E3%83%B3%E7%A6%85%E3%82%A2%E3%83%BC%E3%83%A6%E3%83%AB%E3%83%B4%E3%82%A7%E3%83%BC%E3%83%80%E3%82%B9%E3%83%91%E3%82%B5%E3%83%AD%E3%83%B3%E7%A6%85/100046528973080/" },
     ],
   },
   {
