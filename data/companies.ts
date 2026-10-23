@@ -1608,7 +1608,8 @@ export const companies: Company[] = [
   },
   {
     id: "kasugai-okashina",
-    name: "春日井製菓おかしな実験室",
+    name: "春日井製菓株式会社",
+    affiliation: "おかしな実験室",
     industry: "食品製造業",
     region: "愛知県",
     president: "原 智彦",
@@ -1665,7 +1666,7 @@ export const companies: Company[] = [
     ],
     photos: [],
     companyInfo: [
-      { label: "企業名", value: "春日井製菓おかしな実験室" },
+      { label: "企業名", value: "春日井製菓株式会社" },
       { label: "代表取締役社長", value: "春日井 大介" },
       { label: "所在地", value: "愛知県名古屋市西区花の木1丁目3-14" },
       { label: "事業内容", value: "菓子類の製造並びに販売" },
