@@ -198,6 +198,25 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+
+          {/* ゆめスタパートナーズ 応援バナー */}
+          <div className="mt-24 max-lg:mt-10 flex justify-center">
+            <a
+              href="https://yumesuta-partners.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="一般社団法人ゆめスタパートナーズを応援しています"
+            >
+              <img
+                src="/images/yumesuta-support-banner.webp"
+                alt="一般社団法人ゆめスタパートナーズを応援しています。"
+                width={1200}
+                height={373}
+                loading="lazy"
+                className="block h-auto w-[460px] max-w-full rounded-[10px]"
+              />
+            </a>
+          </div>
         </div>
       </section>
 
