@@ -105,7 +105,11 @@ const industryColors: Record<string, string> = {
 // 詳細ページの見出しだけ、一覧カードとは別の表記にする企業
 const HERO_TITLES: Record<string, string> = {
   nobodyknows: "nobodyknows＋",
-  "nagoya-okoshi": "でらっくす・ボーイズ",
+  "nagoya-okoshi-honda": "でらっくす・ボーイズ",
+  "nagoya-okoshi-yoshihara": "でらっくす・ボーイズ",
+  "nagoya-okoshi-hiramatsu": "でらっくす・ボーイズ",
+  "nagoya-okoshi-tamura": "でらっくす・ボーイズ",
+  "nagoya-okoshi-tsujimoto": "でらっくす・ボーイズ",
 };
 
 // 対談形式の記事で、段落頭の話者名（例「ノリさん：」）を太字にするためのパターン
@@ -140,10 +144,10 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "ainochikara", "nagoya-okoshi"].includes(company.id);
+  const hideApplyButton = ["lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco-kobayashi", "p-loco-sasaki", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "ainochikara", "kotomari-shihoshoshi", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto"].includes(company.id);
 
   // 問い合わせボタンを非表示にする企業
-  const hideContactButton = ["aisei", "sorairo", "p-loco", "nagoya-okoshi"].includes(company.id);
+  const hideContactButton = ["aisei", "sorairo", "p-loco-kobayashi", "p-loco-sasaki", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);

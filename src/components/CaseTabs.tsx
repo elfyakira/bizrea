@@ -25,6 +25,8 @@ export default function CaseTabs({ labels, panels }: CaseTabsProps) {
 
   return (
     <div>
+      {/* 1人だけのときはタブボタンを出さない */}
+      {labels.length > 1 && (
       <div className="flex gap-2 mb-6 max-lg:mb-4" role="tablist">
         {labels.map((label, i) => (
           <button
@@ -43,6 +45,7 @@ export default function CaseTabs({ labels, panels }: CaseTabsProps) {
           </button>
         ))}
       </div>
+      )}
 
       {panels.map((panel, i) => (
         <div key={i} role="tabpanel" hidden={active !== i}>
