@@ -147,7 +147,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const hideApplyButton = ["lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco-kobayashi", "p-loco-sasaki", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "ainochikara", "kotomari-shihoshoshi", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto"].includes(company.id);
 
   // 問い合わせボタンを非表示にする企業
-  const hideContactButton = ["aisei", "sorairo", "p-loco-kobayashi", "p-loco-sasaki", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto"].includes(company.id);
+  const hideContactButton = ["aisei", "sorairo", "p-loco-kobayashi", "p-loco-sasaki", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto", "kotomari-shihoshoshi"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
