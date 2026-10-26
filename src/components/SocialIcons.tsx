@@ -13,6 +13,15 @@ export function InstagramIcon({ className = "" }: { className?: string }) {
   );
 }
 
+export function YouTubeIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+      <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
+      <path d="M10.2 9.4v5.2l4.4-2.6z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export function TikTokIcon({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -53,6 +62,15 @@ export function TikTokColorIcon({ className = "" }: { className?: string }) {
         <path d={TIKTOK_PATH} fill="#FE2C55" transform="translate(0.9 0.9)" />
         <path d={TIKTOK_PATH} fill="#fff" />
       </g>
+    </svg>
+  );
+}
+
+export function YouTubeColorIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" aria-hidden>
+      <rect width="24" height="24" rx="5.5" fill="#FF0000" />
+      <path d="M9.6 7.8v8.4l7.2-4.2z" fill="#fff" />
     </svg>
   );
 }
