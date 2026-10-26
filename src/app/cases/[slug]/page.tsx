@@ -180,7 +180,7 @@ export default async function CaseDetailPage({ params }: Props) {
   };
 
   // サイドバーの情報ボックス（企業情報 / 人物のプロフィール）
-  const renderInfoBox = (title: string, rows: { label: string; value: string }[]) => (
+  const renderInfoBox = (title: string, rows: { label: string; value: string }[], owner = `${company.name} 公式`) => (
     <div className="bg-white rounded-[4px] p-6 shadow-sm">
       <h3 className="text-[14px] font-bold text-[#222222] mb-4">{title}</h3>
       <table className="w-full">
@@ -200,7 +200,7 @@ export default async function CaseDetailPage({ params }: Props) {
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`${company.name} 公式${name}`}
+                        aria-label={`${owner}${name}`}
                         className="block hover:opacity-80 transition-opacity duration-200"
                       >
                         <img className="block w-7 h-7" src={icon} alt="" width={28} height={28} />
@@ -557,7 +557,7 @@ export default async function CaseDetailPage({ params }: Props) {
                         <div className="space-y-6">
                           {renderInfoBox("企業情報", company.companyInfo)}
                           {company.contactUrl && contactButton}
-                          {renderInfoBox("プロフィール", t.profile)}
+                          {renderInfoBox("プロフィール", t.profile, `${t.personName} `)}
                         </div>
                       ) : (
                         renderInfoBox("プロフィール", t.profile)

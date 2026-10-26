@@ -2805,6 +2805,7 @@ export const companies: Company[] = [
         label: "辻本 達規",
         personName: "辻本 達規",
         personRole: "赤色担当",
+        showCompanyInfo: true,
         profile: [
           { label: "誕生日", value: "1991年5月17日" },
           { label: "出身地", value: "岐阜県" },
@@ -2812,6 +2813,7 @@ export const companies: Company[] = [
           { label: "血液型", value: "A型" },
           { label: "特技", value: "野球部、水風呂温度当て、日商簿記検定二級" },
           { label: "趣味", value: "ドラゴンズ、キャンプ、サウナ、釣り、登山、トレラン、乗馬" },
+          { label: "SNS", value: "https://www.instagram.com/tsujimoto.tatsunori.camp/?hl=ja\nhttps://x.com/BOYMEN_tsujimo" },
         ],
         personCatchphrase: "「自分の信念だけは、絶対に曲げたくない。」",
         chapters: [
@@ -2900,6 +2902,7 @@ export const companies: Company[] = [
         label: "田村 侑久",
         personName: "田村 侑久",
         personRole: "青色担当",
+        showCompanyInfo: true,
         profile: [
           { label: "誕生日", value: "1990年10月17日" },
           { label: "出身地", value: "愛知県" },
@@ -2907,6 +2910,7 @@ export const companies: Company[] = [
           { label: "血液型", value: "O型" },
           { label: "特技", value: "チラシ配り、鼻で風船を膨らます" },
           { label: "趣味", value: "チラシ配り、ダーツ、フットサル、ピアノ、ビリヤード、ゲーム、愛犬と遊ぶ、釣り" },
+          { label: "SNS", value: "https://www.instagram.com/boymen_tamura/?hl=ja\nhttps://x.com/BOYMEN_tamura\nhttps://www.tiktok.com/@boysandmen1" },
         ],
         personCatchphrase: "「後悔しない人生」を選ぶために。踏み出した一歩が、今の自分をつくった。",
         chapters: [
@@ -3005,6 +3009,7 @@ export const companies: Company[] = [
         label: "平松 賢人",
         personName: "平松 賢人",
         personRole: "黄色担当",
+        showCompanyInfo: true,
         profile: [
           { label: "誕生日", value: "1994年11月14日" },
           { label: "出身地", value: "愛知県" },
@@ -3012,6 +3017,7 @@ export const companies: Company[] = [
           { label: "血液型", value: "O型" },
           { label: "特技", value: "カメラ、ダンス、水泳、歌" },
           { label: "趣味", value: "旅行、家電量販店巡り、音楽鑑賞、カラオケ、御朱印集め、デザイン、スーパー銭湯" },
+          { label: "SNS", value: "https://www.instagram.com/boymen_kento/\nhttps://x.com/BOYMEN_kento?lang=ja" },
         ],
         personCatchphrase: "「この5人で、もう一度1万人のステージへ。」",
         chapters: [
@@ -3105,6 +3111,7 @@ export const companies: Company[] = [
         label: "吉原 雅斗",
         personName: "吉原 雅斗",
         personRole: "緑色担当",
+        showCompanyInfo: true,
         profile: [
           { label: "誕生日", value: "1994年7月22日" },
           { label: "出身地", value: "愛知県" },
@@ -3112,6 +3119,7 @@ export const companies: Company[] = [
           { label: "血液型", value: "A型" },
           { label: "特技", value: "書道、ダンス、鼻笛演奏" },
           { label: "趣味", value: "韓国、ゲーム（家にあるゲーム機材はプロレベル）、K-POP" },
+          { label: "SNS", value: "https://www.instagram.com/boymen_yoshi/?hl=ja\nhttps://x.com/BOYMEN_yoshi" },
         ],
         personCatchphrase: "「5人で叶えたい夢がある。」",
         chapters: [
@@ -3208,6 +3216,7 @@ export const companies: Company[] = [
           { label: "血液型", value: "O型" },
           { label: "特技", value: "弓道参段、お喋り、日本伝統文化検定２級、世界遺産検定2級" },
           { label: "趣味", value: "猫、マーベル、マーベルグッズ集め、実況、格闘技、日本舞踊" },
+          { label: "SNS", value: "https://www.instagram.com/boymen_honda/\nhttps://x.com/BOYMEN_honda" },
         ],
         personCatchphrase: "「自分たちの選択に、自分たちで責任を持つ」",
         chapters: [
