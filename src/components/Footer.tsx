@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { company, contact, social } from "@/lib/site";
-import { InstagramIcon, TikTokIcon } from "./SocialIcons";
+import { InstagramIcon, TikTokIcon, YouTubeIcon } from "./SocialIcons";
 
 const footerNav = [
   { label: "ホーム", href: "/" },
@@ -11,7 +11,7 @@ const footerNav = [
 
 // SNSへのリンク（URLが空のものは出さない）
 function SocialLinks({ className = "" }: { className?: string }) {
-  if (!social.instagram && !social.tiktok) return null;
+  if (!social.instagram && !social.tiktok && !social.youtube) return null;
   return (
     <div className={`flex items-center gap-5 ${className}`}>
       {social.instagram && (
@@ -34,6 +34,17 @@ function SocialLinks({ className = "" }: { className?: string }) {
           className="text-white/70 hover:text-white transition-colors duration-200"
         >
           <TikTokIcon className="w-7 h-7" />
+        </a>
+      )}
+      {social.youtube && (
+        <a
+          href={social.youtube}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Bizrea 公式YouTube"
+          className="text-white/70 hover:text-white transition-colors duration-200"
+        >
+          <YouTubeIcon className="w-7 h-7" />
         </a>
       )}
     </div>

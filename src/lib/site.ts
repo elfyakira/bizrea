@@ -54,6 +54,7 @@ export interface SiteData {
   social: {
     instagram: string;
     tiktok: string;
+    youtube: string;
   };
   images: {
     logo: string;

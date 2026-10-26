@@ -32,7 +32,7 @@ const jsonLd = {
         addressRegion: locations.headquarters.address,
         addressCountry: "JP",
       },
-      sameAs: [social.instagram, social.tiktok].filter(Boolean),
+      sameAs: [social.instagram, social.tiktok, social.youtube].filter(Boolean),
     },
     {
       "@type": "WebSite",

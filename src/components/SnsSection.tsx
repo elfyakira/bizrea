@@ -1,5 +1,5 @@
 import { social } from "@/lib/site";
-import { InstagramColorIcon, TikTokColorIcon } from "./SocialIcons";
+import { InstagramColorIcon, TikTokColorIcon, YouTubeColorIcon } from "./SocialIcons";
 import { FadeInUp } from "./animations";
 
 // フッターの直前に出す、公式SNSアカウントの案内（全ページ共通）
@@ -7,6 +7,7 @@ export default function SnsSection() {
   const accounts = [
     { name: "Instagram", url: social.instagram, Icon: InstagramColorIcon },
     { name: "TikTok", url: social.tiktok, Icon: TikTokColorIcon },
+    { name: "YouTube", url: social.youtube, Icon: YouTubeColorIcon },
   ].filter((a) => a.url);
   if (accounts.length === 0) return null;
 
