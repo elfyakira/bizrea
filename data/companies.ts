@@ -3276,6 +3276,7 @@ export const companies: Company[] = [
     catchphrase: "自分に嘘をつかず、誠実に向き合いたい",
     desc: "不動産登記・商業登記を中心に、成年後見や空き家対策にも携わる司法書士事務所。結婚や家の購入、相続、債務整理など、人生の節目に立つ人に自然体で寄り添い、手続きだけでなく不安や悩みも軽くすることを大切にしている。",
     image: "",
+    presidentImage: "/images/presidents/cards/kotomari-shihoshoshi.png",
     heroImage: "",
     founded: "",
     address: "",
