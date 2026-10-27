@@ -2444,7 +2444,7 @@ export const companiesNewestFirst: Company[] = [...companies].reverse();
 /**
  * トップページの掲載企業の並び順。
  * 著名人（topPickIds の順。PC 4列で1列目＝ノリさん・古田さん・長江さん、2列目〜＝でらっくす・ボーイズ、続いて陽介さん・伊藤さん）
- * → 動画がある企業 → 動画がない企業。同じグループ内は新しい順。
+ * → 指定順の企業（followIds）→ 動画がある企業 → 動画がない企業。動画あり／なしのグループ内は新しい順。
  */
 const topPickIds = [
   "nobodyknows",
@@ -2459,18 +2459,22 @@ const topPickIds = [
   "tyk-promotion",
   "takaharu",
 ];
-// 上の並びを作ったあと、位置を入れ替える組（前野さん ⇄ 熊谷さん）
-const homeSwapPairs: [string, string][] = [["unagi", "lanchester-kasugai"]];
-export const companiesForHome: Company[] = [
-  ...topPickIds.map((id) => companies.find((c) => c.id === id)).filter((c): c is Company => !!c),
-  ...companiesNewestFirst.filter((c) => !topPickIds.includes(c.id) && c.videoUrl),
-  ...companiesNewestFirst.filter((c) => !topPickIds.includes(c.id) && !c.videoUrl),
+// 著名人に続けて並べる企業（前野さん・熊谷さん・飯田さん・幸地さん・サボはるさん・渡邉さん・松浦さん）
+const followIds = [
+  "unagi",
+  "lanchester-kasugai",
+  "yumesuta",
+  "forest-toyota",
+  "saboharu",
+  "takeyo",
+  "kiso",
 ];
-for (const [a, b] of homeSwapPairs) {
-  const i = companiesForHome.findIndex((c) => c.id === a);
-  const j = companiesForHome.findIndex((c) => c.id === b);
-  if (i >= 0 && j >= 0) [companiesForHome[i], companiesForHome[j]] = [companiesForHome[j], companiesForHome[i]];
-}
+const pinnedIds = [...topPickIds, ...followIds];
+export const companiesForHome: Company[] = [
+  ...pinnedIds.map((id) => companies.find((c) => c.id === id)).filter((c): c is Company => !!c),
+  ...companiesNewestFirst.filter((c) => !pinnedIds.includes(c.id) && c.videoUrl),
+  ...companiesNewestFirst.filter((c) => !pinnedIds.includes(c.id) && !c.videoUrl),
+];
 
 export function getCompanyById(id: string): Company | undefined {
   return companies.find((c) => c.id === id);
