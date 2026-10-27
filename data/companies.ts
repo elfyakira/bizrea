@@ -2459,11 +2459,18 @@ const topPickIds = [
   "tyk-promotion",
   "takaharu",
 ];
+// 上の並びを作ったあと、位置を入れ替える組（前野さん ⇄ 熊谷さん）
+const homeSwapPairs: [string, string][] = [["unagi", "lanchester-kasugai"]];
 export const companiesForHome: Company[] = [
   ...topPickIds.map((id) => companies.find((c) => c.id === id)).filter((c): c is Company => !!c),
   ...companiesNewestFirst.filter((c) => !topPickIds.includes(c.id) && c.videoUrl),
   ...companiesNewestFirst.filter((c) => !topPickIds.includes(c.id) && !c.videoUrl),
 ];
+for (const [a, b] of homeSwapPairs) {
+  const i = companiesForHome.findIndex((c) => c.id === a);
+  const j = companiesForHome.findIndex((c) => c.id === b);
+  if (i >= 0 && j >= 0) [companiesForHome[i], companiesForHome[j]] = [companiesForHome[j], companiesForHome[i]];
+}
 
 export function getCompanyById(id: string): Company | undefined {
   return companies.find((c) => c.id === id);
