@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { contact } from "@/lib/site";
-import { companiesNewestFirst } from "@data/companies";
+import { companiesForHome } from "@data/companies";
 import LazyPresidentVideo from "@/components/LazyPresidentVideo";
 import HeroMarquee from "@/components/HeroMarquee";
 import PresidentMessage from "@/components/PresidentMessage";
@@ -172,7 +172,7 @@ export default function HomePage() {
             掲載企業
           </h2>
           <div className="mt-14 max-lg:mt-10 grid grid-cols-4 max-lg:grid-cols-2 gap-5 max-lg:gap-3">
-            {companiesNewestFirst.filter((c) => !c.hidden).map((c) => (
+            {companiesForHome.filter((c) => !c.hidden).map((c) => (
               <Link
                 key={c.id}
                 href={`/cases/${c.id}`}
