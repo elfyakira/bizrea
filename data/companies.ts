@@ -2441,6 +2441,30 @@ export const companies: Company[] = [
  */
 export const companiesNewestFirst: Company[] = [...companies].reverse();
 
+/**
+ * トップページの掲載企業の並び順。
+ * 著名人（topPickIds の順。PC 4列で1列目＝ノリさん・古田さん・長江さん、2列目〜＝でらっくす・ボーイズ、続いて陽介さん・伊藤さん）
+ * → 動画がある企業 → 動画がない企業。同じグループ内は新しい順。
+ */
+const topPickIds = [
+  "nobodyknows",
+  "norida-garden",
+  "mainichi-shukatsu",
+  "scrum",
+  "nagoya-okoshi-honda",
+  "nagoya-okoshi-yoshihara",
+  "nagoya-okoshi-hiramatsu",
+  "nagoya-okoshi-tamura",
+  "nagoya-okoshi-tsujimoto",
+  "tyk-promotion",
+  "takaharu",
+];
+export const companiesForHome: Company[] = [
+  ...topPickIds.map((id) => companies.find((c) => c.id === id)).filter((c): c is Company => !!c),
+  ...companiesNewestFirst.filter((c) => !topPickIds.includes(c.id) && c.videoUrl),
+  ...companiesNewestFirst.filter((c) => !topPickIds.includes(c.id) && !c.videoUrl),
+];
+
 export function getCompanyById(id: string): Company | undefined {
   return companies.find((c) => c.id === id);
 }
