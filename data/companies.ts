@@ -1985,7 +1985,7 @@ export const companies: Company[] = [
   },
   {
     id: "tyk-promotion",
-    name: "株式会社TKY Promotion",
+    name: "株式会社TYK Promotion",
     industry: "エンターテインメント",
     region: "愛知県",
     president: "YO!YO!YOSUKE",
@@ -2001,7 +2001,7 @@ export const companies: Company[] = [
     url: "https://tykpromotion.com/",
     contactUrl: "https://tykpromotion.com/contact/",
     recruitmentUrl: "",
-    leadText: "みんながAを選ぶなら、自分はBを選びたくなる——中学1年で母を、高校1年で父を亡くした少年は、褒められた「声」を頼りに名古屋で道を切り拓いてきた。ZIP-FMのナビゲーター「YO!YO!YOSUKE」として、名古屋グランパスのスタジアムDJとして、そして株式会社TKY Promotionの代表として。0から1を生むことに一番のやりがいを感じるという氏が、名古屋にこだわり続ける理由と、エンターテインメントでこの街に残したいものに迫る。",
+    leadText: "みんながAを選ぶなら、自分はBを選びたくなる——中学1年で母を、高校1年で父を亡くした少年は、褒められた「声」を頼りに名古屋で道を切り拓いてきた。ZIP-FMのナビゲーター「YO!YO!YOSUKE」として、名古屋グランパスのスタジアムDJとして、そして株式会社TYK Promotionの代表として。0から1を生むことに一番のやりがいを感じるという氏が、名古屋にこだわり続ける理由と、エンターテインメントでこの街に残したいものに迫る。",
     interviewDate: "",
     videoId: "",
     chapters: [
@@ -2039,7 +2039,7 @@ export const companies: Company[] = [
       },
       {
         title: "TYK＝太陽のように輝く——それぞれが太陽になればいい",
-        content: "Q. TKY Promotionとして、大切にしているものは何でしょうか。\n\n『太陽のように輝く（Taiyo no Yoni Kagayaku）』の頭文字から取っています。\n\n僕にとって、何かをつくる時には「太陽」というものがずっと中心にあります。\n\n「太陽のように輝く」といっても、その輝き方は人それぞれです。\n\nただ、自分だけが輝くのではなく、周囲を照らす存在でありたい。\n\nそして、日の出のように何かを「起こす」。0から何かを立ち上げていくという意味でも、自分の中ではつながっています。\n\n名古屋という土地から、エンターテインメントを使って街をもっと面白くしていく。\n\n僕一人ではなく、それぞれがそれぞれの太陽になっていけば、輝く人をもっと増やしていける。\n\nその先に、僕たちがやりたい「面白い街・名古屋」につながっていけばいいなと思っています。",
+        content: "Q. TYK Promotionとして、大切にしているものは何でしょうか。\n\n『太陽のように輝く（Taiyo no Yoni Kagayaku）』の頭文字から取っています。\n\n僕にとって、何かをつくる時には「太陽」というものがずっと中心にあります。\n\n「太陽のように輝く」といっても、その輝き方は人それぞれです。\n\nただ、自分だけが輝くのではなく、周囲を照らす存在でありたい。\n\nそして、日の出のように何かを「起こす」。0から何かを立ち上げていくという意味でも、自分の中ではつながっています。\n\n名古屋という土地から、エンターテインメントを使って街をもっと面白くしていく。\n\n僕一人ではなく、それぞれがそれぞれの太陽になっていけば、輝く人をもっと増やしていける。\n\nその先に、僕たちがやりたい「面白い街・名古屋」につながっていけばいいなと思っています。",
       },
       {
         title: "「東京は僕じゃなくてもいい」——名古屋にこだわる理由",
@@ -2059,12 +2059,12 @@ export const companies: Company[] = [
     ],
     photos: [],
     companyInfo: [
-      { label: "企業名", value: "株式会社TKY Promotion" },
+      { label: "企業名", value: "株式会社TYK Promotion" },
       { label: "代表者", value: "臼井 陽介" },
       { label: "所在地", value: "〒464-0850 名古屋市千種区今池1-2-5" },
       { label: "事業内容", value: "エンタメ事業" },
 
-      { label: "SNS", value: "https://x.com/YOSUKE0722" },
+      { label: "SNS", value: "https://x.com/YOSUKE0722\nhttps://www.instagram.com/yoyoyosuke_official/\nhttps://www.tiktok.com/@yoyoyosuke722\nhttps://www.youtube.com/@yoyoyosuke_official" },
     ],
   },
   {
