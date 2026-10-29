@@ -1977,6 +1977,7 @@ export const companies: Company[] = [
     leadText: "みんながAを選ぶなら、自分はBを選びたくなる——中学1年で母を、高校1年で父を亡くした少年は、褒められた「声」を頼りに名古屋で道を切り拓いてきた。ZIP-FMのナビゲーター「YO!YO!YOSUKE」として、名古屋グランパスのスタジアムDJとして、そして株式会社TYK Promotionの代表として。0から1を生むことに一番のやりがいを感じるという氏が、名古屋にこだわり続ける理由と、エンターテインメントでこの街に残したいものに迫る。",
     interviewDate: "",
     videoId: "",
+    videoUrl: "https://assets.singgroup.biz/pv/bizrea_yosuke.mp4",
     chapters: [
       {
         title: "両親を亡くして——「知ってもらう」ことが原点になった",
