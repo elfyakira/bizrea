@@ -1964,7 +1964,7 @@ export const companies: Company[] = [
     president: "YO!YO!YOSUKE",
     catchphrase: "人がやっていないなら、生んだ方が面白い。——名古屋から、エンターテインメントの新しい景色をつくる",
     desc: "名古屋を拠点に、タレント育成・マネージメント、キャスティング、エンタメコンテンツの企画・制作、スポーツ×エンターテイメント事業を手掛ける。代表のYO!YO!YOSUKE氏はラジオナビゲーター、MC、スポーツDJとしても活動し、名古屋グランパスのスタジアムDJを20年以上務める。",
-    image: "",
+    image: "/images/companies/tyk-promotion-thumbnail.jpg",
     presidentImage: "/images/presidents/cards/tyk-promotion.png",
     heroImage: "",
     founded: "",
