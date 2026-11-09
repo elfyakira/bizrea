@@ -144,7 +144,7 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco-kobayashi", "p-loco-sasaki", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "ainochikara", "kotomari-shihoshoshi", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto"].includes(company.id);
+  const hideApplyButton = ["lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco-kobayashi", "p-loco-sasaki", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "ainochikara", "kotomari-shihoshoshi", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto", "naano"].includes(company.id);
 
   // 問い合わせボタンを非表示にする企業
   const hideContactButton = ["aisei", "sorairo", "p-loco-kobayashi", "p-loco-sasaki", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto", "kotomari-shihoshoshi"].includes(company.id);
