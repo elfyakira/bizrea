@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { companies, getCompanyById, type Company } from "@data/companies";
+import CaseTabs from "@/components/CaseTabs";
+import CaseTabText from "@/components/CaseTabText";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 // 企業情報でアイコン表示する SNS
@@ -12,15 +14,6 @@ const SNS_ICONS = [
   { name: "YouTube", pattern: /^https?:\/\/(www\.)?(youtube\.com|youtu\.be)\//, icon: "/images/icons/youtube.svg" },
   { name: "TikTok", pattern: /^https?:\/\/(www\.)?tiktok\.com\//, icon: "/images/icons/tiktok.svg" },
 ];
-
-// 企業情報の値が SNS の URL だけ（改行区切りで複数可）なら、アイコン表示用に分解して返す
-function snsLinks(value: string) {
-  const links = value.split("\n").map((url) => {
-    const sns = SNS_ICONS.find((s) => s.pattern.test(url));
-    return sns ? { url, name: sns.name, icon: sns.icon } : null;
-  });
-  return links.every(Boolean) ? (links as { url: string; name: string; icon: string }[]) : null;
-}
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -112,6 +105,11 @@ const industryColors: Record<string, string> = {
 // 詳細ページの見出しだけ、一覧カードとは別の表記にする企業
 const HERO_TITLES: Record<string, string> = {
   nobodyknows: "nobodyknows＋",
+  "nagoya-okoshi-honda": "でらっくす・ボーイズ",
+  "nagoya-okoshi-yoshihara": "でらっくす・ボーイズ",
+  "nagoya-okoshi-hiramatsu": "でらっくす・ボーイズ",
+  "nagoya-okoshi-tamura": "でらっくす・ボーイズ",
+  "nagoya-okoshi-tsujimoto": "でらっくす・ボーイズ",
 };
 
 // 対談形式の記事で、段落頭の話者名（例「ノリさん：」）を太字にするためのパターン
@@ -146,20 +144,278 @@ export default async function CaseDetailPage({ params }: Props) {
   const industryClass = industryColors[company.industry] || "bg-[#888888] text-white";
 
   // 応募ボタンを非表示にする企業
-  const hideApplyButton = ["tyk-promotion", "nukumori-no-izumi", "takaharu", "lanchester-kasugai", "saboharu", "sugiura-hatsujo", "pisaqua", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "vital-core-yamanaka", "herbzen-eva", "scrum", "mainichi-shukatsu", "kasugai-okashina", "nagoya-hs-soccer", "nobodyknows", "prizeout", "waon", "hapikura", "flytop", "aisei", "honic", "ainochikara", "teara", "kotomari-shihoshoshi"].includes(company.id);
+  const hideApplyButton = ["tyk-promotion", "nukumori-no-izumi", "takaharu", "lanchester-kasugai", "saboharu", "sugiura-hatsujo", "pisaqua", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "vital-core-yamanaka", "herbzen-eva", "scrum", "mainichi-shukatsu", "kasugai-okashina", "nagoya-hs-soccer", "nobodyknows", "prizeout", "waon", "hapikura", "flytop", "aisei", "honic", "ainochikara", "teara", "kotomari-shihoshoshi", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto"].includes(company.id);
 
   // 問い合わせボタンを非表示にする企業
-  const hideContactButton = ["aisei", "sorairo", "kotomari-shihoshoshi"].includes(company.id);
+  const hideContactButton = ["aisei", "sorairo", "kotomari-shihoshoshi", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
   const contactHref = contactToForm ? "/contact" : company.contactUrl || company.url || "#";
   const contactTarget = contactToForm ? undefined : "_blank";
 
+  const contactButton = (
+    <a
+      href={contactHref}
+      target={contactTarget}
+      rel="noopener noreferrer"
+      className="block text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
+    >
+      この企業に問い合わせする
+    </a>
+  );
+
   // 応募ボタンの遷移先をお問い合わせフォームにする企業
   const applyToForm = ([] as string[]).includes(company.id);
   const applyHref = applyToForm ? "/contact" : company.recruitmentUrl || "#";
   const applyTarget = applyToForm ? undefined : "_blank";
+
+  // 企業情報の値が SNS の URL だけ（改行区切りで複数可）なら、アイコン表示用に分解して返す
+  const snsLinks = (value: string) => {
+    const links = value.split("\n").map((url) => {
+      const sns = SNS_ICONS.find((s) => s.pattern.test(url));
+      return sns ? { url, name: sns.name, icon: sns.icon } : null;
+    });
+    return links.every(Boolean) ? (links as { url: string; name: string; icon: string }[]) : null;
+  };
+
+  // サイドバーの情報ボックス（企業情報 / 人物のプロフィール）
+  const renderInfoBox = (title: string, rows: { label: string; value: string }[], owner = `${company.name} 公式`) => (
+    <div className="bg-white rounded-[4px] p-6 shadow-sm">
+      <h3 className="text-[14px] font-bold text-[#222222] mb-4">{title}</h3>
+      <table className="w-full">
+        <tbody>
+          {rows.map((info, i) => (
+            <tr key={i} className="border-b border-[#E0DDD8] last:border-b-0">
+              <td className="py-2.5 text-[12px] text-[#5A5A5A] w-[30%] align-top">
+                {info.label}
+              </td>
+              <td className="py-2.5 text-[12px] text-[#222222] whitespace-pre-line">
+                {/* SNS の URL（改行区切りで複数可）はアイコン、それ以外の http から始まる値（URL など）は文字のリンクにする */}
+                {snsLinks(info.value) ? (
+                  <div className="flex items-center gap-3">
+                    {snsLinks(info.value)!.map(({ url, name, icon }) => (
+                      <a
+                        key={url}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${owner}${name}`}
+                        className="block hover:opacity-80 transition-opacity duration-200"
+                      >
+                        <img className="block w-7 h-7" src={icon} alt="" width={28} height={28} />
+                      </a>
+                    ))}
+                  </div>
+                ) : /^https?:\/\//.test(info.value) ? (
+                  <a
+                    href={info.value}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:underline underline-offset-4 break-all"
+                  >
+                    {info.value}
+                  </a>
+                ) : (
+                  info.value
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+
+  type ArticleSource = {
+    personName?: string;
+    personRole?: string;
+    personCatchphrase?: string;
+    image: string;
+    imagePosition?: string;
+    videoUrl?: string;
+    videoId: string;
+    chapters: { title: string; content: string }[];
+    quotes: string[];
+    photos: { src: string; caption: string }[];
+  };
+
+  // 記事本文（動画/写真＋チャプター＋ボタン）。タブがある企業は人数分描画する
+  const renderArticle = (src: ArticleSource, idPrefix: string) => (
+    <>
+          {/* タブ内の見出し（人物ごとのキャッチコピー。役職・名前はヒーローに表示） */}
+          {src.personCatchphrase && (
+            <div className="mb-6 max-lg:mb-4">
+              <p
+                className="text-[24px] max-lg:text-[19px] font-medium text-[#1B2D4F] leading-[1.5]"
+                style={{ fontFamily: "'Noto Serif JP', serif" }}
+              >
+                {src.personCatchphrase}
+              </p>
+            </div>
+          )}
+
+          {/* 動画 / ヒーロー画像 */}
+          <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#1B2D4F] shadow-sm">
+            {src.videoUrl ? (
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                src={src.videoUrl}
+                poster={src.image || undefined}
+                controls
+                playsInline
+                preload="metadata"
+              />
+            ) : src.videoId ? (
+              <>
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url('${src.image}')` }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 max-lg:w-14 max-lg:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-white hover:scale-110 transition-all duration-200">
+                    <svg className="w-8 h-8 max-lg:w-6 max-lg:h-6 text-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </>
+            ) : src.image ? (
+              <img
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: src.imagePosition ?? "center 35%" }}
+                src={src.image}
+                alt={`${company.name} ${company.president}`}
+              />
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-white/80">
+                <svg className="w-12 h-12 max-lg:w-10 max-lg:h-10 mb-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <p className="text-[15px] max-lg:text-[13px] font-medium tracking-wider">動画準備中</p>
+              </div>
+            )}
+          </div>
+
+          {/* インタビュー記事 */}
+          <div className="mt-12 max-lg:mt-8 bg-white rounded-[4px] p-8 max-lg:p-5 shadow-sm">
+            {/* チャプター目次 */}
+            {src.chapters.length > 1 && (
+              <nav className="mb-10 max-lg:mb-8 border border-[#E0DDD8] rounded-[4px] p-5 max-lg:p-4 bg-[#F6F4F1]">
+                <p className="text-[13px] font-bold text-[#5A5A5A] mb-3">チャプターを選んで見る</p>
+                <ol className="space-y-2">
+                  {src.chapters.map((chapter, ci) => (
+                    <li key={ci}>
+                      <a
+                        href={`#${idPrefix}chapter-${ci}`}
+                        className="flex items-start gap-2 text-[14px] max-lg:text-[13px] text-[#222222] hover:text-accent transition-colors"
+                      >
+                        <span className="text-accent font-medium flex-shrink-0">{ci + 1}.</span>
+                        {chapter.title}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+
+            {src.chapters.map((chapter, ci) => (
+              <div key={ci}>
+                {ci > 0 && src.photos[ci - 1] && (
+                  <div className="my-10 max-lg:my-6">
+                    <div
+                      className="w-full aspect-[3/2] bg-[#E0DDD8] bg-cover bg-center rounded-[4px]"
+                      style={{ backgroundImage: `url('${src.photos[ci - 1].src}')` }}
+                    />
+                    <p className="mt-2 text-[13px] text-[#5A5A5A]">
+                      {src.photos[ci - 1].caption}
+                    </p>
+                  </div>
+                )}
+
+                <h2 id={`${idPrefix}chapter-${ci}`} className="text-[22px] max-lg:text-[18px] font-bold text-[#222222] mt-12 max-lg:mt-8 mb-5 max-lg:mb-4 first:mt-0 scroll-mt-28">
+                  {chapter.title}
+                </h2>
+
+                <div className="space-y-5 max-lg:space-y-4">
+                  {chapter.content.split("\n\n").map((paragraph, pi) => {
+                    if (paragraph.startsWith("——")) {
+                      return (
+                        <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] font-bold text-[#1B2D4F]">
+                          {renderTextWithLinks(paragraph)}
+                        </p>
+                      );
+                    }
+                    const speaker = paragraph.match(SPEAKER_PATTERN);
+                    if (speaker) {
+                      return (
+                        <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
+                          <span className="font-bold text-[#1B2D4F]">{speaker[1]}</span>
+                          {renderTextWithLinks(paragraph.slice(speaker[1].length))}
+                        </p>
+                      );
+                    }
+                    return (
+                      <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
+                        {renderTextWithLinks(paragraph)}
+                      </p>
+                    );
+                  })}
+                </div>
+
+                {src.quotes[ci] && (
+                  <blockquote className="my-10 max-lg:my-6 border-l-[3px] border-accent pl-6">
+                    <p
+                      className="text-[20px] max-lg:text-[17px] leading-[1.7] text-[#1B2D4F]"
+                      style={{ fontFamily: "'Noto Serif JP', serif" }}
+                    >
+                      &ldquo;{src.quotes[ci]}&rdquo;
+                    </p>
+                  </blockquote>
+                )}
+              </div>
+            ))}
+
+            {src.photos.length > 0 && (
+              <div className="mt-10 max-lg:mt-6">
+                <div
+                  className="w-full aspect-[3/2] bg-[#E0DDD8] bg-cover bg-center rounded-[4px]"
+                  style={{ backgroundImage: `url('${src.photos[src.photos.length - 1].src}')` }}
+                />
+                <p className="mt-2 text-[13px] text-[#5A5A5A]">
+                  {src.photos[src.photos.length - 1].caption}
+                </p>
+              </div>
+            )}
+
+            {/* 企業への問い合わせ・応募ボタン */}
+            {(!hideContactButton || !hideApplyButton) && (
+            <div className="mt-14 max-lg:mt-10 flex max-lg:flex-col gap-4">
+              {!hideContactButton && (
+                <a
+                  href={contactHref}
+                  target={contactTarget}
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center bg-[#1B2D4F] text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
+                >
+                  この企業に問い合わせする
+                </a>
+              )}
+              {!hideApplyButton && (
+                <a
+                  href={applyHref}
+                  target={applyTarget}
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center bg-accent text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
+                >
+                  この企業に応募する
+                </a>
+              )}
+            </div>
+            )}
+          </div>
+    </>
+  );
 
   return (
     <main>
@@ -198,7 +454,15 @@ export default async function CaseDetailPage({ params }: Props) {
             </p>
           )}
           <p className="mt-3 text-[18px] max-lg:text-[15px] text-white/80">
-            {company.president}
+            {company.personTabs && company.personTabs.length > 0 ? (
+              <CaseTabText
+                items={company.personTabs.map(
+                  (t) => [t.personRole, t.personName].filter(Boolean).join("　") || company.president
+                )}
+              />
+            ) : (
+              company.president
+            )}
           </p>
           {company.catchphrase && (
             <p className="mt-5 text-[20px] max-lg:text-[16px] text-white/90 leading-[1.6]"
@@ -226,165 +490,30 @@ export default async function CaseDetailPage({ params }: Props) {
 
           {/* ===== 左カラム ===== */}
           <div className="lg:flex-1 min-w-0">
-            {/* 動画 / ヒーロー画像 */}
-            <div className="relative w-full aspect-video rounded-[4px] overflow-hidden bg-[#1B2D4F] shadow-sm">
-              {company.videoUrl ? (
-                <video
-                  className="absolute inset-0 w-full h-full object-cover"
-                  src={company.videoUrl}
-                  poster={company.image || undefined}
-                  controls
-                  playsInline
-                  preload="metadata"
-                />
-              ) : company.videoId ? (
-                <>
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('${company.image}')` }}
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 max-lg:w-14 max-lg:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-white hover:scale-110 transition-all duration-200">
-                      <svg className="w-8 h-8 max-lg:w-6 max-lg:h-6 text-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
-                </>
-              ) : company.image ? (
-                <img
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ objectPosition: company.imagePosition ?? "center 35%" }}
-                  src={company.image}
-                  alt={`${company.name} ${company.president}`}
-                />
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white/80">
-                  <svg className="w-12 h-12 max-lg:w-10 max-lg:h-10 mb-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                  </svg>
-                  <p className="text-[15px] max-lg:text-[13px] font-medium tracking-wider">動画準備中</p>
-                </div>
-              )}
-            </div>
-
-            {/* インタビュー記事 */}
-            <div className="mt-12 max-lg:mt-8 bg-white rounded-[4px] p-8 max-lg:p-5 shadow-sm">
-              {/* チャプター目次 */}
-              {company.chapters.length > 1 && (
-                <nav className="mb-10 max-lg:mb-8 border border-[#E0DDD8] rounded-[4px] p-5 max-lg:p-4 bg-[#F6F4F1]">
-                  <p className="text-[13px] font-bold text-[#5A5A5A] mb-3">チャプターを選んで見る</p>
-                  <ol className="space-y-2">
-                    {company.chapters.map((chapter, ci) => (
-                      <li key={ci}>
-                        <a
-                          href={`#chapter-${ci}`}
-                          className="flex items-start gap-2 text-[14px] max-lg:text-[13px] text-[#222222] hover:text-accent transition-colors"
-                        >
-                          <span className="text-accent font-medium flex-shrink-0">{ci + 1}.</span>
-                          {chapter.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </nav>
-              )}
-
-              {company.chapters.map((chapter, ci) => (
-                <div key={ci}>
-                  {ci > 0 && company.photos[ci - 1] && (
-                    <div className="my-10 max-lg:my-6">
-                      <div
-                        className="w-full aspect-[3/2] bg-[#E0DDD8] bg-cover bg-center rounded-[4px]"
-                        style={{ backgroundImage: `url('${company.photos[ci - 1].src}')` }}
-                      />
-                      <p className="mt-2 text-[13px] text-[#5A5A5A]">
-                        {company.photos[ci - 1].caption}
-                      </p>
-                    </div>
-                  )}
-
-                  <h2 id={`chapter-${ci}`} className="text-[22px] max-lg:text-[18px] font-bold text-[#222222] mt-12 max-lg:mt-8 mb-5 max-lg:mb-4 first:mt-0 scroll-mt-28">
-                    {chapter.title}
-                  </h2>
-
-                  <div className="space-y-5 max-lg:space-y-4">
-                    {chapter.content.split("\n\n").map((paragraph, pi) => {
-                      if (paragraph.startsWith("——")) {
-                        return (
-                          <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] font-bold text-[#1B2D4F]">
-                            {renderTextWithLinks(paragraph)}
-                          </p>
-                        );
-                      }
-                      const speaker = paragraph.match(SPEAKER_PATTERN);
-                      if (speaker) {
-                        return (
-                          <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
-                            <span className="font-bold text-[#1B2D4F]">{speaker[1]}</span>
-                            {renderTextWithLinks(paragraph.slice(speaker[1].length))}
-                          </p>
-                        );
-                      }
-                      return (
-                        <p key={pi} className="text-[16px] max-lg:text-[15px] leading-[2.0] text-[#222222]">
-                          {renderTextWithLinks(paragraph)}
-                        </p>
-                      );
-                    })}
-                  </div>
-
-                  {company.quotes[ci] && (
-                    <blockquote className="my-10 max-lg:my-6 border-l-[3px] border-accent pl-6">
-                      <p
-                        className="text-[20px] max-lg:text-[17px] leading-[1.7] text-[#1B2D4F]"
-                        style={{ fontFamily: "'Noto Serif JP', serif" }}
-                      >
-                        &ldquo;{company.quotes[ci]}&rdquo;
-                      </p>
-                    </blockquote>
-                  )}
-                </div>
-              ))}
-
-              {company.photos.length > 0 && (
-                <div className="mt-10 max-lg:mt-6">
-                  <div
-                    className="w-full aspect-[3/2] bg-[#E0DDD8] bg-cover bg-center rounded-[4px]"
-                    style={{ backgroundImage: `url('${company.photos[company.photos.length - 1].src}')` }}
-                  />
-                  <p className="mt-2 text-[13px] text-[#5A5A5A]">
-                    {company.photos[company.photos.length - 1].caption}
-                  </p>
-                </div>
-              )}
-
-              {/* 企業への問い合わせ・応募ボタン */}
-              {(!hideContactButton || !hideApplyButton) && (
-              <div className="mt-14 max-lg:mt-10 flex max-lg:flex-col gap-4">
-                {!hideContactButton && (
-                  <a
-                    href={contactHref}
-                    target={contactTarget}
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center bg-[#1B2D4F] text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
-                  >
-                    この企業に問い合わせする
-                  </a>
+            {company.personTabs && company.personTabs.length > 0 ? (
+              <CaseTabs
+                labels={company.personTabs.map((t) => t.label)}
+                panels={company.personTabs.map((t, ti) =>
+                  renderArticle(
+                    {
+                      personName: t.personName,
+                      personRole: t.personRole,
+                      personCatchphrase: t.personCatchphrase,
+                      image: t.image ?? "",
+                      imagePosition: t.imagePosition,
+                      videoUrl: t.videoUrl,
+                      videoId: "",
+                      chapters: t.chapters ?? [],
+                      quotes: t.quotes ?? [],
+                      photos: t.photos ?? [],
+                    },
+                    `t${ti}-`
+                  )
                 )}
-                {!hideApplyButton && (
-                  <a
-                    href={applyHref}
-                    target={applyTarget}
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center bg-accent text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-accent-dark transition-colors duration-200"
-                  >
-                    この企業に応募する
-                  </a>
-                )}
-              </div>
-              )}
-            </div>
+              />
+            ) : (
+              renderArticle(company, "")
+            )}
           </div>
 
           {/* ===== 右カラム: サイドバー ===== */}
@@ -405,16 +534,7 @@ export default async function CaseDetailPage({ params }: Props) {
               {/* 問い合わせ・応募ボタン */}
               {(!hideContactButton || !hideApplyButton) && (
               <div className="flex flex-col gap-3">
-                {!hideContactButton && (
-                  <a
-                    href={contactHref}
-                    target={contactTarget}
-                    rel="noopener noreferrer"
-                    className="text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
-                  >
-                    この企業に問い合わせする
-                  </a>
-                )}
+                {!hideContactButton && contactButton}
                 {!hideApplyButton && (
                   <a
                     href={applyHref}
@@ -428,51 +548,28 @@ export default async function CaseDetailPage({ params }: Props) {
               </div>
               )}
 
-              {/* 企業情報 */}
-              <div className="bg-white rounded-[4px] p-6 shadow-sm">
-                <h3 className="text-[14px] font-bold text-[#222222] mb-4">企業情報</h3>
-                <table className="w-full">
-                  <tbody>
-                    {company.companyInfo.map((info, i) => (
-                      <tr key={i} className="border-b border-[#E0DDD8] last:border-b-0">
-                        <td className="py-2.5 text-[12px] text-[#5A5A5A] w-[30%] align-top">
-                          {info.label}
-                        </td>
-                        <td className="py-2.5 text-[12px] text-[#222222] whitespace-pre-line">
-                          {/* SNS の URL（改行区切りで複数可）はアイコン、それ以外の http から始まる値（URL など）は文字のリンクにする */}
-                          {snsLinks(info.value) ? (
-                            <div className="flex items-center gap-3">
-                              {snsLinks(info.value)!.map(({ url, name, icon }) => (
-                                <a
-                                  key={url}
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  aria-label={`${company.name} 公式${name}`}
-                                  className="block hover:opacity-80 transition-opacity duration-200"
-                                >
-                                  <img className="block w-7 h-7" src={icon} alt="" width={28} height={28} />
-                                </a>
-                              ))}
-                            </div>
-                          ) : /^https?:\/\//.test(info.value) ? (
-                            <a
-                              href={info.value}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-accent hover:underline underline-offset-4 break-all"
-                            >
-                              {info.value}
-                            </a>
-                          ) : (
-                            info.value
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              {/* 企業情報（タブがある企業は、プロフィールのある人物のタブでプロフィールに切り替える。showCompanyInfo なら企業情報・問い合わせボタンの下にプロフィールを出す） */}
+              {company.personTabs && company.personTabs.length > 0 ? (
+                <CaseTabText
+                  items={company.personTabs.map((t) =>
+                    t.profile ? (
+                      t.showCompanyInfo ? (
+                        <div className="space-y-6">
+                          {renderInfoBox("企業情報", company.companyInfo)}
+                          {company.contactUrl && contactButton}
+                          {renderInfoBox("プロフィール", t.profile, `${t.personName} `)}
+                        </div>
+                      ) : (
+                        renderInfoBox("プロフィール", t.profile)
+                      )
+                    ) : (
+                      renderInfoBox("企業情報", company.companyInfo)
+                    )
+                  )}
+                />
+              ) : (
+                renderInfoBox("企業情報", company.companyInfo)
+              )}
             </div>
           </aside>
         </div>
