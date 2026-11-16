@@ -2226,7 +2226,7 @@ export const companies: Company[] = [
     employees: "",
     url: "",
     recruitmentUrl: "",
-    leadText: "（準備中）",
+    leadText: "",
     interviewDate: "",
     videoId: "",
     chapters: [],
@@ -2251,6 +2251,7 @@ export const companies: Company[] = [
           { label: "特技", value: "歌うこと" },
           { label: "趣味", value: "カフェ巡り" },
           { label: "活動実績", value: "P-Locoバンドボーカル担当\n関ヶ原唄合戦／@JAM／TIF\n様々なFES出演\nワンマン公演／東名阪福ツアー成功\n愛知県公認AMT愛西市担当\nソロ曲／CMソング／社歌\n・グーネット\n・詐欺メタル\n・中京ハウジング\n・テレコムナンバー1\n・ヤマイチプライメタル社歌\n・ゆうゆう会館応援歌\nFM AICHI番組パーソナリティ" },
+          { label: "SNS", value: "https://www.instagram.com/akn_ssk1115\nhttps://x.com/p_locoAkane\nhttps://www.tiktok.com/@p_locoakane" },
         ],
         personCatchphrase: "「みんながいるから、楽しく頑張れる」",
         chapters: [
@@ -2302,7 +2303,7 @@ export const companies: Company[] = [
     employees: "",
     url: "",
     recruitmentUrl: "",
-    leadText: "（準備中）",
+    leadText: "",
     interviewDate: "",
     videoId: "",
     chapters: [],
@@ -2327,6 +2328,7 @@ export const companies: Company[] = [
           { label: "特技", value: "水泳" },
           { label: "趣味", value: "ダーツ、韓ドラ鑑賞" },
           { label: "活動実績", value: "P-Locoリーダー\nP-Locoバンド ドラム担当\n関ヶ原唄合戦／@JAM／TIF\n様々なFES出演\nワンマン公演／東名阪福ツアー成功\n愛知県公認AMT飛島村担当\n動物愛護活動\nSDGs推進活動\n金魚博士\nゆうゆう会館応援大使\nFM AICHI番組パーソナリティ" },
+          { label: "SNS", value: "https://www.instagram.com/p_loco_ai\nhttps://x.com/p_loco_Ai\nhttps://www.tiktok.com/@p_loco.ai" },
         ],
         personCatchphrase: "「応援してもらえることは、決して当たり前じゃない」",
         chapters: [

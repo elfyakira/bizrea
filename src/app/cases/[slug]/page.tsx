@@ -519,17 +519,21 @@ export default async function CaseDetailPage({ params }: Props) {
           {/* ===== 右カラム: サイドバー ===== */}
           <aside className="lg:w-[340px] flex-shrink-0 max-lg:mt-10">
             <div className="lg:sticky lg:top-28 space-y-6">
-              {/* リード文 */}
+              {/* リード文（リード文も公開日もない企業は枠ごと出さない） */}
+              {(company.leadText || company.interviewDate) && (
               <div className="bg-white rounded-[4px] p-6 shadow-sm">
+                {company.leadText && (
                 <p className="text-[14px] leading-[1.9] text-[#222222]">
                   {company.leadText}
                 </p>
+                )}
                 {company.interviewDate && (
                   <p className="mt-4 text-[12px] text-[#5A5A5A]">
                     公開日: {company.interviewDate}
                   </p>
                 )}
               </div>
+              )}
 
               {/* 問い合わせ・応募ボタン */}
               {(!hideContactButton || !hideApplyButton) && (
