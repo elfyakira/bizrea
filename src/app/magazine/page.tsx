@@ -25,6 +25,17 @@ export const metadata = pageMetadata({
 // },
 const magazines: Magazine[] = [
   {
+    vol: 4,
+    description:
+      "特集は株式会社TYK Promotion 代表 臼井 陽介氏。ほか、株式会社TERASU 木下 雅博氏（サボはる）・tearLo 前田 奈子氏・春日井製菓 おかしな実験室 原 智彦氏・株式会社Vital core 山中 信人氏のインタビューを収録。",
+    issue: "2026年11月",
+    pages: 44,
+    cover: "/images/magazine/vol4.jpg",
+    pageBase: "https://assets.singgroup.biz/magazine/vol4",
+    pdf: "https://assets.singgroup.biz/magazine/bizrea-vol4.pdf",
+    isLatest: true,
+  },
+  {
     vol: 3,
     description:
       "特集は元ラグビー日本代表 一般社団法人スクラム 代表理事 長江 有祐氏。ほか、Vital core・名古屋高校サッカー部・nobodyknows＋ ノリ・ダ・ファンキーシビレサス氏・愛知県議会議員 伊藤 貴治氏のインタビューを収録。",
@@ -33,7 +44,6 @@ const magazines: Magazine[] = [
     cover: "/images/magazine/vol3.jpg",
     pageBase: "https://assets.singgroup.biz/magazine/vol3",
     pdf: "https://assets.singgroup.biz/magazine/bizrea-vol3.pdf",
-    isLatest: true,
   },
   {
     vol: 2,
