@@ -3615,7 +3615,7 @@ export const companies: Company[] = [
     photos: [],
     companyInfo: [
       { label: "企業名", value: "春日井書道教室" },
-      { label: "代表者", value: "りさ先生" },
+      { label: "代表者", value: "北谷りさ" },
       { label: "事業内容", value: "書道教室（手ぶらでらくらく書道教室）、保育園への出張指導、地域イベントの開催" },
     ],
   },
