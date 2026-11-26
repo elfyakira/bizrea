@@ -147,22 +147,32 @@ export default async function CaseDetailPage({ params }: Props) {
   const hideApplyButton = ["lanchester-kasugai", "vital-core-yamanaka", "saboharu", "p-loco-kobayashi", "p-loco-sasaki", "pisaqua", "nukumori-no-izumi", "tyk-promotion", "sugiura-hatsujo", "takaharu", "sorairo", "prelune", "paluu", "kiso", "norida-garden", "vital-core", "scrum", "hapikura", "mainichi-shukatsu", "nobodyknows", "herbzen-eva", "nagoya-hs-soccer", "kasugai-okashina", "prizeout", "waon", "teara", "flytop", "aisei", "honic", "ainochikara", "kotomari-shihoshoshi", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto", "naano", "suenaga-kei", "kasugai-shodo"].includes(company.id);
 
   // 問い合わせボタンを非表示にする企業
-  const hideContactButton = ["aisei", "sorairo", "p-loco-kobayashi", "p-loco-sasaki", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto", "kotomari-shihoshoshi", "kasugai-shodo"].includes(company.id);
+  const hideContactButton = ["aisei", "sorairo", "p-loco-kobayashi", "p-loco-sasaki", "nagoya-okoshi-honda", "nagoya-okoshi-yoshihara", "nagoya-okoshi-hiramatsu", "nagoya-okoshi-tamura", "nagoya-okoshi-tsujimoto", "kotomari-shihoshoshi"].includes(company.id);
 
   // 問い合わせボタンの遷移先をお問い合わせフォームにする企業
   const contactToForm = ["paluu", "sorairo", "aisei"].includes(company.id);
   const contactHref = contactToForm ? "/contact" : company.contactUrl || company.url || "#";
   const contactTarget = contactToForm ? undefined : "_blank";
 
+  // 問い合わせボタンの一覧。contactLinks があればその数だけ（ホームページ・Instagram など）、なければ従来の1つ
+  const contactButtons = company.contactLinks?.length
+    ? company.contactLinks.map((l) => ({ label: l.label, href: l.url, target: "_blank" as string | undefined }))
+    : [{ label: "この企業に問い合わせする", href: contactHref, target: contactTarget }];
+
   const contactButton = (
-    <a
-      href={contactHref}
-      target={contactTarget}
-      rel="noopener noreferrer"
-      className="block text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
-    >
-      この企業に問い合わせする
-    </a>
+    <>
+      {contactButtons.map((b) => (
+        <a
+          key={b.href}
+          href={b.href}
+          target={b.target}
+          rel="noopener noreferrer"
+          className="block text-center bg-[#1B2D4F] text-white text-[14px] font-bold py-3.5 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
+        >
+          {b.label}
+        </a>
+      ))}
+    </>
   );
 
   // 応募ボタンの遷移先をお問い合わせフォームにする企業
@@ -391,16 +401,17 @@ export default async function CaseDetailPage({ params }: Props) {
             {/* 企業への問い合わせ・応募ボタン */}
             {(!hideContactButton || !hideApplyButton) && (
             <div className="mt-14 max-lg:mt-10 flex max-lg:flex-col gap-4">
-              {!hideContactButton && (
+              {!hideContactButton && contactButtons.map((b) => (
                 <a
-                  href={contactHref}
-                  target={contactTarget}
+                  key={b.href}
+                  href={b.href}
+                  target={b.target}
                   rel="noopener noreferrer"
                   className="flex-1 text-center bg-[#1B2D4F] text-white text-[15px] font-bold py-4 rounded-[4px] hover:bg-[#152440] transition-colors duration-200"
                 >
-                  この企業に問い合わせする
+                  {b.label}
                 </a>
-              )}
+              ))}
               {!hideApplyButton && (
                 <a
                   href={applyHref}

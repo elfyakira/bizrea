@@ -15,6 +15,7 @@ export interface Company {
   url: string;
   recruitmentUrl: string;
   contactUrl?: string; // 「この企業に問い合わせする」ボタンの遷移先（未指定時は url を使用）
+  contactLinks?: { label: string; url: string }[]; // 指定すると問い合わせボタンをこの数だけ並べる（例: ホームページ・Instagram）
   leadText: string;
   interviewDate: string;
   videoId: string;
@@ -3550,8 +3551,12 @@ export const companies: Company[] = [
     address: "",
     business: "書道教室（手ぶらでらくらく書道教室）、保育園への出張指導、地域イベントの開催",
     employees: "",
-    url: "",
+    url: "https://shodo.crayonsite.info/",
     recruitmentUrl: "",
+    contactLinks: [
+      { label: "ホームページから問い合わせする", url: "https://shodo.crayonsite.info/" },
+      { label: "Instagramから問い合わせする", url: "https://www.instagram.com/noutore_shodo_risa/" },
+    ],
     leadText: "3歳の頃、祖母が営む書道教室で筆を握ったことが、りさ先生と書道との出会いでした。約50年続いた祖母の教室での経験を受け継ぎ、現在は「春日井書道教室」として、書道の魅力を伝えているりさ先生。大切にしているのは、字をきれいに書くことだけではなく、子どもたちが自分で選び、挑戦し、自分自身を信じられるようになること。その想いの背景には、学習塾で教える楽しさを知った経験や、子育てを通じて人に頼ることの大切さに気づいた自身の歩みがあります。一人ひとりの個性を受け止める指導へのこだわりから、書道を通じて実現したい地域の未来まで、率直に語っていただきました。",
     interviewDate: "",
     videoId: "",
