@@ -3546,6 +3546,7 @@ export const companies: Company[] = [
     catchphrase: "自分を信じて、一歩踏み出す。書道を通じて育てたい、自分で選び、挑戦する力。",
     desc: "字の上達だけではなく、一人ひとりの可能性を信じる。書道教室から広がる、人と人が支え合う地域への想い。",
     image: "/images/companies/kasugai-shodo-president.jpg",
+    presidentImage: "/images/presidents/cards/kasugai-shodo.png",
     heroImage: "",
     founded: "",
     address: "",
